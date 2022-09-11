@@ -15,8 +15,6 @@ const Options = ({ options, onChooseResponse }) => {
         flexWrap: "wrap",
         listStyle: "none",
         justifyContent: "space-evenly",
-        // justifyItems: "start",
-        // alignContent: "start",
       }}
     >
       {options.map((option, index) => (
@@ -62,7 +60,7 @@ const Story = ({ score, maxScore }) => {
             maxScore
           )})`,
           zIndex: 10,
-          // border: "1px solid black",
+          opacity: score < 0 || score > maxScore ? 0.3 : 1,
         }}
       >
         <Image src="/noun-bear.svg" alt="Bear" width={100} height={100} />
@@ -99,26 +97,25 @@ export default function Home() {
 
   const [score, setScore] = useState(2);
 
-  const onSetScore = (_valence) => {
+  const onSetScore = (option) => {
+    const _valence = option.valence ?? 0;
     setScore(score + _valence);
     if (score + _valence < 0) {
       setGameOver(true);
-      setFinalText(bearText);
+      setFinalText(option.response?.text);
       setDialogue({});
     } else if (score + _valence > maxScore) {
       setGameWon(true);
       setDialogue({});
-      setFinalText(bearText);
+      setFinalText(option.response?.text);
     }
   };
 
-  const onChooseResponse = (response = 0) => {
+  const onChooseResponse = (optionIndex = 0) => {
     if (options.length > 0) {
-      setDialogue(options[response]);
+      setDialogue(options[optionIndex]);
       setPreviousOptions(options);
-      if (!!options[response]["valence"]) {
-        onSetScore(options[response]["valence"]);
-      }
+      onSetScore(options[optionIndex]);
     }
   };
 
@@ -159,11 +156,11 @@ export default function Home() {
         >
           {gameWon ? (
             <>
-              <p>
+              <div>
                 {finalText.split("\n").map((text, index) => (
                   <p key={`${index}-${index}`}>{text.trim()}</p>
                 ))}
-              </p>
+              </div>
               <Image
                 src="/noun-grizzly-bear_stand.svg"
                 height={400}
@@ -176,11 +173,11 @@ export default function Home() {
             </>
           ) : gameOver ? (
             <>
-              <p>
+              <div>
                 {finalText.split("\n").map((text, index) => (
                   <p key={`${index}-${index}`}>{text.trim()}</p>
                 ))}
-              </p>
+              </div>
               <Image
                 src="/noun-bear_scare.svg"
                 height={400}
