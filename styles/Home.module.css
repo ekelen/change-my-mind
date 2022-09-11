@@ -2,6 +2,25 @@
   padding: 0 2rem;
 }
 
+.opacity {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: 1s
+}
+
+.option:hover {
+  background-color: yellow;
+}
+
+.circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgb(41, 154, 156);
+  position: absolute;
+  top: 50px;
+}
+
 .main {
   min-height: 100vh;
   padding: 4rem 0;
