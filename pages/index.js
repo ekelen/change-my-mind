@@ -6,6 +6,81 @@ import FadeIn from "react-fade-in";
 import { START } from "./constants";
 import cloneDeep from "lodash.clonedeep";
 
+const Options = ({ options, onChooseResponse }) => {
+  return (
+    <ul
+      style={{
+        display: "flex",
+        width: "100%",
+        flexWrap: "wrap",
+        listStyle: "none",
+        justifyContent: "space-evenly",
+        // justifyItems: "start",
+        // alignContent: "start",
+      }}
+    >
+      {options.map((option, index) => (
+        <li
+          key={`${index}`}
+          onClick={() => onChooseResponse(index)}
+          className={styles.option}
+        >
+          {option.text}
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+const Story = ({ score, maxScore }) => {
+  return (
+    <div
+      style={{
+        position: "relative",
+        height: "200px",
+        width: "1000px",
+        backgroundColor: "gray",
+      }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "50px",
+          height: "10px",
+          width: "900px",
+          backgroundColor: "white",
+        }}
+      />
+
+      <div
+        style={{
+          position: "absolute",
+          top: "calc(50% - (100px/2))",
+          left: `calc(5px + (900px / 6) * ${Math.min(
+            Math.max(0, score),
+            maxScore
+          )})`,
+          zIndex: 10,
+          // border: "1px solid black",
+        }}
+      >
+        <Image src="/noun-bear.svg" alt="Bear" width={100} height={100} />
+      </div>
+
+      {Array.from(Array(maxScore + 1).keys()).map((index) => (
+        <div
+          key={index}
+          className={styles.circle}
+          style={{
+            left: `calc(25px + (900px / 6) * ${index})`,
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
 export default function Home() {
   const [dialogue, setDialogue] = useState(START);
   const [previousOptions, setPreviousOptions] = useState(
@@ -67,12 +142,14 @@ export default function Home() {
 
       <main className={styles.main}>
         <button onClick={restart}>Restart</button>
+
+        <Story score={score} maxScore={maxScore} />
         <div
           style={{
             display: "flex",
             flexDirection: "column",
             width: "1000px",
-            height: "500px",
+
             backgroundColor: "lightblue",
             position: "relative",
             color: "black",
@@ -117,53 +194,6 @@ export default function Home() {
               <div
                 style={{
                   // position: "absolute",
-                  position: "relative",
-                  height: "200px",
-                  width: "1000px",
-                  backgroundColor: "gray",
-                }}
-              >
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "50px",
-                    height: "10px",
-                    width: "900px",
-                    backgroundColor: "red",
-                  }}
-                />
-
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "calc(50% - (100px/2))",
-                    left: `calc(5px + (900px / 6) * ${score})`,
-                    zIndex: 10,
-                    // border: "1px solid black",
-                  }}
-                >
-                  <Image
-                    src="/noun-bear.svg"
-                    alt="Bear"
-                    width={100}
-                    height={100}
-                  />
-                </div>
-
-                {Array.from(Array(maxScore + 1).keys()).map((index) => (
-                  <div
-                    key={index}
-                    className={styles.circle}
-                    style={{
-                      left: `calc(25px + (900px / 6) * ${index})`,
-                    }}
-                  />
-                ))}
-              </div>
-              <div
-                style={{
-                  // position: "absolute",
                   height: "500px",
                   width: "1000px",
                   backgroundColor: "pink",
@@ -185,28 +215,10 @@ export default function Home() {
                   </FadeIn>
                 </div>
 
-                <ul
-                  style={{
-                    bottom: "0px",
-                    position: "absolute",
-                  }}
-                >
-                  {options.map((option, index) => (
-                    <li
-                      key={`${index}`}
-                      onClick={() => onChooseResponse(index)}
-                      class={styles.option}
-                    >
-                      {option.text}
-                      {/* {option.text.split("\n").map((text, index) => (
-                        <Fragment key={`${index}-${index}`}>
-                          <span>{text}</span>
-                          <br />
-                        </Fragment>
-                      ))} */}
-                    </li>
-                  ))}
-                </ul>
+                <Options
+                  options={options}
+                  onChooseResponse={onChooseResponse}
+                />
               </div>
             </>
           )}
