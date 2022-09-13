@@ -1,4 +1,4 @@
-import { START } from "../pages/constants";
+import { START } from "./dialogue";
 import { CHOOSE_RESPONSE, RESTART } from "./gameActions";
 
 export const maxScore = 6;
