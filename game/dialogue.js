@@ -548,9 +548,3 @@ export const START = {
     ],
   },
 };
-
-const PlaceholderComponent = () => {
-  return <></>;
-};
-
-export default PlaceholderComponent;
