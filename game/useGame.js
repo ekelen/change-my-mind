@@ -12,7 +12,7 @@ const useGame = () => {
   const chooseResponse = (optionIndex = 0) => {
     if (options.length > 0) {
       const option = options[optionIndex];
-      dispatch(gameActions.chooseResponse(option));
+      dispatch(gameActions.chooseResponse(option, options));
     }
   };
 

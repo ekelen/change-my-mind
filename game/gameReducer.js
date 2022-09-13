@@ -12,37 +12,44 @@ export const initialState = {
   score: 2,
 };
 
-const chooseResponse = (state, option) => {
+const chooseResponse = (state, option, options) => {
   const _valence = option.valence ?? 0;
   const score = state.score + _valence;
+
+  const common = {
+    ...state,
+    score,
+    dialogue: option,
+    previousOptions: options,
+  };
+
   if (score < 0) {
     return {
-      ...state,
+      ...common,
       gameOver: true,
       finalText: option.response?.text,
       dialogue: {},
-      score,
     };
   }
   if (score > maxScore) {
     return {
-      ...state,
+      ...common,
       gameWon: true,
       dialogue: {},
       finalText: option.response?.text,
-      score,
     };
   }
-  return {
-    ...state,
-    score,
-  };
+  return common;
 };
 
 const gameReducer = (state, action) => {
   switch (action.type) {
     case CHOOSE_RESPONSE: {
-      return chooseResponse(state, action.payload);
+      return chooseResponse(
+        state,
+        action.payload.option,
+        action.payload.options
+      );
     }
     case RESTART: {
       return initialState;
