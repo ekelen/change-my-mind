@@ -1,10 +1,9 @@
 import Head from "next/head";
 import Image from "next/image";
-import { Fragment, useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 import FadeIn from "react-fade-in";
-import { START } from "./constants";
-import cloneDeep from "lodash.clonedeep";
+import useGame from "../game/useGame";
+import { maxScore } from "../game/gameReducer";
 
 const Options = ({ options, onChooseResponse }) => {
   return (
@@ -80,53 +79,22 @@ const Story = ({ score, maxScore }) => {
 };
 
 export default function Home() {
-  const [dialogue, setDialogue] = useState(START);
-  const [previousOptions, setPreviousOptions] = useState(
-    START.response.options
-  );
-  const [gameOver, setGameOver] = useState(false);
-  const [gameWon, setGameWon] = useState(false);
+  const [gameState, { chooseResponse, restart }] = useGame();
 
-  const [finalText, setFinalText] = useState("");
-  const maxScore = 6;
+  const { dialogue, previousOptions, gameOver, gameWon, finalText, score } =
+    gameState;
 
   const bearResponse = dialogue.response ?? {};
   const options = bearResponse.options ?? dialogue.options ?? previousOptions;
   const currentHumanText = dialogue.text ?? "";
   const bearText = bearResponse.text ?? "";
 
-  const [score, setScore] = useState(2);
-
-  const onSetScore = (option) => {
-    const _valence = option.valence ?? 0;
-    setScore(score + _valence);
-    if (score + _valence < 0) {
-      setGameOver(true);
-      setFinalText(option.response?.text);
-      setDialogue({});
-    } else if (score + _valence > maxScore) {
-      setGameWon(true);
-      setDialogue({});
-      setFinalText(option.response?.text);
-    }
-  };
-
   const onChooseResponse = (optionIndex = 0) => {
-    if (options.length > 0) {
-      setDialogue(options[optionIndex]);
-      setPreviousOptions(options);
-      onSetScore(options[optionIndex]);
-    }
+    chooseResponse(optionIndex);
   };
 
-  const restart = () => {
-    setScore(2);
-    setGameOver(false);
-    setGameWon(false);
-
-    setDialogue(START);
-    setPreviousOptions(START.response.options);
-    setFinalText("");
+  const handleRestart = () => {
+    restart();
   };
 
   return (
@@ -138,7 +106,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <button onClick={restart}>Restart</button>
+        <button onClick={handleRestart}>Restart</button>
 
         <Story score={score} maxScore={maxScore} />
         <div
