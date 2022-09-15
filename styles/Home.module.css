@@ -9,7 +9,7 @@
 }
 
 .option:hover {
-  background-color: yellow;
+  border: 1px dashed yellow;
 }
 
 .option {
@@ -20,12 +20,12 @@
 }
 
 .circle {
-  width: 50px;
-  height: 50px;
+  width: 20px;
+  height: 10px;
   border-radius: 50%;
   background-color: rgb(41, 154, 156);
   position: absolute;
-  top: calc(50% - 25px);
+  bottom: calc(0%);
 }
 
 .main {
