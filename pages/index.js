@@ -121,7 +121,7 @@ export default function Home() {
             <>
               <div>
                 {finalText.split("\n").map((text, index) => (
-                  <p key={`${index}-${index}`}>{text.trim()}</p>
+                  <p key={`${index}`}>{text.trim()}</p>
                 ))}
               </div>
               <Image
@@ -138,7 +138,7 @@ export default function Home() {
             <>
               <div>
                 {finalText.split("\n").map((text, index) => (
-                  <p key={`${index}-${index}`}>{text.trim()}</p>
+                  <p key={`${index}`}>{text.trim()}</p>
                 ))}
               </div>
               <Image
@@ -162,7 +162,7 @@ export default function Home() {
                 <div>
                   <FadeIn>
                     {(dialogue.text ?? "").split("\n").map((text, index) => (
-                      <p key={`${index}-${index}`}>{text.trim()}</p>
+                      <p key={`${index}`}>{text.trim()}</p>
                     ))}
                   </FadeIn>
                 </div>
@@ -170,7 +170,7 @@ export default function Home() {
                 <div style={{ backgroundColor: "cornflowerblue" }}>
                   <FadeIn>
                     {dialogue.response.text.split("\n").map((text, index) => (
-                      <p key={`${index}-${index}`}>{text}</p>
+                      <p key={`${index}`}>{text}</p>
                     ))}
                   </FadeIn>
                 </div>
