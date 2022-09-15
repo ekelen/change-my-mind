@@ -84,11 +84,6 @@ export default function Home() {
   const { dialogue, previousOptions, gameOver, gameWon, finalText, score } =
     gameState;
 
-  const bearResponse = dialogue.response ?? {};
-  const options = bearResponse.options ?? dialogue.options ?? previousOptions;
-  const currentHumanText = dialogue.text ?? "";
-  const bearText = bearResponse.text ?? "";
-
   const onChooseResponse = (optionIndex = 0) => {
     chooseResponse(optionIndex);
   };
@@ -166,7 +161,7 @@ export default function Home() {
               >
                 <div>
                   <FadeIn>
-                    {currentHumanText.split("\n").map((text, index) => (
+                    {(dialogue.text ?? "").split("\n").map((text, index) => (
                       <p key={`${index}-${index}`}>{text.trim()}</p>
                     ))}
                   </FadeIn>
@@ -174,14 +169,18 @@ export default function Home() {
 
                 <div style={{ backgroundColor: "cornflowerblue" }}>
                   <FadeIn>
-                    {bearText.split("\n").map((text, index) => (
+                    {dialogue.response.text.split("\n").map((text, index) => (
                       <p key={`${index}-${index}`}>{text}</p>
                     ))}
                   </FadeIn>
                 </div>
 
                 <Options
-                  options={options}
+                  options={
+                    dialogue.response.options?.length
+                      ? dialogue.response.options
+                      : previousOptions
+                  }
                   onChooseResponse={onChooseResponse}
                 />
               </div>
