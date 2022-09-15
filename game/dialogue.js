@@ -70,7 +70,7 @@ export const R_TOY = {
     },
     {
       text: `What if you spent half your time catching fish, and the other half setting human-traps?`,
-      oars: OARS.notOars,
+      oars: doesntexist.notOars,
       valence: -1,
       attemptChange: true,
       response: {
