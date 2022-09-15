@@ -14,6 +14,7 @@ const Options = ({ options, onChooseResponse }) => {
         flexWrap: "wrap",
         listStyle: "none",
         justifyContent: "space-evenly",
+        color: "rgb(255,251,235)",
       }}
     >
       {options.map((option, index) => (
@@ -34,27 +35,30 @@ const Story = ({ score, maxScore }) => {
     <div
       style={{
         position: "relative",
-        height: "200px",
+        height: "150px",
         width: "1000px",
-        backgroundColor: "gray",
+        background: "rgb(2,0,36)",
+        background:
+          "linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(21,116,90,1) 47%, rgba(3,100,111,1) 100%)",
+        borderBottom: "10px solid rgb(15,23,42)",
       }}
     >
       <div
         style={{
           position: "absolute",
-          top: "50%",
+          bottom: 0,
           left: "50px",
-          height: "10px",
+          height: "0px",
           width: "900px",
-          backgroundColor: "white",
+          borderTop: "5px dotted yellow",
         }}
       />
 
       <div
         style={{
           position: "absolute",
-          top: "calc(50% - (100px/2))",
-          left: `calc(5px + (900px / 6) * ${Math.min(
+          bottom: "-20px",
+          left: `calc(-30px + (900px / 6) * ${Math.min(
             Math.max(0, score),
             maxScore
           )})`,
@@ -62,7 +66,7 @@ const Story = ({ score, maxScore }) => {
           opacity: score < 0 || score > maxScore ? 0.3 : 1,
         }}
       >
-        <Image src="/noun-bear.svg" alt="Bear" width={100} height={100} />
+        <Image src="/noun-bear.svg" alt="Bear" width={160} height={160} />
       </div>
 
       {Array.from(Array(maxScore + 1).keys()).map((index) => (
@@ -70,7 +74,7 @@ const Story = ({ score, maxScore }) => {
           key={index}
           className={styles.circle}
           style={{
-            left: `calc(25px + (900px / 6) * ${index})`,
+            left: `calc(35px + (900px / 6) * ${index})`,
           }}
         />
       ))}
@@ -115,11 +119,12 @@ export default function Home() {
             flexDirection: "column",
             width: "1000px",
 
-            backgroundColor: "lightblue",
+            // backgroundColor: "lightblue",
             position: "relative",
             color: "black",
             justifyContent: "center",
             alignItems: "center",
+            color: "rgb(252,211,77)",
           }}
         >
           {gameWon ? (
@@ -161,10 +166,11 @@ export default function Home() {
                   // position: "absolute",
                   height: "500px",
                   width: "1000px",
-                  backgroundColor: "pink",
+                  // backgroundColor: "pink",
+                  color: "rgb(252,211,77)",
                 }}
               >
-                <div>
+                <div style={{ color: "rgb(255,251,235)" }}>
                   <FadeIn>
                     {currentHumanText.split("\n").map((text, index) => (
                       <p key={`${index}-${index}`}>{text.trim()}</p>
@@ -172,7 +178,12 @@ export default function Home() {
                   </FadeIn>
                 </div>
 
-                <div style={{ backgroundColor: "cornflowerblue" }}>
+                <div
+                  style={{
+                    backgroundColor: "transparent",
+                    color: "rgb(252,211,77)",
+                  }}
+                >
                   <FadeIn>
                     {bearText.split("\n").map((text, index) => (
                       <p key={`${index}-${index}`}>{text}</p>
