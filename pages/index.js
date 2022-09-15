@@ -32,6 +32,7 @@ const Options = ({ options, onChooseResponse }) => {
 
 const Story = ({ score, maxScore }) => {
   return (
+    // background
     <div
       style={{
         position: "relative",
@@ -43,6 +44,33 @@ const Story = ({ score, maxScore }) => {
         borderBottom: "10px solid rgb(15,23,42)",
       }}
     >
+      {/* human */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: "-20px",
+          left: `-10px`,
+          zIndex: 10,
+          opacity: score < 0 ? 0.3 : 1,
+          transition: "all 2s",
+        }}
+      >
+        <Image src="/noun-hiking.svg" alt="Hiker" width={50} height={50} />
+      </div>
+      {/* fish bone */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: "-20px",
+          right: `-10px`,
+          zIndex: 10,
+          opacity: score > maxScore ? 0.3 : 1,
+          transition: "all 2s",
+        }}
+      >
+        <Image src="/noun-fish-bone.svg" alt="Hiker" width={50} height={50} />
+      </div>
+      {/* path */}
       <div
         style={{
           position: "absolute",
@@ -54,6 +82,7 @@ const Story = ({ score, maxScore }) => {
         }}
       />
 
+      {/* bear */}
       <div
         style={{
           position: "absolute",
@@ -64,11 +93,13 @@ const Story = ({ score, maxScore }) => {
           )})`,
           zIndex: 10,
           opacity: score < 0 || score > maxScore ? 0.3 : 1,
+          transition: "all 2s",
         }}
       >
         <Image src="/noun-bear.svg" alt="Bear" width={160} height={160} />
       </div>
 
+      {/* path points */}
       {Array.from(Array(maxScore + 1).keys()).map((index) => (
         <div
           key={index}
