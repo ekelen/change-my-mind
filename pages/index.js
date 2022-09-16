@@ -84,11 +84,6 @@ export default function Home() {
   const { dialogue, previousOptions, gameOver, gameWon, finalText, score } =
     gameState;
 
-  const bearResponse = dialogue.response ?? {};
-  const options = bearResponse.options ?? dialogue.options ?? previousOptions;
-  const currentHumanText = dialogue.text ?? "";
-  const bearText = bearResponse.text ?? "";
-
   const onChooseResponse = (optionIndex = 0) => {
     chooseResponse(optionIndex);
   };
@@ -126,7 +121,7 @@ export default function Home() {
             <>
               <div>
                 {finalText.split("\n").map((text, index) => (
-                  <p key={`${index}-${index}`}>{text.trim()}</p>
+                  <p key={`${index}`}>{text.trim()}</p>
                 ))}
               </div>
               <Image
@@ -143,7 +138,7 @@ export default function Home() {
             <>
               <div>
                 {finalText.split("\n").map((text, index) => (
-                  <p key={`${index}-${index}`}>{text.trim()}</p>
+                  <p key={`${index}`}>{text.trim()}</p>
                 ))}
               </div>
               <Image
@@ -166,22 +161,26 @@ export default function Home() {
               >
                 <div>
                   <FadeIn>
-                    {currentHumanText.split("\n").map((text, index) => (
-                      <p key={`${index}-${index}`}>{text.trim()}</p>
+                    {(dialogue.text ?? "").split("\n").map((text, index) => (
+                      <p key={`${index}`}>{text.trim()}</p>
                     ))}
                   </FadeIn>
                 </div>
 
                 <div style={{ backgroundColor: "cornflowerblue" }}>
                   <FadeIn>
-                    {bearText.split("\n").map((text, index) => (
-                      <p key={`${index}-${index}`}>{text}</p>
+                    {dialogue.response.text.split("\n").map((text, index) => (
+                      <p key={`${index}`}>{text}</p>
                     ))}
                   </FadeIn>
                 </div>
 
                 <Options
-                  options={options}
+                  options={
+                    dialogue.response.options?.length
+                      ? dialogue.response.options
+                      : previousOptions
+                  }
                   onChooseResponse={onChooseResponse}
                 />
               </div>
