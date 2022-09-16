@@ -207,7 +207,7 @@ export default function Home() {
                   color: "rgb(252,211,77)",
                 }}
               >
-                <div style={{ color: "rgb(255,251,235)" }}>
+                <div style={{ color: "rgb(255,251,235)", textAlign: "right" }}>
                   <FadeIn>
                     {(dialogue.text ?? "").split("\n").map((text, index) => (
                       <p key={`${index}`}>{text.trim()}</p>
