@@ -13,10 +13,11 @@
 }
 
 .option {
-  max-width: 40%;
-  width: 40%;
+  flex-basis: 49%;
   border: 1px solid gray;
   padding: 10px;
+  margin-bottom: 10px;
+  
 }
 
 .circle {

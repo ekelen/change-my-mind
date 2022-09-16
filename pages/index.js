@@ -13,7 +13,7 @@ const Options = ({ options, onChooseResponse }) => {
         width: "100%",
         flexWrap: "wrap",
         listStyle: "none",
-        justifyContent: "space-evenly",
+        justifyContent: "space-between",
         color: "rgb(255,251,235)",
       }}
     >
