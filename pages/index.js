@@ -74,11 +74,11 @@ const Story = ({ score, maxScore }) => {
       <div
         style={{
           position: "absolute",
-          bottom: 0,
+          bottom: "2px",
           left: "50px",
           height: "0px",
           width: "900px",
-          borderTop: "5px dotted yellow",
+          borderTop: "3px dotted rgba(255,255,0,0.5)",
         }}
       />
 
