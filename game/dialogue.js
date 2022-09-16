@@ -32,8 +32,25 @@ const O_NEXTYEAR = {
                       Us bears have been really pushed to the brink these last few decades, you know.`,
     options: [
       {
+        text: `And catching fish sucks – could you invent a more interesting way to do it?`,
+        oars: OARS.notOars,
+        valence: 0,
+        response: {
+          text: `No.`,
+        },
+      },
+      {
+        oars: OARS.notOars,
+        text: `I'm sorry that humans messed things up so badly.`,
+        valence: -1,
+        response: {
+          text: `I'm not. It makes me feel better about eating you.`,
+        },
+      },
+      {
         text: `You could pass forward not just the wisdom you've inherited, but the cunning you've developed.`,
         valence: 1,
+        oars: OARS.summarize,
         response: {
           text: `Yeah. I guess so.`,
           options: [
@@ -111,7 +128,25 @@ export const R_TOY = {
                       
                       I'd be kinda sad not to make it through the winter...`,
                     change: true,
-                    options: [O_NEXTYEAR],
+                    options: [
+                      O_NEXTYEAR,
+                      {
+                        oars: OARS.notOars,
+                        text: `How about we make a plan to get you through the winter?`,
+                        valence: -1,
+                        response: {
+                          text: `I'm not sure I'm ready to make a plan yet.`,
+                        },
+                      },
+                      {
+                        oars: OARS.notOars,
+                        text: `I'd be pretty sad, too. I haven't known you for very long, but you are interesting, as far as bears go.`,
+                        valence: -1,
+                        response: {
+                          text: `Don't patronize me, human. It makes me hungry.`,
+                        },
+                      },
+                    ],
                   },
                 },
                 {
@@ -175,7 +210,7 @@ const R_PRIDE = {
             },
           },
           {
-            text: "*wait*",
+            text: "*say nothing*",
             valence: 1,
             response: {
               text: `*pause*
@@ -216,15 +251,17 @@ const O_SUMM = {
         text: `You've been given wisdom, and you don't want it to be lost with you.`,
         valence: 1,
         response: {
-          text: `Yeah, that's right.
+          text: `Right.
                         
                         I'm also pretty smart, like, bear-wise.
                         
                         Like, there's this grocery store.
                         
-                        They always throws away totally fine chickens into a totally not bear-proof dumpster.
+                        They always throws away totally fine chickens into a totally NOT bear-proof dumpster.
                         
-                        I usually consider myself above dumpster diving, but I've scoped it out. I wonder if I could loot it and catch up on fat stores real quick.`,
+                        I usually consider myself above dumpster diving, but I've scoped it out. 
+                        
+                        I wonder if I could loot it and catch up on fat stores real quick.`,
           darncat: DARNCAT.takingSteps,
           options: [
             {
@@ -233,6 +270,23 @@ const O_SUMM = {
               valence: 0,
               attemptChange: true,
               response: R_PRIDE,
+            },
+            {
+              text: `Dumpster-chickens could be a way to survive, but it wouldn't be as fun as hunting humans.`,
+              oars: OARS.reflect,
+              valence: -1,
+              response: {
+                text: `Correctamundo! Have you ever had a game to play that made the real world just not matter anymore?
+                
+                That's how awesome human-catching is.`,
+              },
+            },
+            {
+              text: `It wouldn't be as fun as catching humans, but you have a possible strategy to get enough food to survive.`,
+              valence: 0,
+              attemptChange: true,
+              response: R_PRIDE,
+              oars: OARS.reflect,
             },
           ],
         },
@@ -313,9 +367,7 @@ const R_CLEVER = {
                         
                         In the meantime, the leaves are about to change, and do you know what that means?
                         
-                        Pumpkin spice lattes... coursing through human flesh. 
-                        
-                        You gotta understand, this is open season. I've got some pretty great schemes. I'm not gonna tell you what they are, but they're pretty great.`,
+                        Pumpkin spice lattes... coursing through human flesh. Mmmm...`,
                   change: true,
                   options: [
                     {
@@ -332,12 +384,15 @@ const R_CLEVER = {
                         
                         Like, I usually kinda take pride in it, but there's a little part of me that's worried. I've gotten a lot of wisdom from my elders.
                         
-                        Like, maybe I should have listened to them. Maybe I should have hibernated. Maybe I should have caught fish. Maybe I should have done what everyone else was doing.`,
+                        Like, maybe I should have listened to them. Maybe I should have hibernated. Maybe I should have caught fish. 
+                        
+                        Maybe I should have done what everyone else was doing.`,
                         options: [
                           O_SUMM,
                           {
                             text: `Do you think you'll be an elder someday?`,
                             oars: OARS.notOars,
+                            valence: 0,
                             response: {
                               text: "Doubt it.",
                             },
@@ -347,7 +402,23 @@ const R_CLEVER = {
                             oars: OARS.openEndedQuestion,
                             response: {
                               text: `Bears aren't exactly... family-oriented. But they teach each other by action, by doing.`,
-                              options: [O_SUMM],
+                              options: [
+                                O_SUMM,
+                                {
+                                  text: `If you die this winter, what will you teach other bears?`,
+                                  valence: 0,
+                                  response: {
+                                    text: `That it's chill to die doing what you love.`,
+                                  },
+                                },
+                              ],
+                            },
+                          },
+                          {
+                            text: `I mean, if I had stuck with my crowd, I'd be drinking a chocolate old fashioned at the lodge right now.`,
+                            valence: -1,
+                            response: {
+                              text: `That sounds disgusting. I only like chocolate melted in the pockets of my prey.`,
                             },
                           },
                         ],
