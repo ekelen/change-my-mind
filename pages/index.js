@@ -136,7 +136,12 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <button onClick={handleRestart}>Restart</button>
+        <div
+          style={{ width: "1000px", display: "flex", alignItems: "baseline" }}
+        >
+          <h1 style={{ marginRight: "auto" }}>I Will Eat You</h1>{" "}
+          <button onClick={handleRestart}>Restart</button>
+        </div>
 
         <Story score={score} maxScore={maxScore} />
         <div
