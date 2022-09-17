@@ -15,6 +15,8 @@ const Options = ({ options, onChooseResponse }) => {
         listStyle: "none",
         justifyContent: "space-between",
         color: "rgb(255,251,235)",
+        marginTop: "auto",
+        paddingTop: "1rem",
       }}
     >
       {options.map((option, index) => (
@@ -113,6 +115,34 @@ const Story = ({ score, maxScore }) => {
   );
 };
 
+const PostGame = ({ children }) => {
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        width: "1000px",
+        position: "relative",
+        justifyContent: "flex-start",
+        alignItems: "center",
+        color: "rgb(252,211,77)",
+        padding: "1rem 2rem",
+      }}
+    >
+      {children}
+    </div>
+  );
+};
+
+const Header = ({ handleRestart }) => {
+  return (
+    <div style={{ width: "1000px", display: "flex", alignItems: "baseline" }}>
+      <h1 style={{ marginRight: "auto" }}>I Will Eat You</h1>{" "}
+      <button onClick={handleRestart}>Restart</button>
+    </div>
+  );
+};
+
 export default function Home() {
   const [gameState, { chooseResponse, restart }] = useGame();
 
@@ -134,104 +164,72 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <div
-          style={{ width: "1000px", display: "flex", alignItems: "baseline" }}
-        >
-          <h1 style={{ marginRight: "auto" }}>I Will Eat You</h1>{" "}
-          <button onClick={handleRestart}>Restart</button>
-        </div>
-
+        <Header handleRestart={handleRestart} />
         <Story score={score} maxScore={maxScore} />
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            width: "1000px",
 
-            // backgroundColor: "lightblue",
-            position: "relative",
-            color: "black",
-            justifyContent: "center",
-            alignItems: "center",
-            color: "rgb(252,211,77)",
-          }}
-        >
-          {gameWon ? (
-            <>
-              <div>
-                {finalText.split("\n").map((text, index) => (
-                  <p key={`${index}`}>{text.trim()}</p>
-                ))}
-              </div>
-              <Image
-                src="/noun-grizzly-bear_stand.svg"
-                height={400}
-                width={400}
-                alt="Bear"
-              />
-              <big>{`I think I might go try to get some food. 
+        {gameWon ? (
+          <PostGame>
+            <div>
+              {finalText.split("\n").map((text, index) => (
+                <p key={`${index}`}>{text.trim()}</p>
+              ))}
+            </div>
+            <Image
+              src="/noun-grizzly-bear_stand.svg"
+              height={200}
+              width={200}
+              alt="Bear"
+            />
+            <big>{`I think I might go try to get some food. 
 
                 You can go home now.`}</big>
-            </>
-          ) : gameOver ? (
-            <>
-              <div>
-                {finalText.split("\n").map((text, index) => (
-                  <p key={`${index}`}>{text.trim()}</p>
+          </PostGame>
+        ) : gameOver ? (
+          <PostGame>
+            <div>
+              {finalText.split("\n").map((text, index) => (
+                <p key={`${index}`}>{text.trim()}</p>
+              ))}
+            </div>
+            <Image
+              src="/noun-bear_scare.svg"
+              height={200}
+              width={200}
+              alt="Attacking bear"
+            />
+            <big>*eats you*</big>
+          </PostGame>
+        ) : (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              padding: "1rem 2rem",
+              width: "1000px",
+              position: "relative",
+            }}
+          >
+            <div style={{ color: "rgb(255,251,235)", textAlign: "right" }}>
+              {currentHumanText.split("\n").map((text, index) => (
+                <p key={`${index}`}>{text.trim()}</p>
+              ))}
+            </div>
+
+            <div
+              style={{
+                color: "rgb(252,211,77)",
+              }}
+            >
+              <FadeIn>
+                {bearText.split("\n").map((text, index) => (
+                  <p key={`${index}`}>{text}</p>
                 ))}
-              </div>
-              <Image
-                src="/noun-bear_scare.svg"
-                height={400}
-                width={400}
-                alt="Attacking bear"
-              />
-              <big>*eats you*</big>
-            </>
-          ) : (
-            <>
-              <div
-                style={{
-                  // position: "absolute",
-                  height: "500px",
-                  width: "1000px",
-                  // backgroundColor: "pink",
-                  color: "rgb(252,211,77)",
-                }}
-              >
-                <div style={{ color: "rgb(255,251,235)", textAlign: "right" }}>
-                  <FadeIn>
-                    {(dialogue.text ?? "").split("\n").map((text, index) => (
-                      <p key={`${index}`}>{text.trim()}</p>
-                    ))}
-                  </FadeIn>
-                </div>
+              </FadeIn>
+            </div>
 
-                <div
-                  style={{
-                    backgroundColor: "transparent",
-                    color: "rgb(252,211,77)",
-                  }}
-                >
-                  <FadeIn>
-                    {dialogue.response.text.split("\n").map((text, index) => (
-                      <p key={`${index}`}>{text}</p>
-                    ))}
-                  </FadeIn>
-                </div>
-
-                <Options
-                  options={
-                    dialogue.response.options?.length
-                      ? dialogue.response.options
-                      : previousOptions
-                  }
-                  onChooseResponse={onChooseResponse}
-                />
-              </div>
-            </>
-          )}
-        </div>
+            <Options options={options} onChooseResponse={onChooseResponse} />
+          </div>
+        )}
       </main>
 
       <footer className={styles.footer}></footer>

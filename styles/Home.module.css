@@ -2,12 +2,6 @@
   padding: 0 2rem;
 }
 
-.opacity {
-  opacity: 1;
-  transition-property: opacity;
-  transition-duration: 1s
-}
-
 .option:hover {
   border: 1px dashed yellow;
 }
@@ -35,7 +29,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
