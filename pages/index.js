@@ -210,7 +210,7 @@ export default function Home() {
             }}
           >
             <div style={{ color: "rgb(255,251,235)", textAlign: "right" }}>
-              {currentHumanText.split("\n").map((text, index) => (
+              {(dialogue.text ?? "").split("\n").map((text, index) => (
                 <p key={`${index}`}>{text.trim()}</p>
               ))}
             </div>
@@ -221,13 +221,20 @@ export default function Home() {
               }}
             >
               <FadeIn>
-                {bearText.split("\n").map((text, index) => (
+                {dialogue.response.text.split("\n").map((text, index) => (
                   <p key={`${index}`}>{text}</p>
                 ))}
               </FadeIn>
             </div>
 
-            <Options options={options} onChooseResponse={onChooseResponse} />
+            <Options
+              options={
+                dialogue.response.options?.length
+                  ? dialogue.response.options
+                  : previousOptions
+              }
+              onChooseResponse={onChooseResponse}
+            />
           </div>
         )}
       </main>
