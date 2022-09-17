@@ -1,33 +1,37 @@
-import { START } from "./dialogue";
-import { CHOOSE_RESPONSE, RESTART } from "./gameActions";
+import flatDialogues from "./dialogues-flat.json";
+import { CHANGE_DIALOGUE, CHOOSE_RESPONSE, RESTART } from "./gameActions";
+import * as dialogueApi from "./dialogueApi";
 
 export const maxScore = 6;
 
 export const initialState = {
-  dialogue: START,
-  previousOptions: START.response.options,
+  dialogue: flatDialogues.start,
   gameOver: false,
   gameWon: false,
   finalText: "",
   score: 2,
+  options: [],
 };
 
-const chooseResponse = (state, option, options) => {
-  const _valence = option.valence ?? 0;
+const chooseResponse = (state, dialogue) => {
+  const _valence = dialogue.valence ?? 0;
   const score = state.score + _valence;
+
+  const options = dialogue.options
+    ? dialogue.options.map(dialogueApi.getDialogue)
+    : state.options;
 
   const common = {
     ...state,
+    options,
     score,
-    dialogue: option,
-    previousOptions: options,
   };
 
   if (score < 0) {
     return {
       ...common,
       gameOver: true,
-      finalText: option.response?.text,
+      finalText: dialogue.response?.text,
       dialogue: {},
     };
   }
@@ -36,20 +40,25 @@ const chooseResponse = (state, option, options) => {
       ...common,
       gameWon: true,
       dialogue: {},
-      finalText: option.response?.text,
+      finalText: dialogue.response?.text,
     };
   }
-  return common;
+  return {
+    ...common,
+    dialogue,
+  };
 };
 
 const gameReducer = (state, action) => {
   switch (action.type) {
     case CHOOSE_RESPONSE: {
-      return chooseResponse(
-        state,
-        action.payload.option,
-        action.payload.options
-      );
+      return chooseResponse(state, action.payload);
+    }
+    case CHANGE_DIALOGUE: {
+      return {
+        ...state,
+        dialogue: action.payload,
+      };
     }
     case RESTART: {
       return initialState;

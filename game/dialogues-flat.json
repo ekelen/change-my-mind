@@ -1,0 +1,270 @@
+{
+  "start": {
+    "id": "start",
+    "response": "5ed07aee-38c9-4e7b-a952-d58ed2c4023f"
+  },
+  "a2e3d511-4a06-44c3-809d-797fcf1c712d": {
+    "id": "a2e3d511-4a06-44c3-809d-797fcf1c712d",
+    "response": "094336b2-d184-4740-b513-3e41686792ac",
+    "text": "Well then. Sounds like catching fish is just what you have to do.",
+    "valence": -1,
+    "oars": "notOars"
+  },
+  "094336b2-d184-4740-b513-3e41686792ac": {
+    "text": "I know. But the thing is, it's boring.\n\n          Stripping the flesh from your torso, not so much.\n\n          Nice talking to you, human.",
+    "change": false,
+    "darncat": "desire"
+  },
+  "f9ebf28c-6cf7-4bd9-a321-8c321574b6dd": {
+    "id": "f9ebf28c-6cf7-4bd9-a321-8c321574b6dd",
+    "response": "e1b6cb9e-ed12-435d-a4a0-ce0c92d4dfc6",
+    "text": "When I was a kid, I used to catch fish with a stick.\n\n        I never caught any.\n\n        But it was fun.",
+    "oars": "notOars",
+    "valence": -1
+  },
+  "e1b6cb9e-ed12-435d-a4a0-ce0c92d4dfc6": {
+    "text": "That's nice, human. I'm sure you were a very tasty kid.",
+    "change": false,
+    "darncat": "desire",
+    "advance": true
+  },
+  "382b81d8-b5d5-4e16-956d-a2fa61fef9b4": {
+    "id": "382b81d8-b5d5-4e16-956d-a2fa61fef9b4",
+    "response": "ec13f5d9-d6b9-4c50-9857-061a35deb5b4",
+    "text": "Uh... Tell me about hunting humans.",
+    "oars": "openEndedQuestion",
+    "change": false,
+    "advance": true
+  },
+  "f12cd538-55fa-4de7-8556-47b79812fc85": {
+    "id": "f12cd538-55fa-4de7-8556-47b79812fc85",
+    "response": "4bd983f1-3065-4b34-818f-d19e0837a2f0",
+    "text": "What's wrong with glass peanut butter jars?",
+    "oars": "notOars",
+    "valence": 0
+  },
+  "4bd983f1-3065-4b34-818f-d19e0837a2f0": {
+    "text": "I mean, just think about it for like 5 more seconds."
+  },
+  "b8c437cd-d968-480a-8777-5485ee848a2e": {
+    "id": "b8c437cd-d968-480a-8777-5485ee848a2e",
+    "response": "df4cf243-20aa-4c63-a3c3-b7fe2bb9ae8a",
+    "text": "So, hunting humans is fun because of the challenge, but friends are putting heat on you to catch fish.",
+    "oars": "summarize",
+    "change": true,
+    "valence": 0
+  },
+  "df4cf243-20aa-4c63-a3c3-b7fe2bb9ae8a": {
+    "text": "Yeah. They say that if I don't catch fish, I'll starve. But it's only October. I can catch fish later.",
+    "darncat": "reason",
+    "change": false
+  },
+  "69acece4-1fad-442b-b741-ab963497deb4": {
+    "id": "69acece4-1fad-442b-b741-ab963497deb4",
+    "response": "5a68877e-02f0-4501-9fff-5254360a928a",
+    "text": "So, your friends are putting heat on you to catch fish, but hunting humans is fun because of the challenge.",
+    "oars": "summarize",
+    "change": false,
+    "valence": -1
+  },
+  "3d658857-1771-482f-97f4-6cfb3d5b345b": {
+    "id": "3d658857-1771-482f-97f4-6cfb3d5b345b",
+    "response": "63241ca5-b63b-4ec2-8c87-dec6442d8ecf",
+    "text": "That's pretty messed up, bear.",
+    "oars": "notOars",
+    "valence": -1,
+    "attemptChange": false
+  },
+  "63241ca5-b63b-4ec2-8c87-dec6442d8ecf": { "text": "I know, right?" },
+  "a40bac06-5448-4459-8ef9-3d682f545220": {
+    "id": "a40bac06-5448-4459-8ef9-3d682f545220",
+    "response": "6ed1c581-48ae-4837-9b43-9ecc36b60806",
+    "text": "What if you spent half your time catching fish, and the other half setting human-traps?",
+    "oars": "notOars",
+    "valence": -1,
+    "attemptChange": true
+  },
+  "6ed1c581-48ae-4837-9b43-9ecc36b60806": {
+    "text": "It doesn't work like that. Hunting humans is a whole-ass kind of deal."
+  },
+  "959be720-0880-4c65-9d66-1bb14bf145dc": {
+    "id": "959be720-0880-4c65-9d66-1bb14bf145dc",
+    "response": "5c2f8341-a494-4f1b-9f72-50f311a868ad",
+    "oars": "affirm",
+    "text": "You don't need to catch fish to live your best life.",
+    "change": false,
+    "valence": 1
+  },
+  "3a4e8f9b-858a-41e5-b370-d147e85f99a2": {
+    "id": "3a4e8f9b-858a-41e5-b370-d147e85f99a2",
+    "response": "4a73300e-e82b-4deb-9c47-fa2c3596e6f4",
+    "oars": "openEndedQuestion",
+    "text": "How important is it that you get fat?",
+    "attemptChange": true,
+    "valence": 0
+  },
+  "9153cbbf-d12b-425b-9a90-a22fac9c9693": {
+    "id": "9153cbbf-d12b-425b-9a90-a22fac9c9693",
+    "response": "dab012f2-f9ae-4029-8ed9-4581078502ef",
+    "text": "You have to have enough energy stored for your body to make it through the winter.",
+    "oars": "reflect",
+    "valence": 1,
+    "attemptChange": false
+  },
+  "d8b699c2-9d1d-4b8c-95f2-641d97b6087d": {
+    "id": "d8b699c2-9d1d-4b8c-95f2-641d97b6087d",
+    "response": "97d6f09b-0b3b-43d7-8002-3e85daa83f60",
+    "oars": "openEndedQuestion",
+    "text": "If you made it through the winter, what could you do next year that's more aligned with your values?",
+    "valence": 1
+  },
+  "d09af27e-2b20-45e9-847c-3630948bc24e": {
+    "id": "d09af27e-2b20-45e9-847c-3630948bc24e",
+    "response": "d5245f65-098c-4d92-87f5-bf6d3363c3c9",
+    "text": "And catching fish sucks – could you invent a more interesting way to do it?",
+    "oars": "notOars",
+    "valence": 0
+  },
+  "d5245f65-098c-4d92-87f5-bf6d3363c3c9": { "text": "No." },
+  "45b40f28-2f95-4223-9999-d29f7e0bbd47": {
+    "id": "45b40f28-2f95-4223-9999-d29f7e0bbd47",
+    "response": "402c3a39-7bf1-4754-a860-d79f7475db5d",
+    "oars": "notOars",
+    "text": "I'm sorry that humans messed things up so badly.",
+    "valence": -1
+  },
+  "402c3a39-7bf1-4754-a860-d79f7475db5d": {
+    "text": "I'm not. It makes me feel better about eating you."
+  },
+  "83c8fe96-9b75-45e5-baf6-87b94d83bacb": {
+    "id": "83c8fe96-9b75-45e5-baf6-87b94d83bacb",
+    "response": "580ce996-7a3b-4511-b731-ccd2988813ee",
+    "text": "You could pass forward not just the wisdom you've inherited, but the cunning you've developed.",
+    "valence": 1,
+    "oars": "summarize"
+  },
+  "fadd7f9b-0f38-49ce-8f6d-80a2d9b52878": {
+    "id": "fadd7f9b-0f38-49ce-8f6d-80a2d9b52878",
+    "response": "4f55174e-ebc9-4af7-b84c-a0e3abb5be98",
+    "text": "Given what you've told me, what do you think a next step might be?",
+    "valence": 100
+  },
+  "4f55174e-ebc9-4af7-b84c-a0e3abb5be98": {
+    "text": "Time to make a plan, I guess."
+  },
+  "580ce996-7a3b-4511-b731-ccd2988813ee": {
+    "id": "580ce996-7a3b-4511-b731-ccd2988813ee",
+    "options": ["fadd7f9b-0f38-49ce-8f6d-80a2d9b52878"],
+    "text": "Yeah. I guess so."
+  },
+  "97d6f09b-0b3b-43d7-8002-3e85daa83f60": {
+    "id": "97d6f09b-0b3b-43d7-8002-3e85daa83f60",
+    "options": [
+      "d09af27e-2b20-45e9-847c-3630948bc24e",
+      "45b40f28-2f95-4223-9999-d29f7e0bbd47",
+      "83c8fe96-9b75-45e5-baf6-87b94d83bacb"
+    ],
+    "text": "Next year... I could eat a LOT more humans.\n\n            This year was just a warm-up, if I'm being honest.\n\n                      I could show OTHER bears how to hunt humans, too.\n\n                      Us bears have been really pushed to the brink these last few decades, you know."
+  },
+  "b62fdb54-1669-47c1-a396-6d1ca631ee99": {
+    "id": "b62fdb54-1669-47c1-a396-6d1ca631ee99",
+    "response": "1105bf8b-9833-437a-8467-f766b49aa40f",
+    "oars": "notOars",
+    "text": "How about we make a plan to get you through the winter?",
+    "valence": -1
+  },
+  "1105bf8b-9833-437a-8467-f766b49aa40f": {
+    "text": "I'm not sure I'm ready to make a plan yet."
+  },
+  "460015c1-4381-4335-bf25-4031d2010f90": {
+    "id": "460015c1-4381-4335-bf25-4031d2010f90",
+    "response": "5f5fae58-7a59-4ba8-a5d0-91038ccc36b3",
+    "oars": "notOars",
+    "text": "I'd be pretty sad, too. I haven't known you for very long, but you are interesting, as far as bears go.",
+    "valence": -1
+  },
+  "5f5fae58-7a59-4ba8-a5d0-91038ccc36b3": {
+    "text": "Don't patronize me, human. It makes me hungry."
+  },
+  "dab012f2-f9ae-4029-8ed9-4581078502ef": {
+    "id": "dab012f2-f9ae-4029-8ed9-4581078502ef",
+    "options": [
+      "d8b699c2-9d1d-4b8c-95f2-641d97b6087d",
+      "b62fdb54-1669-47c1-a396-6d1ca631ee99",
+      "460015c1-4381-4335-bf25-4031d2010f90"
+    ],
+    "darncat": "desire",
+    "text": "Yeah, I mean, I don't have INTERNET *eye roll*, but I'm pretty sure that's how it works.\n\n                      I'd be kinda sad not to make it through the winter...",
+    "change": true
+  },
+  "96b84ad9-2554-4a10-9650-1788007839b3": {
+    "id": "96b84ad9-2554-4a10-9650-1788007839b3",
+    "response": "c4e26baf-2167-4f18-a906-f39984cd5ca8",
+    "oars": "notOars",
+    "text": "You're not getting fat, so you're going to die.",
+    "valence": -1
+  },
+  "c4e26baf-2167-4f18-a906-f39984cd5ca8": {
+    "darncat": "activation",
+    "text": "You know what? You're right.\n\n                      I'm gonna die, you're gonna die.\n\n                      I might as well go out in style, you know?\n\n                      Doing what I love. Eating humans."
+  },
+  "35ddb946-aec2-47bc-a67e-cd9012c7c3ff": {
+    "id": "35ddb946-aec2-47bc-a67e-cd9012c7c3ff",
+    "response": "fb5c5569-ecc3-4ff9-a876-e12d710d59e8",
+    "oars": "notOars",
+    "text": "Based on what you've said, it seems like not starving is maybe better, right?",
+    "valence": -1
+  },
+  "fb5c5569-ecc3-4ff9-a876-e12d710d59e8": {
+    "text": "Oh? What, just sit there and wait for them to swim by? I'm not your uncle Jimmy, starting on his second pack of Heineken on the dock before dinner on a Tuesday.\n\n                      I'm a PREDATOR."
+  },
+  "4a73300e-e82b-4deb-9c47-fa2c3596e6f4": {
+    "id": "4a73300e-e82b-4deb-9c47-fa2c3596e6f4",
+    "options": [
+      "9153cbbf-d12b-425b-9a90-a22fac9c9693",
+      "96b84ad9-2554-4a10-9650-1788007839b3",
+      "35ddb946-aec2-47bc-a67e-cd9012c7c3ff"
+    ],
+    "darncat": "need",
+    "text": "Well, it's pretty obvious, right? We have to turbo-charge for the winter, otherwise we... like, die, I guess."
+  },
+  "5c2f8341-a494-4f1b-9f72-50f311a868ad": {
+    "id": "5c2f8341-a494-4f1b-9f72-50f311a868ad",
+    "options": ["3a4e8f9b-858a-41e5-b370-d147e85f99a2"],
+    "darncat": "ability",
+    "text": "That's what I told my buddies. Thing is...\n\n              Thing is, I'm not getting fat off humans. I'm not getting fat off fish...\n\n              I'm not getting fat at all.",
+    "change": true
+  },
+  "5a68877e-02f0-4501-9fff-5254360a928a": {
+    "id": "5a68877e-02f0-4501-9fff-5254360a928a",
+    "options": [
+      "3d658857-1771-482f-97f4-6cfb3d5b345b",
+      "a40bac06-5448-4459-8ef9-3d682f545220",
+      "959be720-0880-4c65-9d66-1bb14bf145dc"
+    ],
+    "text": "You know what the best part of hunting humans is? Pretending to be some bumbling kid's toy. That's how I get them. I'm like, \"Oh bother, I'm so cute. I'm so cuddly. Take a selfie with me.\"\n\n      And then I eat them.\n\n      It's great.",
+    "change": false
+  },
+  "ec13f5d9-d6b9-4c50-9857-061a35deb5b4": {
+    "id": "ec13f5d9-d6b9-4c50-9857-061a35deb5b4",
+    "options": [
+      "f12cd538-55fa-4de7-8556-47b79812fc85",
+      "b8c437cd-d968-480a-8777-5485ee848a2e",
+      "69acece4-1fad-442b-b741-ab963497deb4"
+    ],
+    "requiredLevel": 0,
+    "text": "So, it's like this.\n\n  Humans are just CLEVER – yeah, yeah, don't let it go to your head.\n\n  Have you ever seen a bear-proof garbage bin? Well, I have, and if there's one thing I hate MORE than glass peanut butter jars, it's a bear-proof garbage bin.\n\n  But there are no bear-proof humans.\n\n      ...Hey, do you have any peanut butter on you?",
+    "darncat": "desire",
+    "change": false
+  },
+  "5ed07aee-38c9-4e7b-a952-d58ed2c4023f": {
+    "id": "5ed07aee-38c9-4e7b-a952-d58ed2c4023f",
+    "options": [
+      "a2e3d511-4a06-44c3-809d-797fcf1c712d",
+      "f9ebf28c-6cf7-4bd9-a321-8c321574b6dd",
+      "382b81d8-b5d5-4e16-956d-a2fa61fef9b4"
+    ],
+    "required_level": 0,
+    "text": "Oh, human. This must be, like, your worst nightmare.\n\n  So here's the thing... I'm a bear, and I really like hunting humans. Winter is coming, though, and everyone's all up in my muzzle, telling me I have to get down to catching fish.\n\n  You see, fish are FAT and SLOW this time of year, and us bears gotta bulk.\n\n  Thing is...\n\n  Fish are too easy. I'd rather catch humans."
+  }
+}

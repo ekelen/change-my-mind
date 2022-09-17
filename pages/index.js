@@ -216,15 +216,18 @@ export default function Home() {
   const [gameState, { chooseResponse, restart }] = useGame();
   const isDesktop = useMobileDetect().isDesktop();
 
-  const { dialogue, previousOptions, gameOver, gameWon, finalText, score } =
-    gameState;
+  const { dialogue, gameOver, gameWon, finalText, score, options } = gameState;
 
-  const onChooseResponse = (optionIndex = 0) => {
-    chooseResponse(optionIndex);
+  const onChooseResponse = (optionKey) => {
+    chooseResponse(optionKey);
   };
 
   const handleRestart = () => {
     restart();
+  };
+
+  const handleNext = (nodeKey) => {
+    next(nodeKey);
   };
 
   return (
@@ -290,3 +293,23 @@ export default function Home() {
     </div>
   );
 }
+
+const NextBtn = ({ responseKey, next }) => {
+  return <button onClick={() => next(responseKey)}>next</button>;
+};
+
+const OptionBtns = ({ options, onChooseResponse }) => {
+  return (
+    <ul>
+      {options.map((option) => {
+        return (
+          <li key={option.id}>
+            <button onClick={() => onChooseResponse(option.id)}>
+              {option.text}, {option.valence ?? 0}
+            </button>
+          </li>
+        );
+      })}
+    </ul>
+  );
+};
