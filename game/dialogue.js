@@ -24,8 +24,6 @@ const O_NEXTYEAR = {
   valence: 1,
   response: {
     text: `Next year... I could eat a LOT more humans. 
-            
-            This year was just a warm-up, if I'm being honest.
                       
                       I could show OTHER bears how to hunt humans, too.
                       
@@ -69,7 +67,7 @@ const O_NEXTYEAR = {
 };
 
 export const R_TOY = {
-  text: `You know what the best part of hunting humans is? Pretending to be some bumbling kid's toy. That's how I get them. I'm like, "Oh bother, I'm so cute. I'm so cuddly. Take a selfie with me." 
+  text: `You know what the best part of hunting humans is? Pretending to be some bumbling kid's toy. I'm like, "Oh bother, I'm so cute. I'm so cuddly. Take a selfie with me." 
       
       And then I eat them. 
       
@@ -96,16 +94,18 @@ export const R_TOY = {
     },
     {
       oars: OARS.affirm,
-      text: `You don't need to catch fish to live your best life.`,
+      text: `You've decided that you don't need to catch fish to live your best life.`,
       change: false,
       valence: 1,
       response: {
         darncat: DARNCAT.ability,
-        text: `That's what I told my buddies. Thing is...
+        text: `That's what I WANT to think.
+        
+        And it's what I DO think, when I'm caught up in the hunt.
+        
+        Thing is...
               
-              Thing is, I'm not getting fat off humans. I'm not getting fat off fish... 
-              
-              I'm not getting fat at all.`,
+              Can this really be my best life, if I'm spending so much time setting human traps that I'm not getting fat?`,
         change: true,
         options: [
           {
@@ -227,9 +227,7 @@ const R_PRIDE = {
 
 const O_SUMM = {
   oars: OARS.summarize,
-  text: `You've got a hobby that you're passionate about, and that you're good at.
-        
-        Hunting humans brings meaning to your life. 
+  text: `Hunting humans brings purpose and accomplishment to your life. 
         
         But you also have found meaning in listening to the wisdom of your fellow bears.
         
@@ -240,7 +238,7 @@ const O_SUMM = {
   attemptChange: true,
   response: {
     change: true,
-    text: `Yeah. Well, like, also maybe even long enough to pass on some of my knowledge to my own cubs.
+    text: `Yeah. Well, also maybe even long enough to pass on some of my knowledge to my own cubs.
             
             I don't know if I'm cut out to be a dad, but I don't think bear dads are, like, involved.
             
@@ -303,6 +301,8 @@ const R_CLEVER = {
   
   Have you ever seen a bear-proof garbage bin? Well, I have, and if there's one thing I hate MORE than glass peanut butter jars, it's a bear-proof garbage bin.
 
+  A mark of your species' ingenuity.
+
   But there are no bear-proof humans.
           
       ...Hey, do you have any peanut butter on you?`,
@@ -318,7 +318,7 @@ const R_CLEVER = {
       },
     },
     {
-      text: `So, hunting humans is fun because of the challenge, but friends are putting heat on you to catch fish.`,
+      text: `So, hunting humans is a rewarding challenge, but friends are putting heat on you to catch fish.`,
       oars: OARS.summarize,
       change: true,
       valence: 0,
@@ -376,17 +376,15 @@ const R_CLEVER = {
                       text: `You've got some unusual skills. And you refuse to follow the herd.`,
                       response: {
                         change: true,
-                        text: `It's actually a SLEUTH of bears, not a "herd."
-                        
-                        Just FYI.
+                        text: `It's actually a SLEUTH of bears, not a "herd." Just FYI.
                         
                         But yeah, when it comes to hunting humans, I'm a bit of a loner.
                         
-                        Like, I usually kinda take pride in it, but there's a little part of me that's worried. I've gotten a lot of wisdom from my elders.
+                        I usually kinda take pride in it, but there's a little part of me that's worried.
                         
-                        Like, maybe I should have listened to them. Maybe I should have hibernated. Maybe I should have caught fish. 
+                        And like, maybe I should have listened to my elders – their wisdom.
                         
-                        Maybe I should have done what everyone else was doing.`,
+                        Maybe I should have listened. I coulda gone fishing. Got fat. Hibernated on time.`,
                         options: [
                           O_SUMM,
                           {
@@ -437,7 +435,7 @@ const R_CLEVER = {
           valence: 1,
           change: false,
           response: {
-            text: `Yeah, I guess. I think that's why I like hunting humans. They're so clever, and I'm so clever, and it's a challenge to outsmart them. I'm good at it. 
+            text: `That's why I like hunting humans. They're so clever, and I'm so clever, and it's a challenge to outsmart them. I'm good at it. 
               
               Thing is... 
               
@@ -459,6 +457,20 @@ const R_CLEVER = {
                         
                         There are legends told in these parts, of bears who caught MORE than enough humans to sustain them... but excess is a human feature.`,
                   options: [
+                    {
+                      oars: OARS.notOars,
+                      text: `Bears are more reasonable than humans.`,
+                      response: {
+                        text: `You're just saying that to not get eaten.`,
+                      },
+                    },
+                    {
+                      oars: OARS.notOars,
+                      text: `Could you have caught enough humans?`,
+                      response: {
+                        text: `Probably not.`,
+                      },
+                    },
                     {
                       oars: OARS.reflect,
                       text: `Humans are hoarders. Your species has preserved an ancient dialogue with nature.`,
@@ -489,11 +501,11 @@ const R_CLEVER = {
                                   valence: 0,
                                   attemptChange: true,
                                   response: {
-                                    text: `Well, let's be real here. They're pretty much all in hibernation now, and I'm still out here catching humans.
+                                    text: `Well... They're pretty much all in hibernation now, and I'm still out here catching humans.
                                             
-                                            And uh... I guess I'm scared. I'm scared my time has run out, like there's just no way I can eat enough to survive the winter.
+                                            I guess I'm scared my time has run out to catch up, caloric-surplus-wise.
                                             
-                                            I think the fear just keeps me locked into this cycle of catching humans and eating them.
+                                            The fear just keeps me locked into this cycle of human-stalking instead.
                                             
                                             It's a great distraction.
                                             
@@ -527,6 +539,13 @@ const R_CLEVER = {
                                     ],
                                   },
                                 },
+                                {
+                                  oars: OARS.notOars,
+                                  text: `You're a really smart bear.`,
+                                  response: {
+                                    text: `You're just saying that to not get eaten.`,
+                                  },
+                                },
                               ],
                             },
                           },
@@ -535,9 +554,12 @@ const R_CLEVER = {
                             text: `Actually, humans are a tropical species.`,
                             valence: -1,
                             response: {
+                              change: 0,
                               text: `Well, you sure look goofy.
                                 
-                                Also, I don't really love eating polyester. And I've had some issues with jewelry in, uh, transit.
+                                Also, I don't really love eating polyester. 
+                                
+                                And I've had some issues with jewelry in, uh, transit.
                                 
                                 But that's part of the fun - you all come with different accessories. 
                                 
@@ -556,7 +578,7 @@ const R_CLEVER = {
       ],
     },
     {
-      text: `So, your friends are putting heat on you to catch fish, but hunting humans is fun because of the challenge.`,
+      text: `So, your friends are putting heat on you to catch fish, but hunting humans is a rewarding challenge.`,
       oars: OARS.summarize,
       change: false,
       valence: -1,
@@ -568,9 +590,13 @@ const R_CLEVER = {
 export const START = {
   response: {
     required_level: 0,
-    text: `Oh, human. This must be, like, your worst nightmare.
+    text: `Oh, human. 
+    
+    This must be, like, your worst nightmare.
   
-  So here's the thing... I'm a bear, and I really like hunting humans. Winter is coming, though, and everyone's all up in my muzzle, telling me I have to get down to catching fish.
+  I'm a bear, and I LIVE for HUMAN-HUNTING!
+  
+  Winter is coming, though, and everyone's all up in my muzzle, telling me I have to catch fish and fatten up.
   
   You see, fish are FAT and SLOW this time of year, and us bears gotta bulk.
   
