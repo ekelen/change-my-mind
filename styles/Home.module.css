@@ -2,39 +2,34 @@
   padding: 0 2rem;
 }
 
-.opacity {
-  opacity: 1;
-  transition-property: opacity;
-  transition-duration: 1s
-}
-
 .option:hover {
-  background-color: yellow;
+  border: 1px dashed yellow;
 }
 
 .option {
-  max-width: 40%;
-  width: 40%;
+  flex-basis: 49%;
   border: 1px solid gray;
   padding: 10px;
+  margin-bottom: 10px;
+  
 }
 
 .circle {
-  width: 50px;
-  height: 50px;
+  width: 20px;
+  height: 10px;
   border-radius: 50%;
   background-color: rgb(41, 154, 156);
   position: absolute;
-  top: calc(50% - 25px);
+  bottom: calc(0%);
 }
 
 .main {
   min-height: 100vh;
-  padding: 4rem 0;
+  padding: 1rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
