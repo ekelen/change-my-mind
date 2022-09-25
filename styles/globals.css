@@ -16,6 +16,27 @@ h1 {
   font-family: 'Londrina Sketch';
 }
 
+button {
+  font-family: 'Inconsolata', 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  color: rgb(250,250,255);
+  background-color: rgb(15,23,42);
+  border: none;
+  border-radius: 0.4rem;
+  padding: 0.4rem;
+  box-shadow: 0.1rem 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 1);
+}
+
+button:hover {
+  background-color: rgb(30, 41, 67);
+}
+
+ul, li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 * {
   box-sizing: border-box;
 }
