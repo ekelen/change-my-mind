@@ -7,28 +7,17 @@ import { maxScore } from "../game/gameReducer";
 
 const Options = ({ options, onChooseResponse }) => {
   return (
-    <ul
-      style={{
-        display: "flex",
-        width: "100%",
-        flexWrap: "wrap",
-        listStyle: "none",
-        justifyContent: "space-between",
-        color: "rgb(255,251,235)",
-        marginTop: "auto",
-        paddingTop: "1rem",
-      }}
-    >
+    <div className={styles.options}>
       {options.map((option, index) => (
-        <li
+        <button
           key={`${index}`}
           onClick={() => onChooseResponse(index)}
-          className={styles.option}
+          className={styles.optionButton}
         >
           {option.text}
-        </li>
+        </button>
       ))}
-    </ul>
+    </div>
   );
 };
 
@@ -38,7 +27,8 @@ const Story = ({ score, maxScore }) => {
     <div
       style={{
         position: "relative",
-        height: "150px",
+        height: "100px",
+        flexShrink: 0,
         width: "1000px",
         background: "rgb(2,0,36)",
         background:
@@ -137,8 +127,52 @@ const PostGame = ({ children }) => {
 const Header = ({ handleRestart }) => {
   return (
     <div style={{ width: "1000px", display: "flex", alignItems: "baseline" }}>
-      <h1 style={{ marginRight: "auto" }}>I Will Eat You</h1>{" "}
+      <h1 style={{ marginRight: "auto" }}>I Will Eat You</h1>
       <button onClick={handleRestart}>Restart</button>
+    </div>
+  );
+};
+
+const Dialogue = ({ dialogue }) => {
+  return (
+    <div className={styles.dialogue}>
+      <div style={{ color: "rgb(255,251,235)", textAlign: "right" }}>
+        {(dialogue.text ?? "").split("\n").map((text, index) => (
+          <p key={`${index}`}>{text.trim()}</p>
+        ))}
+      </div>
+
+      <div
+        style={{
+          color: "rgb(252,211,77)",
+        }}
+      >
+        <FadeIn>
+          {dialogue.response.text.split("\n").map((text, index) => (
+            <p key={`${index}`}>{text}</p>
+          ))}
+        </FadeIn>
+      </div>
+    </div>
+  );
+};
+
+const TextContainer = ({ dialogue, options, onChooseResponse }) => {
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        padding: "0",
+        width: "1000px",
+        justifyContent: "flex-end",
+        flexGrow: 1,
+        flexShrink: 1,
+        flexBasis: 0,
+      }}
+    >
+      <Dialogue dialogue={dialogue} />
+      <Options options={options} onChooseResponse={onChooseResponse} />
     </div>
   );
 };
@@ -200,42 +234,15 @@ export default function Home() {
             <big>*eats you*</big>
           </PostGame>
         ) : (
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              padding: "1rem 2rem",
-              width: "1000px",
-              position: "relative",
-            }}
-          >
-            <div style={{ color: "rgb(255,251,235)", textAlign: "right" }}>
-              {(dialogue.text ?? "").split("\n").map((text, index) => (
-                <p key={`${index}`}>{text.trim()}</p>
-              ))}
-            </div>
-
-            <div
-              style={{
-                color: "rgb(252,211,77)",
-              }}
-            >
-              <FadeIn>
-                {dialogue.response.text.split("\n").map((text, index) => (
-                  <p key={`${index}`}>{text}</p>
-                ))}
-              </FadeIn>
-            </div>
-
-            <Options
-              options={
-                dialogue.response.options?.length
-                  ? dialogue.response.options
-                  : previousOptions
-              }
-              onChooseResponse={onChooseResponse}
-            />
-          </div>
+          <TextContainer
+            dialogue={dialogue}
+            options={
+              dialogue.response.options?.length
+                ? dialogue.response.options
+                : previousOptions
+            }
+            onChooseResponse={onChooseResponse}
+          />
         )}
       </main>
 

@@ -2,16 +2,51 @@
   padding: 0 2rem;
 }
 
-.option:hover {
-  border: 1px dashed yellow;
+.main {
+  height: 100vh;
+  padding: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex-shrink: 0;
 }
 
-.option {
-  flex-basis: 49%;
-  border: 1px solid gray;
-  padding: 10px;
-  margin-bottom: 10px;
-  
+/* dialogue */
+
+.dialogue {
+  overflow-y: scroll;
+  flex-basis: 0;
+  flex-shrink: 2;
+  flex-grow: 5;
+}
+
+/* options */
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  flex-grow: 0;
+  flex-shrink: 2;
+  justify-content: space-between;
+  padding-top: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
+.optionButton {
+  flex-basis: calc(50% - 10px);
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.optionButton:hover {
+  background-color: rgb(30, 41, 67);
+}
+
+.optionButton:nth-child(odd) {
+  margin-right: 10px;
 }
 
 .circle {
@@ -23,15 +58,7 @@
   bottom: calc(0%);
 }
 
-.main {
-  min-height: 100vh;
-  padding: 1rem 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-}
+
 
 .footer {
   display: flex;
