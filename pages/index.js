@@ -4,6 +4,7 @@ import styles from "../styles/Home.module.css";
 import FadeIn from "react-fade-in";
 import useGame from "../game/useGame";
 import { maxScore } from "../game/gameReducer";
+import { useEffect, useRef } from "react";
 
 const Options = ({ options, onChooseResponse }) => {
   return (
@@ -134,6 +135,13 @@ const Header = ({ handleRestart }) => {
 };
 
 const Dialogue = ({ dialogue }) => {
+  const dialogueBottom = useRef(dialogueBottom);
+  useEffect(() => {
+    dialogueBottom.current.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+  });
   return (
     <div className={styles.dialogue}>
       <div style={{ color: "rgb(255,251,235)", textAlign: "right" }}>
@@ -147,11 +155,12 @@ const Dialogue = ({ dialogue }) => {
           color: "rgb(252,211,77)",
         }}
       >
-        <FadeIn>
+        <div ref={dialogueBottom}></div>
+        <div>
           {dialogue.response.text.split("\n").map((text, index) => (
             <p key={`${index}`}>{text}</p>
           ))}
-        </FadeIn>
+        </div>
       </div>
     </div>
   );
