@@ -4,7 +4,7 @@ import styles from "../styles/Home.module.css";
 import FadeIn from "react-fade-in";
 import useGame from "../game/useGame";
 import { maxScore } from "../game/gameReducer";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 const Options = ({ options, onChooseResponse }) => {
   return (
@@ -134,14 +134,55 @@ const Header = ({ handleRestart }) => {
   );
 };
 
-const Dialogue = ({ dialogue }) => {
-  const dialogueBottom = useRef(dialogueBottom);
+const Dialogue = ({ dialogue, onRevealOptions }) => {
+  const dialogueBottom = useRef(null);
+  const [currentText, setCurrentText] = useState(0);
+  const dialogueLines = useMemo(
+    () =>
+      dialogue.response.text
+        .split("\n")
+        .map((t) => t.trim())
+        .filter((t) => !!t) ?? [],
+    [dialogue.response.text]
+  );
+
   useEffect(() => {
-    dialogueBottom.current.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-    });
-  });
+    setCurrentText(0);
+  }, [dialogueLines]);
+
+  useEffect(() => {
+    if (currentText === dialogueLines.length) {
+      onRevealOptions();
+    }
+  }, [currentText, dialogueLines]);
+
+  useEffect(() => {
+    if (dialogueBottom.current) {
+      dialogueBottom.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  }, [currentText]);
+
+  useEffect(() => {
+    function handleKeyDown(e) {
+      if (e.shiftKey && e.key === "Enter") {
+        e.stopPropagation();
+        setCurrentText(dialogueLines.length);
+      } else if (e && e.key === "Enter") {
+        e.stopPropagation();
+        setCurrentText(Math.min(currentText + 1, dialogueLines.length));
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return function cleanup() {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [dialogueLines, currentText]);
+
   return (
     <div className={styles.dialogue}>
       <div style={{ color: "rgb(255,251,235)", textAlign: "right" }}>
@@ -155,18 +196,23 @@ const Dialogue = ({ dialogue }) => {
           color: "rgb(252,211,77)",
         }}
       >
-        <div ref={dialogueBottom}></div>
         <div>
-          {dialogue.response.text.split("\n").map((text, index) => (
+          {dialogueLines.slice(0, currentText + 1).map((text, index) => (
             <p key={`${index}`}>{text}</p>
           ))}
         </div>
+
+        <div ref={dialogueBottom}></div>
       </div>
     </div>
   );
 };
 
 const TextContainer = ({ dialogue, options, onChooseResponse }) => {
+  const [showOptions, setShowOptions] = useState(false);
+  useEffect(() => {
+    setShowOptions(false);
+  }, [dialogue]);
   return (
     <div
       style={{
@@ -180,8 +226,13 @@ const TextContainer = ({ dialogue, options, onChooseResponse }) => {
         flexBasis: 0,
       }}
     >
-      <Dialogue dialogue={dialogue} />
-      <Options options={options} onChooseResponse={onChooseResponse} />
+      <Dialogue
+        dialogue={dialogue}
+        onRevealOptions={() => setShowOptions(true)}
+      />
+      {showOptions && (
+        <Options options={options} onChooseResponse={onChooseResponse} />
+      )}
     </div>
   );
 };
