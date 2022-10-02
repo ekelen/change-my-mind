@@ -14,7 +14,29 @@
   flex-shrink: 0;
 }
 
+/* story */
+
+.circle {
+  width: 20px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgb(41, 154, 156);
+  position: absolute;
+  bottom: calc(0%);
+}
+
 /* dialogue */
+
+.dialogueAndOptionsContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  width: 1000px;
+  justify-content: flex-end;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+}
 
 .dialogue {
   overflow-y: scroll;
@@ -51,15 +73,15 @@
   margin-right: 10px;
 }
 
-.circle {
-  width: 20px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: rgb(41, 154, 156);
-  position: absolute;
-  bottom: calc(0%);
+/* post-game */
+
+.postGame {
+  display: flex;
+  flex-direction: column;
+  width: 1000px;
+  position: relative;
+  justify-content: flex-start;
+  align-items: center;
+  color: rgb(252,211,77);
+  padding: 1rem 2rem;
 }
-
-
-
-

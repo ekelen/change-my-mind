@@ -12,7 +12,10 @@ const Options = ({ options, onChooseResponse }) => {
       {options.map((option, index) => (
         <button
           key={`${index}`}
-          onClick={() => onChooseResponse(index)}
+          onClick={(e) => {
+            e.stopPropagation();
+            onChooseResponse(index);
+          }}
           className={styles.optionButton}
         >
           {option.text}
@@ -107,22 +110,7 @@ const Story = ({ score, maxScore }) => {
 };
 
 const PostGame = ({ children }) => {
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        width: "1000px",
-        position: "relative",
-        justifyContent: "flex-start",
-        alignItems: "center",
-        color: "rgb(252,211,77)",
-        padding: "1rem 2rem",
-      }}
-    >
-      {children}
-    </div>
-  );
+  return <div className={styles.postGame}>{children}</div>;
 };
 
 const Header = ({ handleRestart }) => {
@@ -134,7 +122,7 @@ const Header = ({ handleRestart }) => {
   );
 };
 
-const Dialogue = ({ dialogue, onRevealOptions }) => {
+const Dialogue = ({ dialogue, onRevealOptions, showOptions }) => {
   const dialogueBottom = useRef(null);
   const [currentText, setCurrentText] = useState(0);
   const dialogueLines = useMemo(
@@ -163,7 +151,7 @@ const Dialogue = ({ dialogue, onRevealOptions }) => {
         block: "center",
       });
     }
-  }, [currentText]);
+  }, [currentText, showOptions]);
 
   useEffect(() => {
     function handleKeyDown(e) {
@@ -214,21 +202,11 @@ const TextContainer = ({ dialogue, options, onChooseResponse }) => {
     setShowOptions(false);
   }, [dialogue]);
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        padding: "0",
-        width: "1000px",
-        justifyContent: "flex-end",
-        flexGrow: 1,
-        flexShrink: 1,
-        flexBasis: 0,
-      }}
-    >
+    <div className={styles.dialogueAndOptionsContainer}>
       <Dialogue
         dialogue={dialogue}
         onRevealOptions={() => setShowOptions(true)}
+        showOptions={showOptions}
       />
       {showOptions && (
         <Options options={options} onChooseResponse={onChooseResponse} />
