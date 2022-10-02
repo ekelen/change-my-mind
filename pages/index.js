@@ -5,6 +5,7 @@ import FadeIn from "react-fade-in";
 import useGame from "../game/useGame";
 import { maxScore } from "../game/gameReducer";
 import { useEffect, useMemo, useRef, useState } from "react";
+import useMobileDetect from "../hooks/useMobileDetect";
 
 const Options = ({ options, onChooseResponse }) => {
   return (
@@ -179,11 +180,7 @@ const Dialogue = ({ dialogue, onRevealOptions, showOptions }) => {
         ))}
       </div>
 
-      <div
-        style={{
-          color: "rgb(252,211,77)",
-        }}
-      >
+      <div className={styles.yellow}>
         <div>
           {dialogueLines.slice(0, currentText + 1).map((text, index) => (
             <p key={`${index}`}>{text}</p>
@@ -217,6 +214,7 @@ const TextContainer = ({ dialogue, options, onChooseResponse }) => {
 
 export default function Home() {
   const [gameState, { chooseResponse, restart }] = useGame();
+  const isDesktop = useMobileDetect().isDesktop();
 
   const { dialogue, previousOptions, gameOver, gameWon, finalText, score } =
     gameState;
@@ -237,50 +235,56 @@ export default function Home() {
 
       <main className={styles.main}>
         <Header handleRestart={handleRestart} />
-        <Story score={score} maxScore={maxScore} />
+        {!isDesktop ? (
+          <>Not available on mobile</>
+        ) : (
+          <>
+            <Story score={score} maxScore={maxScore} />
 
-        {gameWon ? (
-          <PostGame>
-            <div>
-              {finalText.split("\n").map((text, index) => (
-                <p key={`${index}`}>{text.trim()}</p>
-              ))}
-            </div>
-            <Image
-              src="/noun-grizzly-bear_stand.svg"
-              height={200}
-              width={200}
-              alt="Bear"
-            />
-            <big>{`I think I might go try to get some food. 
+            {gameWon ? (
+              <PostGame>
+                <div>
+                  {finalText.split("\n").map((text, index) => (
+                    <p key={`${index}`}>{text.trim()}</p>
+                  ))}
+                </div>
+                <Image
+                  src="/noun-grizzly-bear_stand.svg"
+                  height={200}
+                  width={200}
+                  alt="Bear"
+                />
+                <big>{`I think I might go try to get some food. 
 
                 You can go home now.`}</big>
-          </PostGame>
-        ) : gameOver ? (
-          <PostGame>
-            <div>
-              {finalText.split("\n").map((text, index) => (
-                <p key={`${index}`}>{text.trim()}</p>
-              ))}
-            </div>
-            <Image
-              src="/noun-bear_scare.svg"
-              height={200}
-              width={200}
-              alt="Attacking bear"
-            />
-            <big>*eats you*</big>
-          </PostGame>
-        ) : (
-          <TextContainer
-            dialogue={dialogue}
-            options={
-              dialogue.response.options?.length
-                ? dialogue.response.options
-                : previousOptions
-            }
-            onChooseResponse={onChooseResponse}
-          />
+              </PostGame>
+            ) : gameOver ? (
+              <PostGame>
+                <div>
+                  {finalText.split("\n").map((text, index) => (
+                    <p key={`${index}`}>{text.trim()}</p>
+                  ))}
+                </div>
+                <Image
+                  src="/noun-bear_scare.svg"
+                  height={200}
+                  width={200}
+                  alt="Attacking bear"
+                />
+                <big>*eats you*</big>
+              </PostGame>
+            ) : (
+              <TextContainer
+                dialogue={dialogue}
+                options={
+                  dialogue.response.options?.length
+                    ? dialogue.response.options
+                    : previousOptions
+                }
+                onChooseResponse={onChooseResponse}
+              />
+            )}
+          </>
         )}
       </main>
     </div>
