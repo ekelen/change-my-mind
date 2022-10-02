@@ -5,6 +5,7 @@ import FadeIn from "react-fade-in";
 import useGame from "../game/useGame";
 import { maxScore } from "../game/gameReducer";
 import { useEffect, useMemo, useRef, useState } from "react";
+import useMobileDetect from "../hooks/useMobileDetect";
 
 const Options = ({ options, onChooseResponse }) => {
   return (
@@ -12,7 +13,10 @@ const Options = ({ options, onChooseResponse }) => {
       {options.map((option, index) => (
         <button
           key={`${index}`}
-          onClick={() => onChooseResponse(index)}
+          onClick={(e) => {
+            e.stopPropagation();
+            onChooseResponse(index);
+          }}
           className={styles.optionButton}
         >
           {option.text}
@@ -107,22 +111,7 @@ const Story = ({ score, maxScore }) => {
 };
 
 const PostGame = ({ children }) => {
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        width: "1000px",
-        position: "relative",
-        justifyContent: "flex-start",
-        alignItems: "center",
-        color: "rgb(252,211,77)",
-        padding: "1rem 2rem",
-      }}
-    >
-      {children}
-    </div>
-  );
+  return <div className={styles.postGame}>{children}</div>;
 };
 
 const Header = ({ handleRestart }) => {
@@ -134,7 +123,7 @@ const Header = ({ handleRestart }) => {
   );
 };
 
-const Dialogue = ({ dialogue, onRevealOptions }) => {
+const Dialogue = ({ dialogue, onRevealOptions, showOptions }) => {
   const dialogueBottom = useRef(null);
   const [currentText, setCurrentText] = useState(0);
   const dialogueLines = useMemo(
@@ -163,7 +152,7 @@ const Dialogue = ({ dialogue, onRevealOptions }) => {
         block: "center",
       });
     }
-  }, [currentText]);
+  }, [currentText, showOptions]);
 
   useEffect(() => {
     function handleKeyDown(e) {
@@ -191,11 +180,7 @@ const Dialogue = ({ dialogue, onRevealOptions }) => {
         ))}
       </div>
 
-      <div
-        style={{
-          color: "rgb(252,211,77)",
-        }}
-      >
+      <div className={styles.yellow}>
         <div>
           {dialogueLines.slice(0, currentText + 1).map((text, index) => (
             <p key={`${index}`}>{text}</p>
@@ -214,21 +199,11 @@ const TextContainer = ({ dialogue, options, onChooseResponse }) => {
     setShowOptions(false);
   }, [dialogue]);
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        padding: "0",
-        width: "1000px",
-        justifyContent: "flex-end",
-        flexGrow: 1,
-        flexShrink: 1,
-        flexBasis: 0,
-      }}
-    >
+    <div className={styles.dialogueAndOptionsContainer}>
       <Dialogue
         dialogue={dialogue}
         onRevealOptions={() => setShowOptions(true)}
+        showOptions={showOptions}
       />
       {showOptions && (
         <Options options={options} onChooseResponse={onChooseResponse} />
@@ -239,6 +214,7 @@ const TextContainer = ({ dialogue, options, onChooseResponse }) => {
 
 export default function Home() {
   const [gameState, { chooseResponse, restart }] = useGame();
+  const isDesktop = useMobileDetect().isDesktop();
 
   const { dialogue, previousOptions, gameOver, gameWon, finalText, score } =
     gameState;
@@ -259,50 +235,56 @@ export default function Home() {
 
       <main className={styles.main}>
         <Header handleRestart={handleRestart} />
-        <Story score={score} maxScore={maxScore} />
+        {!isDesktop ? (
+          <>Not available on mobile</>
+        ) : (
+          <>
+            <Story score={score} maxScore={maxScore} />
 
-        {gameWon ? (
-          <PostGame>
-            <div>
-              {finalText.split("\n").map((text, index) => (
-                <p key={`${index}`}>{text.trim()}</p>
-              ))}
-            </div>
-            <Image
-              src="/noun-grizzly-bear_stand.svg"
-              height={200}
-              width={200}
-              alt="Bear"
-            />
-            <big>{`I think I might go try to get some food. 
+            {gameWon ? (
+              <PostGame>
+                <div>
+                  {finalText.split("\n").map((text, index) => (
+                    <p key={`${index}`}>{text.trim()}</p>
+                  ))}
+                </div>
+                <Image
+                  src="/noun-grizzly-bear_stand.svg"
+                  height={200}
+                  width={200}
+                  alt="Bear"
+                />
+                <big>{`I think I might go try to get some food. 
 
                 You can go home now.`}</big>
-          </PostGame>
-        ) : gameOver ? (
-          <PostGame>
-            <div>
-              {finalText.split("\n").map((text, index) => (
-                <p key={`${index}`}>{text.trim()}</p>
-              ))}
-            </div>
-            <Image
-              src="/noun-bear_scare.svg"
-              height={200}
-              width={200}
-              alt="Attacking bear"
-            />
-            <big>*eats you*</big>
-          </PostGame>
-        ) : (
-          <TextContainer
-            dialogue={dialogue}
-            options={
-              dialogue.response.options?.length
-                ? dialogue.response.options
-                : previousOptions
-            }
-            onChooseResponse={onChooseResponse}
-          />
+              </PostGame>
+            ) : gameOver ? (
+              <PostGame>
+                <div>
+                  {finalText.split("\n").map((text, index) => (
+                    <p key={`${index}`}>{text.trim()}</p>
+                  ))}
+                </div>
+                <Image
+                  src="/noun-bear_scare.svg"
+                  height={200}
+                  width={200}
+                  alt="Attacking bear"
+                />
+                <big>*eats you*</big>
+              </PostGame>
+            ) : (
+              <TextContainer
+                dialogue={dialogue}
+                options={
+                  dialogue.response.options?.length
+                    ? dialogue.response.options
+                    : previousOptions
+                }
+                onChooseResponse={onChooseResponse}
+              />
+            )}
+          </>
         )}
       </main>
     </div>
