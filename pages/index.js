@@ -214,7 +214,7 @@ const TextContainer = ({ dialogue, options, onChooseResponse }) => {
 
 export default function Home() {
   const [gameState, { chooseResponse, restart }] = useGame();
-  const isDesktop = useMobileDetect().isDesktop();
+  const isDesktop = true;
 
   const { dialogue, previousOptions, gameOver, gameWon, finalText, score } =
     gameState;
