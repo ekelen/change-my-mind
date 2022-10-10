@@ -1,3 +1,4 @@
+import { uniqueId, cloneDeep } from "lodash";
 import FadeIn from "react-fade-in";
 
 const DARNCAT = {
@@ -645,3 +646,41 @@ export const START = {
     ],
   },
 };
+
+const flatten = (dialogueTree) => {
+  const flat = {};
+  const addIds = (node) => {
+    if (node.response) {
+      node.response.id = uniqueId("res-");
+    }
+    if (node.response.options) {
+      node.response.options.forEach((option, i) => {
+        option.id = uniqueId("opt-");
+        addIds(option);
+      });
+    }
+  };
+
+  const mapIds = (el) => {
+    if (el.response?.options) {
+      el.response.options.forEach((option) => {
+        mapIds(option);
+      });
+    }
+    if (el.response) {
+      flat[el.id] = { ...el, response: el.response.id };
+      flat[el.response.id] = { ...el.response };
+      if (el.response.options) {
+        flat[el.response.id].options = el.response.options.map(
+          (option) => option.id
+        );
+      }
+    }
+  };
+  addIds(dialogueTree);
+  mapIds(dialogueTree);
+
+  return flat;
+};
+
+export const dialoguesFlat = flatten(START);
