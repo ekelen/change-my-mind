@@ -1,0 +1,669 @@
+{
+  "opt-1": {
+    "text": "Well then. Sounds like catching fish is just what you have to do.",
+    "valence": -1,
+    "oars": "notOars",
+    "response": "res-2",
+    "id": "opt-1"
+  },
+  "res-2": {
+    "text": "I know. But the thing is, it's boring.\n          \n          Stripping the flesh from your torso, not so much.\n          \n          Nice talking to you, human.",
+    "change": false,
+    "darncat": "desire",
+    "id": "res-2"
+  },
+  "opt-3": {
+    "text": "When I was a kid, I used to catch fish with a stick.\n\n        I never caught any.\n        \n        But it was fun.",
+    "oars": "notOars",
+    "valence": -1,
+    "response": "res-4",
+    "id": "opt-3"
+  },
+  "res-4": {
+    "text": "That's nice, human. I'm sure you were a very tasty kid.",
+    "change": false,
+    "darncat": "desire",
+    "advance": true,
+    "id": "res-4"
+  },
+  "opt-7": {
+    "text": "What's wrong with glass peanut butter jars?",
+    "oars": "notOars",
+    "valence": 0,
+    "response": "res-8",
+    "id": "opt-7"
+  },
+  "res-8": {
+    "text": "I mean, just think about it for like 5 more seconds.",
+    "id": "res-8"
+  },
+  "opt-11": {
+    "text": "I could be wrong, but don't bears hibernate in, like, September?",
+    "oars": "notOars",
+    "valence": -1,
+    "attemptChange": true,
+    "response": "res-12",
+    "id": "opt-11"
+  },
+  "res-12": {
+    "text": "Most of them. I'm not like the rest.",
+    "id": "res-12"
+  },
+  "opt-27": {
+    "text": "I think you're a pretty cool bear, for what it's worth.",
+    "oars": "notOars",
+    "valence": 0,
+    "response": "res-28",
+    "id": "opt-27"
+  },
+  "res-28": {
+    "text": "Thanks, I guess...",
+    "id": "res-28"
+  },
+  "opt-33": {
+    "text": "And catching fish sucks – could you invent a more interesting way to do it?",
+    "oars": "notOars",
+    "valence": 0,
+    "response": "res-34",
+    "id": "opt-33"
+  },
+  "res-34": {
+    "text": "No.",
+    "id": "res-34"
+  },
+  "opt-35": {
+    "oars": "notOars",
+    "text": "I'm sorry that humans messed things up so badly.",
+    "valence": -1,
+    "response": "res-36",
+    "id": "opt-35"
+  },
+  "res-36": {
+    "text": "I'm not. It makes me feel better about eating you.",
+    "id": "res-36"
+  },
+  "opt-39": {
+    "text": "Given what you've told me, what do you think a next step might be?",
+    "valence": 100,
+    "response": "res-40",
+    "id": "opt-39"
+  },
+  "res-40": {
+    "text": "Time to make a plan, I guess.",
+    "id": "res-40"
+  },
+  "opt-37": {
+    "text": "You could pass forward not just the wisdom you've inherited, but the cunning you've developed.",
+    "valence": 1,
+    "oars": "summarize",
+    "response": "res-38",
+    "id": "opt-37"
+  },
+  "res-38": {
+    "text": "Yeah. I guess so.",
+    "options": [
+      "opt-39"
+    ],
+    "id": "res-38"
+  },
+  "opt-31": {
+    "oars": "openEndedQuestion",
+    "text": "If you made it through the winter, what could you do next year that's more aligned with your values?",
+    "valence": 1,
+    "response": "res-32",
+    "id": "opt-31"
+  },
+  "res-32": {
+    "text": "Next year... I could eat a LOT more humans. \n                      \n                      I could show OTHER bears how to hunt humans, too.\n                      \n                      Us bears have been really pushed to the brink these last few decades, you know.",
+    "options": [
+      "opt-33",
+      "opt-35",
+      "opt-37"
+    ],
+    "id": "res-32"
+  },
+  "opt-29": {
+    "text": "*say nothing*",
+    "valence": 1,
+    "response": "res-30",
+    "id": "opt-29"
+  },
+  "res-30": {
+    "text": "*pause*\n                      \n                      But like, I guess if I'm dead because I didn't haul ass and go fishing, no one's gonna be too impressed.",
+    "options": [
+      "opt-31"
+    ],
+    "id": "res-30"
+  },
+  "opt-25": {
+    "oars": "reflect",
+    "valence": 0,
+    "text": "Dumpster diving wouldn't be in line with your vision of yourself.",
+    "attemptChange": false,
+    "response": "res-26",
+    "id": "opt-25"
+  },
+  "res-26": {
+    "change": true,
+    "text": "Nooooooooo. Naw. Nuh-uh.",
+    "options": [
+      "opt-27",
+      "opt-29"
+    ],
+    "id": "res-26"
+  },
+  "opt-23": {
+    "oars": "reflect",
+    "text": "So there might be a way to make it through the winter.",
+    "valence": 0,
+    "attemptChange": true,
+    "response": "res-24",
+    "id": "opt-23"
+  },
+  "res-24": {
+    "change": true,
+    "darncat": "reason",
+    "text": "Yeah, I really think so.\n                          \n                          I'm just kind of proud, you know? Like, I kind of regret not just catching those swole sockeye when I had the chance.\n                          \n                          I'm gonna end up on TikTok as the world's hugest trash panda.",
+    "options": [
+      "opt-25"
+    ],
+    "id": "res-24"
+  },
+  "opt-41": {
+    "text": "Dumpster-chickens could be a way to survive, but it wouldn't be as fun as hunting humans.",
+    "oars": "reflect",
+    "valence": -1,
+    "response": "res-42",
+    "id": "opt-41"
+  },
+  "res-42": {
+    "text": "Correctamundo! Have you ever had a game to play that made the real world just not matter anymore?\n                \n                That's how awesome human-catching is.",
+    "id": "res-42"
+  },
+  "opt-43": {
+    "text": "It wouldn't be as fun as catching humans, but you have a possible strategy to get enough food to survive.",
+    "valence": 0,
+    "attemptChange": true,
+    "response": "res-24",
+    "oars": "reflect",
+    "id": "opt-43"
+  },
+  "opt-21": {
+    "oars": "reflect",
+    "text": "You've been given wisdom, and you don't want it to be lost with you.",
+    "valence": 1,
+    "response": "res-22",
+    "id": "opt-21"
+  },
+  "res-22": {
+    "text": "Right.\n                        \n                        I'm also pretty smart, like, bear-wise.\n                        \n                        Like, there's this grocery store.\n                        \n                        They always throws away totally fine chickens into a totally NOT bear-proof dumpster.\n                        \n                        I usually consider myself above dumpster diving, but I've scoped it out. \n                        \n                        I wonder if I could loot it and catch up on fat stores real quick.",
+    "darncat": "takingSteps",
+    "options": [
+      "opt-23",
+      "opt-41",
+      "opt-43"
+    ],
+    "id": "res-22"
+  },
+  "opt-19": {
+    "oars": "summarize",
+    "text": "Hunting humans brings purpose and accomplishment to your life. \n        \n        But you also have found meaning in listening to the wisdom of your fellow bears.\n        \n        And you want to survive the winter and live another summer to... well, to catch more humans.\n        \n        Have I got that right?",
+    "valence": 1,
+    "attemptChange": true,
+    "response": "res-20",
+    "id": "opt-19"
+  },
+  "res-20": {
+    "change": true,
+    "text": "Yeah. Well, also maybe even long enough to pass on some of my knowledge to my own cubs.\n            \n            I don't know if I'm cut out to be a dad, but I don't think bear dads are, like, involved.\n            \n            But I'd teach them some bear stuff for sure.",
+    "options": [
+      "opt-21"
+    ],
+    "id": "res-20"
+  },
+  "opt-44": {
+    "text": "Do you think you'll be an elder someday?",
+    "oars": "notOars",
+    "valence": 0,
+    "response": "res-45",
+    "id": "opt-44"
+  },
+  "res-45": {
+    "text": "Doubt it.",
+    "id": "res-45"
+  },
+  "opt-48": {
+    "text": "If you die this winter, what will you teach other bears?",
+    "valence": 0,
+    "response": "res-49",
+    "id": "opt-48"
+  },
+  "res-49": {
+    "text": "That it's chill to die doing what you love.",
+    "id": "res-49"
+  },
+  "opt-46": {
+    "text": "Tell me about the elders.",
+    "oars": "openEndedQuestion",
+    "response": "res-47",
+    "id": "opt-46"
+  },
+  "res-47": {
+    "text": "Bears aren't exactly... family-oriented. But they teach each other by action, by doing.",
+    "options": [
+      "opt-19",
+      "opt-48"
+    ],
+    "id": "res-47"
+  },
+  "opt-50": {
+    "text": "I mean, if I had stuck with my crowd, I'd be drinking a chocolate old fashioned at the lodge right now.",
+    "valence": -1,
+    "response": "res-51",
+    "id": "opt-50"
+  },
+  "res-51": {
+    "text": "That sounds disgusting. I only like chocolate melted in the pockets of my prey.",
+    "id": "res-51"
+  },
+  "opt-17": {
+    "oars": "reflect",
+    "valence": 1,
+    "text": "You've got some unusual skills. And you refuse to follow the herd.",
+    "response": "res-18",
+    "id": "opt-17"
+  },
+  "res-18": {
+    "change": true,
+    "text": "It's actually a SLEUTH of bears, not a \"herd.\" Just FYI.\n                          \n                          But yeah, when it comes to hunting humans, I'm a bit of a loner.\n                          \n                          I usually kinda take pride in it, but there's a little part of me that's worried.\n                          \n                          And like, maybe I should have listened to my elders – their wisdom.\n                          \n                          Maybe I should have listened. I coulda gone fishing. Got fat. Hibernated on time.",
+    "options": [
+      "opt-19",
+      "opt-44",
+      "opt-46",
+      "opt-50"
+    ],
+    "id": "res-18"
+  },
+  "opt-15": {
+    "oars": "reflect",
+    "text": "Your friends aren't as tough as you are.",
+    "valence": 0,
+    "attemptChange": false,
+    "response": "res-16",
+    "id": "opt-15"
+  },
+  "res-16": {
+    "text": "Nope. I mean, maybe they did the air-quotes \"SENSIBLE\" thing and caught fish, but I can be an ice-fishing bear.\n                          \n                          I'm pretty smart. I can figure it out.\n                          \n                          In the meantime, the leaves are about to change, and do you know what that means?\n                          \n                          Pumpkin spice lattes... coursing through human flesh. Mmmm...",
+    "change": true,
+    "options": [
+      "opt-17"
+    ],
+    "id": "res-16"
+  },
+  "opt-13": {
+    "text": "It's only October - you have a couple of months to get enough fish.",
+    "oars": "reflect",
+    "valence": 0,
+    "attemptChange": false,
+    "response": "res-14",
+    "id": "opt-13"
+  },
+  "res-14": {
+    "text": "That's right.\n                \n                *pause*\n                \n                I mean, I'm kind of marching to the beat of my own drum here. \n                \n                Most of my friends are actually hibernating already. \n                \n                But they're just softies who are scared of having to punch through a little ice.",
+    "change": true,
+    "darncat": "desire",
+    "options": [
+      "opt-15"
+    ],
+    "id": "res-14"
+  },
+  "opt-56": {
+    "oars": "notOars",
+    "text": "Bears are more reasonable than humans.",
+    "response": "res-57",
+    "id": "opt-56"
+  },
+  "res-57": {
+    "text": "You're just saying that to not get eaten.",
+    "id": "res-57"
+  },
+  "opt-58": {
+    "oars": "notOars",
+    "text": "Could you have caught enough humans?",
+    "response": "res-59",
+    "id": "opt-58"
+  },
+  "res-59": {
+    "text": "Probably not.",
+    "id": "res-59"
+  },
+  "opt-66": {
+    "text": "You're right. You're not doing anything. You're just eating humans.",
+    "oars": "notOars",
+    "valence": -1,
+    "attemptChange": false,
+    "response": "res-67",
+    "id": "opt-66"
+  },
+  "res-67": {
+    "text": "It's what I do.",
+    "id": "res-67"
+  },
+  "opt-68": {
+    "text": "Is it too late?",
+    "oars": "notOars",
+    "valence": -1,
+    "attemptChange": false,
+    "response": "res-69",
+    "id": "opt-68"
+  },
+  "res-69": {
+    "text": "Yes. It's OCTOBER. Who am I kidding? There's no way. \n  \n                                            I'm gonna die.\n                                            \n                                            I'm gonna die and some park ranger is gonna give my carcass to the locals for a basement throw rug.",
+    "id": "res-69"
+  },
+  "opt-64": {
+    "oars": "openEndedQuestion",
+    "text": "What parts do you think they might be right about?",
+    "valence": 0,
+    "attemptChange": true,
+    "response": "res-65",
+    "id": "opt-64"
+  },
+  "res-65": {
+    "text": "Well... They're pretty much all in hibernation now, and I'm still out here catching humans.\n                                              \n                                              I guess I'm scared my time has run out to catch up, caloric-surplus-wise.\n                                              \n                                              The fear just keeps me locked into this cycle of human-stalking instead.\n                                              \n                                              It's a great distraction.\n                                              \n                                              It makes me feel like I'm doing something, even though I'm not... you know?",
+    "change": true,
+    "darncat": "desire",
+    "options": [
+      "opt-66",
+      "opt-68",
+      "opt-19"
+    ],
+    "id": "res-65"
+  },
+  "opt-70": {
+    "oars": "notOars",
+    "text": "You're a really smart bear.",
+    "response": "res-71",
+    "id": "opt-70"
+  },
+  "res-71": {
+    "text": "You're just saying that to not get eaten.",
+    "id": "res-71"
+  },
+  "opt-62": {
+    "oars": "affirm",
+    "text": "You're proud of your BEAR-itage.\n                              \n                              Sorry sorry!! ...Heritage.\n                              \n                              Your kind has discovered how to survive without taking what it doesn't need.",
+    "valence": -1,
+    "response": "res-63",
+    "id": "opt-62"
+  },
+  "res-63": {
+    "change": true,
+    "darncat": "need",
+    "text": "I mean, my friends have been saying that I'm way out of line with the way of things. Sometimes I wonder if they're right.\n                                  \n                                  On the other hand – this will make me sound kinda self-important – but they aren't super smart.",
+    "options": [
+      "opt-64",
+      "opt-70"
+    ],
+    "id": "res-63"
+  },
+  "opt-72": {
+    "oars": "notOars",
+    "text": "Actually, humans are a tropical species.",
+    "valence": -1,
+    "response": "res-73",
+    "id": "opt-72"
+  },
+  "res-73": {
+    "change": 0,
+    "text": "Well, you sure look goofy.\n                                  \n                                  Also, I don't really love eating polyester. \n                                  \n                                  And I've had some issues with jewelry in, uh, transit.\n                                  \n                                  But that's part of the fun - you all come with different accessories. \n                                  \n                                  I have quite the stash, to be honest with you.",
+    "id": "res-73"
+  },
+  "opt-60": {
+    "oars": "reflect",
+    "text": "Humans are hoarders. Your species has preserved an ancient dialogue with nature.",
+    "attemptChange": true,
+    "valence": 0,
+    "response": "res-61",
+    "id": "opt-60"
+  },
+  "res-61": {
+    "change": false,
+    "text": "Yeah. I mean, look at you — no offense, but \"clothes\" look like garbage bags.",
+    "options": [
+      "opt-62",
+      "opt-72"
+    ],
+    "id": "res-61"
+  },
+  "opt-54": {
+    "oars": "openEndedQuestion",
+    "text": "How could you have been more efficient?",
+    "attemptChange": true,
+    "valence": 0,
+    "response": "res-55",
+    "id": "opt-54"
+  },
+  "res-55": {
+    "change": false,
+    "darncat": "ability",
+    "text": "I could have been more efficient by catching more humans.\n                          \n                          There are legends told in these parts, of bears who caught MORE than enough humans to sustain them... but excess is a human feature.",
+    "options": [
+      "opt-56",
+      "opt-58",
+      "opt-60"
+    ],
+    "id": "res-55"
+  },
+  "opt-52": {
+    "text": "You've thought ahead. Being clever is important to you.",
+    "oars": "affirm",
+    "valence": 1,
+    "change": false,
+    "response": "res-53",
+    "id": "opt-52"
+  },
+  "res-53": {
+    "text": "That's why I like hunting humans. They're so clever, and I'm so clever, and it's a challenge to outsmart them. I'm good at it. \n                \n                Thing is... \n                \n                If I were better at planning ahead, I would have caught more humans this summer. \n                \n                I am clever, but I could have been a little more efficient.",
+    "change": true,
+    "darncat": "ability",
+    "options": [
+      "opt-54"
+    ],
+    "id": "res-53"
+  },
+  "opt-9": {
+    "text": "So, hunting humans is a rewarding challenge, but friends are putting heat on you to catch fish.",
+    "oars": "summarize",
+    "change": true,
+    "valence": 0,
+    "response": "res-10",
+    "id": "opt-9"
+  },
+  "res-10": {
+    "text": "Yeah. They say that if I don't catch fish, I'll starve. But it's only October. I can catch fish later.",
+    "darncat": "reason",
+    "change": false,
+    "options": [
+      "opt-11",
+      "opt-13",
+      "opt-52"
+    ],
+    "id": "res-10"
+  },
+  "opt-76": {
+    "text": "That's pretty messed up, bear.",
+    "oars": "notOars",
+    "valence": -1,
+    "attemptChange": false,
+    "response": "res-77",
+    "id": "opt-76"
+  },
+  "res-77": {
+    "text": "I know, right?",
+    "id": "res-77"
+  },
+  "opt-78": {
+    "text": "What if you spent half your time catching fish, and the other half setting human-traps?",
+    "oars": "notOars",
+    "valence": -1,
+    "attemptChange": true,
+    "response": "res-79",
+    "id": "opt-78"
+  },
+  "res-79": {
+    "text": "It doesn't work like that. Hunting humans is a whole-ass kind of deal.",
+    "id": "res-79"
+  },
+  "opt-86": {
+    "oars": "notOars",
+    "text": "How about we make a plan to get you through the winter?",
+    "valence": -1,
+    "response": "res-87",
+    "id": "opt-86"
+  },
+  "res-87": {
+    "text": "I'm not sure I'm ready to make a plan yet.",
+    "id": "res-87"
+  },
+  "opt-88": {
+    "oars": "notOars",
+    "text": "I'd be pretty sad, too. I haven't known you for very long, but you are interesting, as far as bears go.",
+    "valence": -1,
+    "response": "res-89",
+    "id": "opt-88"
+  },
+  "res-89": {
+    "text": "Don't patronize me, human. It makes me hungry.",
+    "id": "res-89"
+  },
+  "opt-84": {
+    "text": "You have to have enough energy stored for your body to make it through the winter.",
+    "oars": "reflect",
+    "valence": 1,
+    "attemptChange": false,
+    "response": "res-85",
+    "id": "opt-84"
+  },
+  "res-85": {
+    "darncat": "desire",
+    "text": "Yeah, I mean, I don't have INTERNET *eye roll*, but I'm pretty sure that's how it works.\n                      \n                      I'd be kinda sad not to make it through the winter...",
+    "change": true,
+    "options": [
+      "opt-31",
+      "opt-86",
+      "opt-88"
+    ],
+    "id": "res-85"
+  },
+  "opt-90": {
+    "oars": "notOars",
+    "text": "You're not getting fat, so you're going to die.",
+    "valence": -1,
+    "response": "res-91",
+    "id": "opt-90"
+  },
+  "res-91": {
+    "darncat": "activation",
+    "text": "You know what? You're right. \n                      \n                      I'm gonna die, you're gonna die. \n                      \n                      I might as well go out in style, you know? \n                      \n                      Doing what I love. Eating humans.",
+    "id": "res-91"
+  },
+  "opt-92": {
+    "oars": "notOars",
+    "text": "Based on what you've said, it seems like not starving is maybe better, right?",
+    "valence": -1,
+    "response": "res-93",
+    "id": "opt-92"
+  },
+  "res-93": {
+    "text": "Oh? What, just sit there and wait for them to swim by? I'm not your uncle Jimmy, starting on his second pack of Heineken on the dock before dinner on a Tuesday.\n                      \n                      I'm a PREDATOR.",
+    "id": "res-93"
+  },
+  "opt-82": {
+    "oars": "openEndedQuestion",
+    "text": "How important is it that you get fat?",
+    "attemptChange": true,
+    "valence": 0,
+    "response": "res-83",
+    "id": "opt-82"
+  },
+  "res-83": {
+    "darncat": "need",
+    "text": "Well, it's pretty obvious, right? We have to turbo-charge for the winter, otherwise we... like, die, I guess.",
+    "options": [
+      "opt-84",
+      "opt-90",
+      "opt-92"
+    ],
+    "id": "res-83"
+  },
+  "opt-80": {
+    "oars": "affirm",
+    "text": "You've decided that you don't need to catch fish to live your best life.",
+    "change": false,
+    "valence": 1,
+    "response": "res-81",
+    "id": "opt-80"
+  },
+  "res-81": {
+    "darncat": "ability",
+    "text": "That's what I WANT to think.\n        \n        And it's what I DO think, when I'm caught up in the hunt.\n        \n        Thing is...\n              \n              Can this really be my best life, if I'm spending so much time setting human traps that I'm not getting fat?",
+    "change": true,
+    "options": [
+      "opt-82"
+    ],
+    "id": "res-81"
+  },
+  "opt-74": {
+    "text": "So, your friends are putting heat on you to catch fish, but hunting humans is a rewarding challenge.",
+    "oars": "summarize",
+    "change": false,
+    "valence": -1,
+    "response": "res-75",
+    "id": "opt-74"
+  },
+  "res-75": {
+    "text": "You know what the best part of hunting humans is? Pretending to be some bumbling kid's toy. I'm like, \"Oh bother, I'm so cute. I'm so cuddly. Take a selfie with me.\" \n      \n      And then I eat them. \n      \n      It's great.",
+    "change": false,
+    "options": [
+      "opt-76",
+      "opt-78",
+      "opt-80"
+    ],
+    "id": "res-75"
+  },
+  "opt-5": {
+    "text": "Uh... Tell me about hunting humans.",
+    "oars": "openEndedQuestion",
+    "change": false,
+    "advance": true,
+    "response": "res-6",
+    "id": "opt-5"
+  },
+  "res-6": {
+    "requiredLevel": 0,
+    "text": "So, it's like this.\n  \n  Humans are just CLEVER – yeah, yeah, don't let it go to your head. \n  \n  Have you ever seen a bear-proof garbage bin? Well, I have, and if there's one thing I hate MORE than glass peanut butter jars, it's a bear-proof garbage bin.\n\n  A mark of your species' ingenuity.\n\n  But there are no bear-proof humans.\n          \n      ...Hey, do you have any peanut butter on you?",
+    "darncat": "desire",
+    "change": false,
+    "options": [
+      "opt-7",
+      "opt-9",
+      "opt-74"
+    ],
+    "id": "res-6"
+  },
+  "opt-start": {
+    "id": "opt-start",
+    "response": "res-start"
+  },
+  "res-start": {
+    "id": "res-start",
+    "required_level": 0,
+    "text": "Oh, human. \n    \n    This must be, like, your worst nightmare.\n  \n  I'm a bear, and I LIVE for HUMAN-HUNTING!\n  \n  Winter is coming, though, and everyone's all up in my muzzle, telling me I have to catch fish and fatten up.\n  \n  You see, fish are FAT and SLOW this time of year, and us bears gotta bulk.\n  \n  Thing is...\n  \n  Fish are too easy. I'd rather catch humans.",
+    "options": [
+      "opt-1",
+      "opt-3",
+      "opt-5"
+    ]
+  }
+}

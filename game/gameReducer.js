@@ -1,5 +1,5 @@
 import { getNode } from "./dialoguesApi";
-import { dialogues } from "./dialoguesFlat";
+import dialogues from "./dialoguesFlat.json";
 import { CHOOSE_RESPONSE, RESTART } from "./gameActions";
 
 export const maxScore = 6;
