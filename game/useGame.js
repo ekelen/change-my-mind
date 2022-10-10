@@ -5,14 +5,10 @@ import * as gameActions from "./gameActions";
 const useGame = () => {
   const [state, dispatch] = useReducer(gameReducer, initialState);
 
-  const bearResponse = state.dialogue.response ?? {};
-  const options =
-    bearResponse.options ?? state.dialogue.options ?? state.previousOptions;
-
-  const chooseResponse = (optionIndex = 0) => {
-    if (options.length > 0) {
+  const chooseOption = (optionIndex = 0) => {
+    if (state.options.length > 0) {
       const option = options[optionIndex];
-      dispatch(gameActions.chooseResponse(option, options));
+      dispatch(gameActions.chooseOption(option, options));
     }
   };
 
@@ -23,7 +19,7 @@ const useGame = () => {
   return [
     state,
     {
-      chooseResponse,
+      chooseOption,
       restart,
     },
   ];

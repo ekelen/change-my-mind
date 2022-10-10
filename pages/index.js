@@ -1,19 +1,9 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import FadeIn from "react-fade-in";
 import useGame from "../game/useGame";
 import { maxScore } from "../game/gameReducer";
 import { useEffect, useMemo, useRef, useState } from "react";
-import useMobileDetect from "../hooks/useMobileDetect";
-
-const string = (text) => {
-  try {
-    return JSON.stringify(text, null, 2);
-  } catch (error) {
-    JSON.stringify({ error: error.message });
-  }
-};
 
 const Options = ({ options, onChooseResponse }) => {
   return (
@@ -215,16 +205,14 @@ const TextContainer = ({ dialogue, options, onChooseResponse }) => {
 };
 
 export default function Home() {
-  const [gameState, { chooseResponse, restart }] = useGame();
+  const [gameState, { chooseOption, restart }] = useGame();
   const isDesktop = true;
-
-  console.log(`[=] gameState:`, gameState);
 
   const { dialogue, previousOptions, gameOver, gameWon, finalText, score } =
     gameState;
 
   const onChooseResponse = (optionIndex = 0) => {
-    chooseResponse(optionIndex);
+    chooseOption(optionIndex);
   };
 
   const handleRestart = () => {
@@ -278,18 +266,6 @@ export default function Home() {
                 <big>*eats you*</big>
               </PostGame>
             ) : (
-              // <div>
-              //   <div>{string(gameState)}</div>
-              //   {(
-              //     gameState.dialogue.options ??
-              //     gameState.previousOptions ??
-              //     []
-              //   ).map((option, index) => (
-              //     <button key={index} onClick={() => onChooseResponse(index)}>
-              //       {option.text}
-              //     </button>
-              //   ))}
-              // </div>
               <TextContainer
                 dialogue={dialogue}
                 options={
