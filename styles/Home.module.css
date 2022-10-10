@@ -46,6 +46,7 @@
   flex-shrink: 2;
   flex-grow: 5;
   padding: 0.2rem;
+  min-height: 100px;
 }
 
 /* options */
