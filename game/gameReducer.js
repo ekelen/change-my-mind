@@ -9,7 +9,6 @@ export const initialState = {
     ...dialogues["res-start"],
     options: dialogues["res-start"].options.map(getNode),
   },
-  previousOptions: dialogues["res-start"].options.map(getNode),
   gameOver: false,
   gameWon: false,
   finalText: "",
@@ -27,9 +26,8 @@ const chooseResponse = (state, option, options) => {
     score,
     dialogue: {
       ...response,
-      options: response.options?.map(getNode) ?? undefined,
+      options: response.options?.map(getNode) ?? options,
     },
-    previousOptions: options,
   };
 
   if (score < 0) {
@@ -38,7 +36,6 @@ const chooseResponse = (state, option, options) => {
       gameOver: true,
       finalText: response.text,
       dialogue: {},
-      previousOptions: [],
     };
   }
   if (score > maxScore) {
@@ -47,7 +44,6 @@ const chooseResponse = (state, option, options) => {
       gameWon: true,
       dialogue: {},
       finalText: response.text,
-      previousOptions: [],
     };
   }
   return common;

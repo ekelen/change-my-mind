@@ -6,10 +6,8 @@ const useGame = () => {
   const [state, dispatch] = useReducer(gameReducer, initialState);
 
   const chooseOption = (optionIndex = 0) => {
-    if (state.options.length > 0) {
-      const option = options[optionIndex];
-      dispatch(gameActions.chooseOption(option, options));
-    }
+    const option = state.dialogue.options[optionIndex];
+    dispatch(gameActions.chooseOption(option, state.dialogue.options));
   };
 
   const restart = () => {
