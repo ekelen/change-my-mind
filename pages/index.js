@@ -4,6 +4,7 @@ import styles from "../styles/Home.module.css";
 import useGame from "../game/useGame";
 import { maxScore } from "../game/gameReducer";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import useMobileDetect from "../hooks/useMobileDetect";
 
 const Options = ({ options, onChooseResponse }) => {
   return (
@@ -113,21 +114,17 @@ const PostGame = ({ children }) => {
   return <div className={styles.postGame}>{children}</div>;
 };
 
-const Header = ({ handleRestart, gameOver, gameWon }) => {
+const Header = ({ handleRestart, gameOver, gameWon, isDesktop }) => {
   const buttonRef = useRef(null);
   useEffect(() => {
     if ((gameOver || gameWon) && buttonRef?.current) {
       buttonRef.current.focus();
     }
-  });
+  }, [gameOver, gameWon]);
   return (
     <div style={{ width: "1000px", display: "flex", alignItems: "baseline" }}>
       <h1 style={{ marginRight: "auto" }}>I Will Eat You</h1>
-      <button
-        onClick={handleRestart}
-        // autoFocus={gameOver || gameWon}
-        ref={buttonRef}
-      >
+      <button onClick={handleRestart} ref={buttonRef} disabled={!isDesktop}>
         Restart
       </button>
     </div>
@@ -264,7 +261,7 @@ const TextContainer = ({
 
 export default function Home() {
   const [gameState, { chooseOption, restart }] = useGame();
-  const isDesktop = true;
+  const isDesktop = useMobileDetect().isDesktop();
 
   const { dialogue, gameOver, gameWon, finalText, score } = gameState;
 
@@ -289,6 +286,7 @@ export default function Home() {
           handleRestart={handleRestart}
           gameOver={gameOver}
           gameWon={gameWon}
+          isDesktop={isDesktop}
         />
         {!isDesktop ? (
           <>Not available on mobile</>
