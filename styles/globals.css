@@ -25,6 +25,7 @@ button {
   border-radius: 0.4rem;
   padding: 0.4rem;
   box-shadow: 0.1rem 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 1);
+  cursor: pointer;
 }
 
 button:hover {

@@ -21,8 +21,7 @@ const Citation = () => {
   );
 };
 
-const Options = ({ options, onChooseResponse }) => {
-  const [oarsHints, setOarsHints] = useState([]);
+const Options = ({ options, onChooseResponse, hideHint, availableHints }) => {
   const [showingHint, setShowingHint] = useState(null);
 
   const close = () => {
@@ -44,7 +43,7 @@ const Options = ({ options, onChooseResponse }) => {
             {option.text}
           </button>
           {option.oars &&
-            !oarsHints.includes(option.oars) &&
+            availableHints.includes(option.oars) &&
             option.oars !== OARS.notOars && (
               <button
                 style={{
@@ -63,7 +62,7 @@ const Options = ({ options, onChooseResponse }) => {
                 }}
                 onClick={(e) => {
                   setShowingHint(option.oars);
-                  setOarsHints((prev) => [...prev, option.oars]);
+                  hideHint(option.oars);
                 }}
               >
                 ?
@@ -298,6 +297,8 @@ const TextContainer = ({
   onChooseResponse,
   gameOver,
   gameWon,
+  availableHints,
+  hideHint,
 }) => {
   const [showOptions, setShowOptions] = useState(false);
   useEffect(() => {
@@ -313,17 +314,23 @@ const TextContainer = ({
         gameWon={gameWon}
       />
       {showOptions && (
-        <Options options={options} onChooseResponse={onChooseResponse} />
+        <Options
+          options={options}
+          onChooseResponse={onChooseResponse}
+          hideHint={hideHint}
+          availableHints={availableHints}
+        />
       )}
     </div>
   );
 };
 
 export default function Home() {
-  const [gameState, { chooseOption, restart }] = useGame();
+  const [gameState, { chooseOption, restart, hideHint }] = useGame();
   const isDesktop = useMobileDetect().isDesktop();
 
-  const { dialogue, gameOver, gameWon, finalText, score } = gameState;
+  const { dialogue, gameOver, gameWon, finalText, score, availableHints } =
+    gameState;
 
   const options = dialogue.options ?? [];
 
@@ -395,6 +402,8 @@ export default function Home() {
                   onChooseResponse={onChooseResponse}
                   gameOver={gameOver}
                   gameWon={gameWon}
+                  availableHints={availableHints}
+                  hideHint={hideHint}
                 />
               )}
             </>
