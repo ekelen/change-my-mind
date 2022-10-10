@@ -3,7 +3,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import useGame from "../game/useGame";
 import { maxScore } from "../game/gameReducer";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 const Options = ({ options, onChooseResponse }) => {
   return (
@@ -123,6 +123,7 @@ const Header = ({ handleRestart }) => {
 
 const Dialogue = ({ dialogue, onRevealOptions, showOptions }) => {
   const dialogueBottom = useRef(null);
+  const dialogueButton = useRef(null);
   const [currentText, setCurrentText] = useState(0);
   const dialogueLines = useMemo(
     () =>
@@ -152,23 +153,26 @@ const Dialogue = ({ dialogue, onRevealOptions, showOptions }) => {
     }
   }, [currentText, showOptions]);
 
-  useEffect(() => {
-    function handleKeyDown(e) {
-      if (e.shiftKey && e.key === "Enter") {
+  const onNext = useCallback(
+    (e) => {
+      e.stopPropagation();
+      setCurrentText(Math.min(currentText + 1, dialogueLines.length));
+    },
+    [dialogueLines, currentText]
+  );
+
+  const handleKeyDown = useCallback(
+    (e) => {
+      if (e && (e.shiftKey || e.metaKey) && e.key === "Enter") {
         e.stopPropagation();
         setCurrentText(dialogueLines.length);
       } else if (e && e.key === "Enter") {
         e.stopPropagation();
         setCurrentText(Math.min(currentText + 1, dialogueLines.length));
       }
-    }
-
-    document.addEventListener("keydown", handleKeyDown);
-
-    return function cleanup() {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [dialogueLines, currentText]);
+    },
+    [dialogueLines, currentText]
+  );
 
   return (
     <div className={styles.dialogue}>
@@ -178,6 +182,17 @@ const Dialogue = ({ dialogue, onRevealOptions, showOptions }) => {
             <p key={`${index}`}>{text}</p>
           ))}
         </div>
+        <button
+          ref={dialogueButton}
+          onClick={onNext}
+          onKeyDown={handleKeyDown}
+          style={{
+            visibility:
+              currentText === dialogueLines.length ? "hidden" : "visible",
+          }}
+        >
+          [...]
+        </button>
 
         <div ref={dialogueBottom}></div>
       </div>
