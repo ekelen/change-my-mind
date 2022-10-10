@@ -5,6 +5,7 @@ import useGame from "../game/useGame";
 import { maxScore } from "../game/gameReducer";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import useMobileDetect from "../hooks/useMobileDetect";
+import FocusLock from "react-focus-lock";
 
 const Options = ({ options, onChooseResponse }) => {
   return (
@@ -191,11 +192,12 @@ const Dialogue = ({
 
   const handleKeyDown = useCallback(
     (e) => {
-      e.preventDefault();
       if (e && (e.shiftKey || e.metaKey) && e.key === "Enter") {
+        e.preventDefault();
         e.stopPropagation();
         setCurrentText(dialogueLines.length);
       } else if (e && e.key === "Enter") {
+        e.preventDefault();
         e.stopPropagation();
         setCurrentText(Math.min(currentText + 1, dialogueLines.length));
       }
@@ -215,9 +217,6 @@ const Dialogue = ({
           ref={dialogueButton}
           onClick={onNext}
           onKeyDown={handleKeyDown}
-          // autoFocus={
-          //   currentText < dialogueLines.length && !gameOver && !gameWon
-          // }
           style={{
             visibility:
               currentText === dialogueLines.length ? "hidden" : "visible",
@@ -281,63 +280,67 @@ export default function Home() {
         <title>I Will Eat You | Change My Mind</title>
       </Head>
 
-      <main className={styles.main}>
-        <Header
-          handleRestart={handleRestart}
-          gameOver={gameOver}
-          gameWon={gameWon}
-          isDesktop={isDesktop}
-        />
-        {!isDesktop ? (
-          <>Not available on mobile</>
-        ) : (
-          <>
-            <Story score={score} maxScore={maxScore} />
+      <FocusLock>
+        <main className={styles.main}>
+          {/* <FocusLock> */}
+          <Header
+            handleRestart={handleRestart}
+            gameOver={gameOver}
+            gameWon={gameWon}
+            isDesktop={isDesktop}
+          />
+          {!isDesktop ? (
+            <>Not available on mobile</>
+          ) : (
+            <>
+              <Story score={score} maxScore={maxScore} />
 
-            {gameWon ? (
-              <PostGame>
-                <div>
-                  {finalText.split("\n").map((text, index) => (
-                    <p key={`${index}`}>{text.trim()}</p>
-                  ))}
-                </div>
-                <Image
-                  src="/noun-grizzly-bear_stand.svg"
-                  height={200}
-                  width={200}
-                  alt="Bear"
-                />
-                <big>{`I think I might go try to get some food. 
+              {gameWon ? (
+                <PostGame>
+                  <div>
+                    {finalText.split("\n").map((text, index) => (
+                      <p key={`${index}`}>{text.trim()}</p>
+                    ))}
+                  </div>
+                  <Image
+                    src="/noun-grizzly-bear_stand.svg"
+                    height={200}
+                    width={200}
+                    alt="Bear"
+                  />
+                  <big>{`I think I might go try to get some food. 
 
                 You can go home now.`}</big>
-              </PostGame>
-            ) : gameOver ? (
-              <PostGame>
-                <div>
-                  {finalText.split("\n").map((text, index) => (
-                    <p key={`${index}`}>{text.trim()}</p>
-                  ))}
-                </div>
-                <Image
-                  src="/noun-bear_scare.svg"
-                  height={200}
-                  width={200}
-                  alt="Attacking bear"
+                </PostGame>
+              ) : gameOver ? (
+                <PostGame>
+                  <div>
+                    {finalText.split("\n").map((text, index) => (
+                      <p key={`${index}`}>{text.trim()}</p>
+                    ))}
+                  </div>
+                  <Image
+                    src="/noun-bear_scare.svg"
+                    height={200}
+                    width={200}
+                    alt="Attacking bear"
+                  />
+                  <big>*eats you*</big>
+                </PostGame>
+              ) : (
+                <TextContainer
+                  dialogue={dialogue}
+                  options={options}
+                  onChooseResponse={onChooseResponse}
+                  gameOver={gameOver}
+                  gameWon={gameWon}
                 />
-                <big>*eats you*</big>
-              </PostGame>
-            ) : (
-              <TextContainer
-                dialogue={dialogue}
-                options={options}
-                onChooseResponse={onChooseResponse}
-                gameOver={gameOver}
-                gameWon={gameWon}
-              />
-            )}
-          </>
-        )}
-      </main>
+              )}
+            </>
+          )}
+          {/* </FocusLock> */}
+        </main>
+      </FocusLock>
     </div>
   );
 }
