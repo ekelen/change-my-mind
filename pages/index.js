@@ -42,32 +42,17 @@ const Options = ({ options, onChooseResponse, hideHint, availableHints }) => {
           >
             {option.text}
           </button>
-          {option.oars &&
-            availableHints.includes(option.oars) &&
-            option.oars !== OARS.notOars && (
-              <button
-                style={{
-                  position: "absolute",
-                  border: 0,
-                  backgroundColor: "yellow",
-                  color: "black",
-                  borderRadius: "50%",
-                  left: "-20px",
-                  top: "5px",
-                  width: "15px",
-                  height: "15px",
-                  padding: "0px",
-                  fontSize: "10px",
-                  fontWeight: "bolder",
-                }}
-                onClick={(e) => {
-                  setShowingHint(option.oars);
-                  hideHint(option.oars);
-                }}
-              >
-                ?
-              </button>
-            )}
+          {option.oars && availableHints.includes(option.oars) && (
+            <button
+              className={styles.optionHintButton}
+              onClick={(e) => {
+                setShowingHint(option.oars);
+                hideHint(option.oars);
+              }}
+            >
+              ?
+            </button>
+          )}
         </div>
       ))}
       {showingHint && (

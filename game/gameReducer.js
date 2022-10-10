@@ -15,7 +15,9 @@ export const initialState = {
   gameWon: false,
   finalText: "",
   score: 2,
-  availableHints: [...Object.keys(OARS)],
+  availableHints: [
+    ...Object.values(OARS).filter((value) => value !== OARS.notOars),
+  ],
 };
 
 const chooseResponse = (state, option, options) => {
