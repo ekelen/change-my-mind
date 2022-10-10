@@ -6,23 +6,83 @@ import { maxScore } from "../game/gameReducer";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import useMobileDetect from "../hooks/useMobileDetect";
 import FocusLock from "react-focus-lock";
+import { OARS, OARS_EXPLANATION } from "../data/dialogue";
 
-const Options = ({ options, onChooseResponse }) => {
+const Citation = () => {
+  return (
+    <p style={{ fontSize: "small", paddingTop: "3rem" }}>
+      Miller, W. R., & Rollnick, S. (2013).
+      <span style={{ fontStyle: "italic" }}>
+        {" "}
+        Motivational interviewing: Helping people change
+      </span>{" "}
+      (3rd ed.). Guilford Press.
+    </p>
+  );
+};
+
+const Options = ({ options, onChooseResponse, hideHint, availableHints }) => {
+  const [showingHint, setShowingHint] = useState(null);
+
+  const close = () => {
+    setShowingHint(null);
+  };
+
   return (
     <div className={styles.options}>
       {options.map((option, index) => (
-        <button
-          key={`${index}`}
-          onClick={(e) => {
-            e.stopPropagation();
-            onChooseResponse(index);
-          }}
-          className={styles.optionButton}
-          autoFocus={index === 0}
-        >
-          {option.text}
-        </button>
+        <div key={`${index}`} className={styles.optionButtonWrapper}>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onChooseResponse(index);
+            }}
+            className={styles.optionButton}
+            autoFocus={index === 0}
+          >
+            {option.text}
+          </button>
+          {option.oars &&
+            availableHints.includes(option.oars) &&
+            option.oars !== OARS.notOars && (
+              <button
+                style={{
+                  position: "absolute",
+                  border: 0,
+                  backgroundColor: "yellow",
+                  color: "black",
+                  borderRadius: "50%",
+                  left: "-20px",
+                  top: "5px",
+                  width: "15px",
+                  height: "15px",
+                  padding: "0px",
+                  fontSize: "10px",
+                  fontWeight: "bolder",
+                }}
+                onClick={(e) => {
+                  setShowingHint(option.oars);
+                  hideHint(option.oars);
+                }}
+              >
+                ?
+              </button>
+            )}
+        </div>
       ))}
+      {showingHint && (
+        <div className={styles.optionHint}>
+          <button onClick={close} autoFocus={true}>
+            x
+          </button>
+          <div className={styles.optionHintText}>
+            {OARS_EXPLANATION[showingHint]}
+          </div>
+          <div>
+            <Citation />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
@@ -237,6 +297,8 @@ const TextContainer = ({
   onChooseResponse,
   gameOver,
   gameWon,
+  availableHints,
+  hideHint,
 }) => {
   const [showOptions, setShowOptions] = useState(false);
   useEffect(() => {
@@ -252,17 +314,23 @@ const TextContainer = ({
         gameWon={gameWon}
       />
       {showOptions && (
-        <Options options={options} onChooseResponse={onChooseResponse} />
+        <Options
+          options={options}
+          onChooseResponse={onChooseResponse}
+          hideHint={hideHint}
+          availableHints={availableHints}
+        />
       )}
     </div>
   );
 };
 
 export default function Home() {
-  const [gameState, { chooseOption, restart }] = useGame();
+  const [gameState, { chooseOption, restart, hideHint }] = useGame();
   const isDesktop = useMobileDetect().isDesktop();
 
-  const { dialogue, gameOver, gameWon, finalText, score } = gameState;
+  const { dialogue, gameOver, gameWon, finalText, score, availableHints } =
+    gameState;
 
   const options = dialogue.options ?? [];
 
@@ -334,6 +402,8 @@ export default function Home() {
                   onChooseResponse={onChooseResponse}
                   gameOver={gameOver}
                   gameWon={gameWon}
+                  availableHints={availableHints}
+                  hideHint={hideHint}
                 />
               )}
             </>

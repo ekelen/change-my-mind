@@ -1,7 +1,8 @@
 import { cloneDeep } from "lodash";
+import { OARS } from "../data/dialogue";
 import { getNode } from "./dialoguesApi";
 import dialogues from "./dialoguesFlat.json";
-import { CHOOSE_RESPONSE, RESTART } from "./gameActions";
+import { CHOOSE_RESPONSE, RESTART, HIDE_HINT } from "./gameActions";
 
 export const maxScore = 6;
 
@@ -14,6 +15,7 @@ export const initialState = {
   gameWon: false,
   finalText: "",
   score: 2,
+  availableHints: [...Object.keys(OARS)],
 };
 
 const chooseResponse = (state, option, options) => {
@@ -58,6 +60,14 @@ const gameReducer = (state, action) => {
         action.payload.option,
         action.payload.options
       );
+    }
+    case HIDE_HINT: {
+      return {
+        ...state,
+        availableHints: state.availableHints.filter(
+          (hint) => hint !== action.payload.hint
+        ),
+      };
     }
     case RESTART: {
       return cloneDeep(initialState);

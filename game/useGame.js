@@ -14,10 +14,15 @@ const useGame = () => {
     dispatch(gameActions.restart());
   };
 
+  const hideHint = (hint) => {
+    dispatch(gameActions.hideHint(hint));
+  };
+
   return [
     state,
     {
       chooseOption,
+      hideHint,
       restart,
     },
   ];
