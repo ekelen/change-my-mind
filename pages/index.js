@@ -16,6 +16,7 @@ const Options = ({ options, onChooseResponse }) => {
             onChooseResponse(index);
           }}
           className={styles.optionButton}
+          autoFocus={index === 0}
         >
           {option.text}
         </button>
@@ -112,16 +113,34 @@ const PostGame = ({ children }) => {
   return <div className={styles.postGame}>{children}</div>;
 };
 
-const Header = ({ handleRestart }) => {
+const Header = ({ handleRestart, gameOver, gameWon }) => {
+  const buttonRef = useRef(null);
+  useEffect(() => {
+    if ((gameOver || gameWon) && buttonRef?.current) {
+      buttonRef.current.focus();
+    }
+  });
   return (
     <div style={{ width: "1000px", display: "flex", alignItems: "baseline" }}>
       <h1 style={{ marginRight: "auto" }}>I Will Eat You</h1>
-      <button onClick={handleRestart}>Restart</button>
+      <button
+        onClick={handleRestart}
+        // autoFocus={gameOver || gameWon}
+        ref={buttonRef}
+      >
+        Restart
+      </button>
     </div>
   );
 };
 
-const Dialogue = ({ dialogue, onRevealOptions, showOptions }) => {
+const Dialogue = ({
+  dialogue,
+  onRevealOptions,
+  showOptions,
+  gameOver,
+  gameWon,
+}) => {
   const dialogueBottom = useRef(null);
   const dialogueButton = useRef(null);
   const [currentText, setCurrentText] = useState(0);
@@ -137,6 +156,18 @@ const Dialogue = ({ dialogue, onRevealOptions, showOptions }) => {
   useEffect(() => {
     setCurrentText(0);
   }, [dialogueLines]);
+
+  useEffect(() => {
+    if (
+      dialogueButton?.current &&
+      currentText < dialogueLines.length &&
+      !showOptions &&
+      !gameOver &&
+      !gameWon
+    ) {
+      dialogueButton.current.focus();
+    }
+  }, [currentText, showOptions, dialogueLines, gameOver, gameWon]);
 
   useEffect(() => {
     if (currentText === dialogueLines.length) {
@@ -163,6 +194,7 @@ const Dialogue = ({ dialogue, onRevealOptions, showOptions }) => {
 
   const handleKeyDown = useCallback(
     (e) => {
+      e.preventDefault();
       if (e && (e.shiftKey || e.metaKey) && e.key === "Enter") {
         e.stopPropagation();
         setCurrentText(dialogueLines.length);
@@ -186,6 +218,9 @@ const Dialogue = ({ dialogue, onRevealOptions, showOptions }) => {
           ref={dialogueButton}
           onClick={onNext}
           onKeyDown={handleKeyDown}
+          // autoFocus={
+          //   currentText < dialogueLines.length && !gameOver && !gameWon
+          // }
           style={{
             visibility:
               currentText === dialogueLines.length ? "hidden" : "visible",
@@ -200,7 +235,13 @@ const Dialogue = ({ dialogue, onRevealOptions, showOptions }) => {
   );
 };
 
-const TextContainer = ({ dialogue, options, onChooseResponse }) => {
+const TextContainer = ({
+  dialogue,
+  options,
+  onChooseResponse,
+  gameOver,
+  gameWon,
+}) => {
   const [showOptions, setShowOptions] = useState(false);
   useEffect(() => {
     setShowOptions(false);
@@ -209,8 +250,10 @@ const TextContainer = ({ dialogue, options, onChooseResponse }) => {
     <div className={styles.dialogueAndOptionsContainer}>
       <Dialogue
         dialogue={dialogue}
-        onRevealOptions={() => setShowOptions(true)}
+        onRevealOptions={(show = true) => setShowOptions(show)}
         showOptions={showOptions}
+        gameOver={gameOver}
+        gameWon={gameWon}
       />
       {showOptions && (
         <Options options={options} onChooseResponse={onChooseResponse} />
@@ -242,7 +285,11 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <Header handleRestart={handleRestart} />
+        <Header
+          handleRestart={handleRestart}
+          gameOver={gameOver}
+          gameWon={gameWon}
+        />
         {!isDesktop ? (
           <>Not available on mobile</>
         ) : (
@@ -286,6 +333,8 @@ export default function Home() {
                 dialogue={dialogue}
                 options={options}
                 onChooseResponse={onChooseResponse}
+                gameOver={gameOver}
+                gameWon={gameWon}
               />
             )}
           </>
