@@ -1,3 +1,4 @@
+import { cloneDeep } from "lodash";
 import { getNode } from "./dialoguesApi";
 import dialogues from "./dialoguesFlat.json";
 import { CHOOSE_RESPONSE, RESTART } from "./gameActions";
@@ -59,7 +60,7 @@ const gameReducer = (state, action) => {
       );
     }
     case RESTART: {
-      return initialState;
+      return cloneDeep(initialState);
     }
     default: {
       return state;

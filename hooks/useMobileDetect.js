@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 // https://stackoverflow.com/a/61519537
 
@@ -19,9 +19,13 @@ const getMobileDetect = (userAgent) => {
   };
 };
 const useMobileDetect = () => {
-  useEffect(() => {}, []);
-  const userAgent =
-    typeof navigator === "undefined" ? "SSR" : navigator.userAgent;
+  const [userAgent, setUserAgent] = useState("");
+  useEffect(() => {
+    setUserAgent(
+      typeof navigator === "undefined" ? "SSR" : navigator.userAgent
+    );
+  }, []);
+
   return getMobileDetect(userAgent);
 };
 
