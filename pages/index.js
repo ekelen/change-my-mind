@@ -130,7 +130,7 @@ const Dialogue = ({ dialogue, onRevealOptions, showOptions }) => {
         .split("\n")
         .map((t) => t.trim())
         .filter((t) => !!t) ?? [],
-    [dialogue.text]
+    [dialogue]
   );
 
   useEffect(() => {
@@ -208,8 +208,9 @@ export default function Home() {
   const [gameState, { chooseOption, restart }] = useGame();
   const isDesktop = true;
 
-  const { dialogue, previousOptions, gameOver, gameWon, finalText, score } =
-    gameState;
+  const { dialogue, gameOver, gameWon, finalText, score } = gameState;
+
+  const options = dialogue.options ?? [];
 
   const onChooseResponse = (optionIndex = 0) => {
     chooseOption(optionIndex);
@@ -268,9 +269,7 @@ export default function Home() {
             ) : (
               <TextContainer
                 dialogue={dialogue}
-                options={
-                  dialogue.options?.length ? dialogue.options : previousOptions
-                }
+                options={options}
                 onChooseResponse={onChooseResponse}
               />
             )}
