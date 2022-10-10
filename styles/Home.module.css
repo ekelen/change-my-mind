@@ -45,6 +45,7 @@
   flex-basis: 0;
   flex-shrink: 2;
   flex-grow: 5;
+  padding: 0.2rem;
 }
 
 /* options */
