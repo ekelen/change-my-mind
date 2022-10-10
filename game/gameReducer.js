@@ -6,7 +6,10 @@ import { CHOOSE_RESPONSE, RESTART } from "./gameActions";
 export const maxScore = 6;
 
 export const initialState = {
-  dialogue: dialogues["res-start"],
+  dialogue: {
+    ...dialogues["res-start"],
+    options: dialogues["res-start"].options.map(getNode),
+  },
   previousOptions: dialogues["res-start"].options.map(getNode),
   gameOver: false,
   gameWon: false,
