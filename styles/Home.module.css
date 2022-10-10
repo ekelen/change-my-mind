@@ -129,6 +129,21 @@
   font-size: large;
 }
 
+.optionHintButton {
+  position: absolute;
+  border: 0;
+  background-color: yellow;
+  color: black;
+  border-radius: 50%;
+  left: -20px;
+  top: 5px;
+  width: 15px;
+  height: 15px;
+  padding: 0px;
+  font-size: 10px;
+  font-weight: bolder;
+}
+
 /* post-game */
 
 .postGame {
