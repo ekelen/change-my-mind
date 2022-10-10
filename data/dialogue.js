@@ -1,6 +1,3 @@
-import { uniqueId, cloneDeep } from "lodash";
-import FadeIn from "react-fade-in";
-
 const DARNCAT = {
   desire: "desire",
   ability: "ability",
@@ -67,7 +64,7 @@ const O_NEXTYEAR = {
   },
 };
 
-export const R_TOY = {
+const R_TOY = {
   text: `You know what the best part of hunting humans is? Pretending to be some bumbling kid's toy. I'm like, "Oh bother, I'm so cute. I'm so cuddly. Take a selfie with me." 
       
       And then I eat them. 
@@ -588,7 +585,7 @@ const R_CLEVER = {
   ],
 };
 
-export const START = {
+const START = {
   id: "opt-start",
   response: {
     id: "res-start",
@@ -649,38 +646,4 @@ export const START = {
   },
 };
 
-const _flatten = (dialogueTree) => {
-  const flat = {};
-  const addIds = (node) => {
-    if (node.response) {
-      node.response.id = node.response.id ?? uniqueId("res-");
-    }
-    if (node.response.options) {
-      node.response.options.forEach((option, i) => {
-        option.id = option.id ?? uniqueId("opt-");
-        addIds(option);
-      });
-    }
-  };
-
-  const mapIds = (el) => {
-    if (el.response?.options) {
-      el.response.options.forEach((option) => {
-        mapIds(option);
-      });
-    }
-    if (el.response) {
-      flat[el.id] = { ...el, response: el.response.id };
-      flat[el.response.id] = { ...el.response };
-      if (el.response.options) {
-        flat[el.response.id].options = el.response.options.map(
-          (option) => option.id
-        );
-      }
-    }
-  };
-  addIds(dialogueTree);
-  mapIds(dialogueTree);
-
-  return flat;
-};
+module.exports = { START };
