@@ -1,11 +1,13 @@
 import { START } from "./dialogue";
+import { getNode } from "./dialoguesApi";
+import { dialogues } from "./dialoguesFlat";
 import { CHOOSE_RESPONSE, RESTART } from "./gameActions";
 
 export const maxScore = 6;
 
 export const initialState = {
-  dialogue: START,
-  previousOptions: START.response.options,
+  dialogue: dialogues["res-start"],
+  previousOptions: dialogues["res-start"].options.map(getNode),
   gameOver: false,
   gameWon: false,
   finalText: "",

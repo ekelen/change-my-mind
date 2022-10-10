@@ -7,6 +7,14 @@ import { maxScore } from "../game/gameReducer";
 import { useEffect, useMemo, useRef, useState } from "react";
 import useMobileDetect from "../hooks/useMobileDetect";
 
+const string = (text) => {
+  try {
+    return JSON.stringify(text, null, 2);
+  } catch (error) {
+    JSON.stringify({ error: error.message });
+  }
+};
+
 const Options = ({ options, onChooseResponse }) => {
   return (
     <div className={styles.options}>
@@ -216,6 +224,8 @@ export default function Home() {
   const [gameState, { chooseResponse, restart }] = useGame();
   const isDesktop = true;
 
+  console.log(`[=] gameState:`, gameState);
+
   const { dialogue, previousOptions, gameOver, gameWon, finalText, score } =
     gameState;
 
@@ -274,15 +284,16 @@ export default function Home() {
                 <big>*eats you*</big>
               </PostGame>
             ) : (
-              <TextContainer
-                dialogue={dialogue}
-                options={
-                  dialogue.response.options?.length
-                    ? dialogue.response.options
-                    : previousOptions
-                }
-                onChooseResponse={onChooseResponse}
-              />
+              <div>{string(gameState)}</div>
+              // <TextContainer
+              //   dialogue={dialogue}
+              //   options={
+              //     dialogue.response.options?.length
+              //       ? dialogue.response.options
+              //       : previousOptions
+              //   }
+              //   onChooseResponse={onChooseResponse}
+              // />
             )}
           </>
         )}

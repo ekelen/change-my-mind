@@ -686,4 +686,3 @@ const flatten = (dialogueTree) => {
 };
 
 export const dialoguesFlat = flatten(START);
-console.log(JSON.stringify(dialoguesFlat, null, 2));
