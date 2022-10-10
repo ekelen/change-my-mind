@@ -7,6 +7,14 @@ import { maxScore } from "../game/gameReducer";
 import { useEffect, useMemo, useRef, useState } from "react";
 import useMobileDetect from "../hooks/useMobileDetect";
 
+const string = (text) => {
+  try {
+    return JSON.stringify(text, null, 2);
+  } catch (error) {
+    JSON.stringify({ error: error.message });
+  }
+};
+
 const Options = ({ options, onChooseResponse }) => {
   return (
     <div className={styles.options}>
@@ -128,11 +136,11 @@ const Dialogue = ({ dialogue, onRevealOptions, showOptions }) => {
   const [currentText, setCurrentText] = useState(0);
   const dialogueLines = useMemo(
     () =>
-      dialogue.response.text
+      dialogue.text
         .split("\n")
         .map((t) => t.trim())
         .filter((t) => !!t) ?? [],
-    [dialogue.response.text]
+    [dialogue.text]
   );
 
   useEffect(() => {
@@ -174,12 +182,6 @@ const Dialogue = ({ dialogue, onRevealOptions, showOptions }) => {
 
   return (
     <div className={styles.dialogue}>
-      <div style={{ color: "rgb(255,251,235)", textAlign: "right" }}>
-        {(dialogue.text ?? "").split("\n").map((text, index) => (
-          <p key={`${index}`}>{text.trim()}</p>
-        ))}
-      </div>
-
       <div className={styles.yellow}>
         <div>
           {dialogueLines.slice(0, currentText + 1).map((text, index) => (
@@ -215,6 +217,8 @@ const TextContainer = ({ dialogue, options, onChooseResponse }) => {
 export default function Home() {
   const [gameState, { chooseResponse, restart }] = useGame();
   const isDesktop = true;
+
+  console.log(`[=] gameState:`, gameState);
 
   const { dialogue, previousOptions, gameOver, gameWon, finalText, score } =
     gameState;
@@ -274,12 +278,22 @@ export default function Home() {
                 <big>*eats you*</big>
               </PostGame>
             ) : (
+              // <div>
+              //   <div>{string(gameState)}</div>
+              //   {(
+              //     gameState.dialogue.options ??
+              //     gameState.previousOptions ??
+              //     []
+              //   ).map((option, index) => (
+              //     <button key={index} onClick={() => onChooseResponse(index)}>
+              //       {option.text}
+              //     </button>
+              //   ))}
+              // </div>
               <TextContainer
                 dialogue={dialogue}
                 options={
-                  dialogue.response.options?.length
-                    ? dialogue.response.options
-                    : previousOptions
+                  dialogue.options?.length ? dialogue.options : previousOptions
                 }
                 onChooseResponse={onChooseResponse}
               />

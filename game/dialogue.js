@@ -1,3 +1,4 @@
+import { uniqueId, cloneDeep } from "lodash";
 import FadeIn from "react-fade-in";
 
 const DARNCAT = {
@@ -326,256 +327,256 @@ const R_CLEVER = {
         text: `Yeah. They say that if I don't catch fish, I'll starve. But it's only October. I can catch fish later.`,
         darncat: DARNCAT.reason,
         change: false,
+        options: [
+          {
+            text: `I could be wrong, but don't bears hibernate in, like, September?`,
+            oars: OARS.notOars,
+            valence: -1,
+            attemptChange: true,
+            response: {
+              text: `Most of them. I'm not like the rest.`,
+            },
+          },
+          {
+            text: `It's only October - you have a couple of months to get enough fish.`,
+            oars: OARS.reflect,
+            valence: 0,
+            attemptChange: false,
+            response: {
+              text: `That's right.
+                
+                *pause*
+                
+                I mean, I'm kind of marching to the beat of my own drum here. 
+                
+                Most of my friends are actually hibernating already. 
+                
+                But they're just softies who are scared of having to punch through a little ice.`,
+              change: true,
+              darncat: DARNCAT.desire,
+              options: [
+                {
+                  oars: OARS.reflect,
+                  text: `Your friends aren't as tough as you are.`,
+                  valence: 0,
+                  attemptChange: false,
+                  response: {
+                    text: `Nope. I mean, maybe they did the air-quotes "SENSIBLE" thing and caught fish, but I can be an ice-fishing bear.
+                          
+                          I'm pretty smart. I can figure it out.
+                          
+                          In the meantime, the leaves are about to change, and do you know what that means?
+                          
+                          Pumpkin spice lattes... coursing through human flesh. Mmmm...`,
+                    change: true,
+                    options: [
+                      {
+                        oars: OARS.reflect,
+                        valence: 1,
+                        text: `You've got some unusual skills. And you refuse to follow the herd.`,
+                        response: {
+                          change: true,
+                          text: `It's actually a SLEUTH of bears, not a "herd." Just FYI.
+                          
+                          But yeah, when it comes to hunting humans, I'm a bit of a loner.
+                          
+                          I usually kinda take pride in it, but there's a little part of me that's worried.
+                          
+                          And like, maybe I should have listened to my elders – their wisdom.
+                          
+                          Maybe I should have listened. I coulda gone fishing. Got fat. Hibernated on time.`,
+                          options: [
+                            O_SUMM,
+                            {
+                              text: `Do you think you'll be an elder someday?`,
+                              oars: OARS.notOars,
+                              valence: 0,
+                              response: {
+                                text: "Doubt it.",
+                              },
+                            },
+                            {
+                              text: `Tell me about the elders.`,
+                              oars: OARS.openEndedQuestion,
+                              response: {
+                                text: `Bears aren't exactly... family-oriented. But they teach each other by action, by doing.`,
+                                options: [
+                                  O_SUMM,
+                                  {
+                                    text: `If you die this winter, what will you teach other bears?`,
+                                    valence: 0,
+                                    response: {
+                                      text: `That it's chill to die doing what you love.`,
+                                    },
+                                  },
+                                ],
+                              },
+                            },
+                            {
+                              text: `I mean, if I had stuck with my crowd, I'd be drinking a chocolate old fashioned at the lodge right now.`,
+                              valence: -1,
+                              response: {
+                                text: `That sounds disgusting. I only like chocolate melted in the pockets of my prey.`,
+                              },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
+              // todo: "But"
+            },
+          },
+          {
+            text: `You've thought ahead. Being clever is important to you.`,
+            oars: OARS.affirm,
+            valence: 1,
+            change: false,
+            response: {
+              text: `That's why I like hunting humans. They're so clever, and I'm so clever, and it's a challenge to outsmart them. I'm good at it. 
+                
+                Thing is... 
+                
+                If I were better at planning ahead, I would have caught more humans this summer. 
+                
+                I am clever, but I could have been a little more efficient.`,
+              change: true,
+              darncat: DARNCAT.ability,
+              options: [
+                {
+                  oars: OARS.openEndedQuestion,
+                  text: `How could you have been more efficient?`,
+                  attemptChange: true,
+                  valence: 0,
+                  response: {
+                    change: false,
+                    darncat: DARNCAT.ability,
+                    text: `I could have been more efficient by catching more humans.
+                          
+                          There are legends told in these parts, of bears who caught MORE than enough humans to sustain them... but excess is a human feature.`,
+                    options: [
+                      {
+                        oars: OARS.notOars,
+                        text: `Bears are more reasonable than humans.`,
+                        response: {
+                          text: `You're just saying that to not get eaten.`,
+                        },
+                      },
+                      {
+                        oars: OARS.notOars,
+                        text: `Could you have caught enough humans?`,
+                        response: {
+                          text: `Probably not.`,
+                        },
+                      },
+                      {
+                        oars: OARS.reflect,
+                        text: `Humans are hoarders. Your species has preserved an ancient dialogue with nature.`,
+                        attemptChange: true,
+                        valence: 0,
+                        response: {
+                          change: false,
+                          text: `Yeah. I mean, look at you — no offense, but "clothes" look like garbage bags.`,
+                          options: [
+                            {
+                              oars: OARS.affirm,
+                              text: `You're proud of your BEAR-itage.
+                              
+                              Sorry sorry!! ...Heritage.
+                              
+                              Your kind has discovered how to survive without taking what it doesn't need.`,
+                              valence: -1,
+                              response: {
+                                change: true,
+                                darncat: DARNCAT.need,
+                                text: `I mean, my friends have been saying that I'm way out of line with the way of things. Sometimes I wonder if they're right.
+                                  
+                                  On the other hand – this will make me sound kinda self-important – but they aren't super smart.`,
+                                options: [
+                                  {
+                                    oars: OARS.openEndedQuestion,
+                                    text: `What parts do you think they might be right about?`,
+                                    valence: 0,
+                                    attemptChange: true,
+                                    response: {
+                                      text: `Well... They're pretty much all in hibernation now, and I'm still out here catching humans.
+                                              
+                                              I guess I'm scared my time has run out to catch up, caloric-surplus-wise.
+                                              
+                                              The fear just keeps me locked into this cycle of human-stalking instead.
+                                              
+                                              It's a great distraction.
+                                              
+                                              It makes me feel like I'm doing something, even though I'm not... you know?`,
+                                      change: true,
+                                      darncat: DARNCAT.desire,
+                                      options: [
+                                        {
+                                          text: `You're right. You're not doing anything. You're just eating humans.`,
+                                          oars: OARS.notOars,
+                                          valence: -1,
+                                          attemptChange: false,
+                                          response: {
+                                            text: `It's what I do.`,
+                                          },
+                                        },
+                                        {
+                                          text: `Is it too late?`,
+                                          oars: OARS.notOars,
+                                          valence: -1,
+                                          attemptChange: false,
+                                          response: {
+                                            text: `Yes. It's OCTOBER. Who am I kidding? There's no way. 
+  
+                                            I'm gonna die.
+                                            
+                                            I'm gonna die and some park ranger is gonna give my carcass to the locals for a basement throw rug.`,
+                                          },
+                                        },
+                                        O_SUMM,
+                                      ],
+                                    },
+                                  },
+                                  {
+                                    oars: OARS.notOars,
+                                    text: `You're a really smart bear.`,
+                                    response: {
+                                      text: `You're just saying that to not get eaten.`,
+                                    },
+                                  },
+                                ],
+                              },
+                            },
+                            {
+                              oars: OARS.notOars,
+                              text: `Actually, humans are a tropical species.`,
+                              valence: -1,
+                              response: {
+                                change: 0,
+                                text: `Well, you sure look goofy.
+                                  
+                                  Also, I don't really love eating polyester. 
+                                  
+                                  And I've had some issues with jewelry in, uh, transit.
+                                  
+                                  But that's part of the fun - you all come with different accessories. 
+                                  
+                                  I have quite the stash, to be honest with you.`,
+                              },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
       },
-      options: [
-        {
-          text: `I could be wrong, but don't bears hibernate in, like, September?`,
-          oars: OARS.notOars,
-          valence: -1,
-          attemptChange: true,
-          response: {
-            text: `Most of them. I'm not like the rest.`,
-          },
-        },
-        {
-          text: `It's only October - you have a couple of months to get enough fish.`,
-          oars: OARS.reflect,
-          valence: 0,
-          attemptChange: false,
-          response: {
-            text: `That's right.
-              
-              *pause*
-              
-              I mean, I'm kind of marching to the beat of my own drum here. 
-              
-              Most of my friends are actually hibernating already. 
-              
-              But they're just softies who are scared of having to punch through a little ice.`,
-            change: true,
-            darncat: DARNCAT.desire,
-            options: [
-              {
-                oars: OARS.reflect,
-                text: `Your friends aren't as tough as you are.`,
-                valence: 0,
-                attemptChange: false,
-                response: {
-                  text: `Nope. I mean, maybe they did the air-quotes "SENSIBLE" thing and caught fish, but I can be an ice-fishing bear.
-                        
-                        I'm pretty smart. I can figure it out.
-                        
-                        In the meantime, the leaves are about to change, and do you know what that means?
-                        
-                        Pumpkin spice lattes... coursing through human flesh. Mmmm...`,
-                  change: true,
-                  options: [
-                    {
-                      oars: OARS.reflect,
-                      valence: 1,
-                      text: `You've got some unusual skills. And you refuse to follow the herd.`,
-                      response: {
-                        change: true,
-                        text: `It's actually a SLEUTH of bears, not a "herd." Just FYI.
-                        
-                        But yeah, when it comes to hunting humans, I'm a bit of a loner.
-                        
-                        I usually kinda take pride in it, but there's a little part of me that's worried.
-                        
-                        And like, maybe I should have listened to my elders – their wisdom.
-                        
-                        Maybe I should have listened. I coulda gone fishing. Got fat. Hibernated on time.`,
-                        options: [
-                          O_SUMM,
-                          {
-                            text: `Do you think you'll be an elder someday?`,
-                            oars: OARS.notOars,
-                            valence: 0,
-                            response: {
-                              text: "Doubt it.",
-                            },
-                          },
-                          {
-                            text: `Tell me about the elders.`,
-                            oars: OARS.openEndedQuestion,
-                            response: {
-                              text: `Bears aren't exactly... family-oriented. But they teach each other by action, by doing.`,
-                              options: [
-                                O_SUMM,
-                                {
-                                  text: `If you die this winter, what will you teach other bears?`,
-                                  valence: 0,
-                                  response: {
-                                    text: `That it's chill to die doing what you love.`,
-                                  },
-                                },
-                              ],
-                            },
-                          },
-                          {
-                            text: `I mean, if I had stuck with my crowd, I'd be drinking a chocolate old fashioned at the lodge right now.`,
-                            valence: -1,
-                            response: {
-                              text: `That sounds disgusting. I only like chocolate melted in the pockets of my prey.`,
-                            },
-                          },
-                        ],
-                      },
-                    },
-                  ],
-                },
-              },
-            ],
-            // todo: "But"
-          },
-        },
-        {
-          text: `You've thought ahead. Being clever is important to you.`,
-          oars: OARS.affirm,
-          valence: 1,
-          change: false,
-          response: {
-            text: `That's why I like hunting humans. They're so clever, and I'm so clever, and it's a challenge to outsmart them. I'm good at it. 
-              
-              Thing is... 
-              
-              If I were better at planning ahead, I would have caught more humans this summer. 
-              
-              I am clever, but I could have been a little more efficient.`,
-            change: true,
-            darncat: DARNCAT.ability,
-            options: [
-              {
-                oars: OARS.openEndedQuestion,
-                text: `How could you have been more efficient?`,
-                attemptChange: true,
-                valence: 0,
-                response: {
-                  change: false,
-                  darncat: DARNCAT.ability,
-                  text: `I could have been more efficient by catching more humans.
-                        
-                        There are legends told in these parts, of bears who caught MORE than enough humans to sustain them... but excess is a human feature.`,
-                  options: [
-                    {
-                      oars: OARS.notOars,
-                      text: `Bears are more reasonable than humans.`,
-                      response: {
-                        text: `You're just saying that to not get eaten.`,
-                      },
-                    },
-                    {
-                      oars: OARS.notOars,
-                      text: `Could you have caught enough humans?`,
-                      response: {
-                        text: `Probably not.`,
-                      },
-                    },
-                    {
-                      oars: OARS.reflect,
-                      text: `Humans are hoarders. Your species has preserved an ancient dialogue with nature.`,
-                      attemptChange: true,
-                      valence: 0,
-                      response: {
-                        change: false,
-                        text: `Yeah. I mean, look at you — no offense, but "clothes" look like garbage bags.`,
-                        options: [
-                          {
-                            oars: OARS.affirm,
-                            text: `You're proud of your BEAR-itage.
-                            
-                            Sorry sorry!! ...Heritage.
-                            
-                            Your kind has discovered how to survive without taking what it doesn't need.`,
-                            valence: -1,
-                            response: {
-                              change: true,
-                              darncat: DARNCAT.need,
-                              text: `I mean, my friends have been saying that I'm way out of line with the way of things. Sometimes I wonder if they're right.
-                                
-                                On the other hand – this will make me sound kinda self-important – but they aren't super smart.`,
-                              options: [
-                                {
-                                  oars: OARS.openEndedQuestion,
-                                  text: `What parts do you think they might be right about?`,
-                                  valence: 0,
-                                  attemptChange: true,
-                                  response: {
-                                    text: `Well... They're pretty much all in hibernation now, and I'm still out here catching humans.
-                                            
-                                            I guess I'm scared my time has run out to catch up, caloric-surplus-wise.
-                                            
-                                            The fear just keeps me locked into this cycle of human-stalking instead.
-                                            
-                                            It's a great distraction.
-                                            
-                                            It makes me feel like I'm doing something, even though I'm not... you know?`,
-                                    change: true,
-                                    darncat: DARNCAT.desire,
-                                    options: [
-                                      {
-                                        text: `You're right. You're not doing anything. You're just eating humans.`,
-                                        oars: OARS.notOars,
-                                        valence: -1,
-                                        attemptChange: false,
-                                        response: {
-                                          text: `It's what I do.`,
-                                        },
-                                      },
-                                      {
-                                        text: `Is it too late?`,
-                                        oars: OARS.notOars,
-                                        valence: -1,
-                                        attemptChange: false,
-                                        response: {
-                                          text: `Yes. It's OCTOBER. Who am I kidding? There's no way. 
-
-                                          I'm gonna die.
-                                          
-                                          I'm gonna die and some park ranger is gonna give my carcass to the locals for a basement throw rug.`,
-                                        },
-                                      },
-                                      O_SUMM,
-                                    ],
-                                  },
-                                },
-                                {
-                                  oars: OARS.notOars,
-                                  text: `You're a really smart bear.`,
-                                  response: {
-                                    text: `You're just saying that to not get eaten.`,
-                                  },
-                                },
-                              ],
-                            },
-                          },
-                          {
-                            oars: OARS.notOars,
-                            text: `Actually, humans are a tropical species.`,
-                            valence: -1,
-                            response: {
-                              change: 0,
-                              text: `Well, you sure look goofy.
-                                
-                                Also, I don't really love eating polyester. 
-                                
-                                And I've had some issues with jewelry in, uh, transit.
-                                
-                                But that's part of the fun - you all come with different accessories. 
-                                
-                                I have quite the stash, to be honest with you.`,
-                            },
-                          },
-                        ],
-                      },
-                    },
-                  ],
-                },
-              },
-            ],
-          },
-        },
-      ],
     },
     {
       text: `So, your friends are putting heat on you to catch fish, but hunting humans is a rewarding challenge.`,
@@ -588,7 +589,9 @@ const R_CLEVER = {
 };
 
 export const START = {
+  id: "opt-start",
   response: {
+    id: "res-start",
     required_level: 0,
     text: `Oh, human. 
     
@@ -644,4 +647,40 @@ export const START = {
       },
     ],
   },
+};
+
+const _flatten = (dialogueTree) => {
+  const flat = {};
+  const addIds = (node) => {
+    if (node.response) {
+      node.response.id = node.response.id ?? uniqueId("res-");
+    }
+    if (node.response.options) {
+      node.response.options.forEach((option, i) => {
+        option.id = option.id ?? uniqueId("opt-");
+        addIds(option);
+      });
+    }
+  };
+
+  const mapIds = (el) => {
+    if (el.response?.options) {
+      el.response.options.forEach((option) => {
+        mapIds(option);
+      });
+    }
+    if (el.response) {
+      flat[el.id] = { ...el, response: el.response.id };
+      flat[el.response.id] = { ...el.response };
+      if (el.response.options) {
+        flat[el.response.id].options = el.response.options.map(
+          (option) => option.id
+        );
+      }
+    }
+  };
+  addIds(dialogueTree);
+  mapIds(dialogueTree);
+
+  return flat;
 };
