@@ -6,23 +6,84 @@ import { maxScore } from "../game/gameReducer";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import useMobileDetect from "../hooks/useMobileDetect";
 import FocusLock from "react-focus-lock";
+import { OARS, OARS_EXPLANATION } from "../data/dialogue";
+
+const Citation = () => {
+  return (
+    <p style={{ fontSize: "small", paddingTop: "3rem" }}>
+      Miller, W. R., & Rollnick, S. (2013).
+      <span style={{ fontStyle: "italic" }}>
+        {" "}
+        Motivational interviewing: Helping people change
+      </span>{" "}
+      (3rd ed.). Guilford Press.
+    </p>
+  );
+};
 
 const Options = ({ options, onChooseResponse }) => {
+  const [oarsHints, setOarsHints] = useState([]);
+  const [showingHint, setShowingHint] = useState(null);
+
+  const close = () => {
+    setShowingHint(null);
+  };
+
   return (
     <div className={styles.options}>
       {options.map((option, index) => (
-        <button
-          key={`${index}`}
-          onClick={(e) => {
-            e.stopPropagation();
-            onChooseResponse(index);
-          }}
-          className={styles.optionButton}
-          autoFocus={index === 0}
-        >
-          {option.text}
-        </button>
+        <div key={`${index}`} className={styles.optionButtonWrapper}>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onChooseResponse(index);
+            }}
+            className={styles.optionButton}
+            autoFocus={index === 0}
+          >
+            {option.text}
+          </button>
+          {option.oars &&
+            !oarsHints.includes(option.oars) &&
+            option.oars !== OARS.notOars && (
+              <button
+                style={{
+                  position: "absolute",
+                  border: 0,
+                  backgroundColor: "yellow",
+                  color: "black",
+                  borderRadius: "50%",
+                  left: "-20px",
+                  top: "5px",
+                  width: "15px",
+                  height: "15px",
+                  padding: "0px",
+                  fontSize: "10px",
+                  fontWeight: "bolder",
+                }}
+                onClick={(e) => {
+                  setShowingHint(option.oars);
+                  setOarsHints((prev) => [...prev, option.oars]);
+                }}
+              >
+                ?
+              </button>
+            )}
+        </div>
       ))}
+      {showingHint && (
+        <div className={styles.optionHint}>
+          <button onClick={close} autoFocus={true}>
+            x
+          </button>
+          <div className={styles.optionHintText}>
+            {OARS_EXPLANATION[showingHint]}
+          </div>
+          <div>
+            <Citation />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -80,10 +80,15 @@
   margin: 0;
 }
 
-.optionButton {
+.optionButtonWrapper {
   flex-basis: calc(50% - 10px);
-  text-align: left;
   margin-bottom: 1rem;
+  position: relative;
+}
+
+.optionButton {
+  text-align: left;
+
 }
 
 .optionButton:hover {
@@ -92,6 +97,36 @@
 
 .optionButton:nth-child(odd) {
   margin-right: 10px;
+}
+
+.optionHint {
+  position: absolute;
+  top: 10vh;
+  bottom: 90vh;
+  left: 10vw;
+  right: 90vw;
+  width: 80vw;
+  height: 80vh;
+  color: black;
+  padding: 1rem;
+  /* background-color: rgb(15,23,42); */
+  background-color: rgb(34, 52, 93);
+  color: rgb(250,250,255);
+  box-shadow: 0.1rem 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 1);
+  z-index: 11;
+  white-space: pre-wrap;       /* css-3 */
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+  overflow-y: auto;
+  
+}
+
+.optionHintText {
+  margin-top: 2rem;
+  margin-left: 1.5rem;
+  font-size: large;
 }
 
 /* post-game */
