@@ -136,11 +136,11 @@ const Dialogue = ({ dialogue, onRevealOptions, showOptions }) => {
   const [currentText, setCurrentText] = useState(0);
   const dialogueLines = useMemo(
     () =>
-      dialogue.response.text
+      dialogue.text
         .split("\n")
         .map((t) => t.trim())
         .filter((t) => !!t) ?? [],
-    [dialogue.response.text]
+    [dialogue.text]
   );
 
   useEffect(() => {
@@ -182,12 +182,6 @@ const Dialogue = ({ dialogue, onRevealOptions, showOptions }) => {
 
   return (
     <div className={styles.dialogue}>
-      <div style={{ color: "rgb(255,251,235)", textAlign: "right" }}>
-        {(dialogue.text ?? "").split("\n").map((text, index) => (
-          <p key={`${index}`}>{text.trim()}</p>
-        ))}
-      </div>
-
       <div className={styles.yellow}>
         <div>
           {dialogueLines.slice(0, currentText + 1).map((text, index) => (
@@ -284,16 +278,25 @@ export default function Home() {
                 <big>*eats you*</big>
               </PostGame>
             ) : (
-              <div>{string(gameState)}</div>
-              // <TextContainer
-              //   dialogue={dialogue}
-              //   options={
-              //     dialogue.response.options?.length
-              //       ? dialogue.response.options
-              //       : previousOptions
-              //   }
-              //   onChooseResponse={onChooseResponse}
-              // />
+              // <div>
+              //   <div>{string(gameState)}</div>
+              //   {(
+              //     gameState.dialogue.options ??
+              //     gameState.previousOptions ??
+              //     []
+              //   ).map((option, index) => (
+              //     <button key={index} onClick={() => onChooseResponse(index)}>
+              //       {option.text}
+              //     </button>
+              //   ))}
+              // </div>
+              <TextContainer
+                dialogue={dialogue}
+                options={
+                  dialogue.options?.length ? dialogue.options : previousOptions
+                }
+                onChooseResponse={onChooseResponse}
+              />
             )}
           </>
         )}

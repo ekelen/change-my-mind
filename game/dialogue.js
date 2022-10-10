@@ -649,7 +649,7 @@ export const START = {
   },
 };
 
-const flatten = (dialogueTree) => {
+const _flatten = (dialogueTree) => {
   const flat = {};
   const addIds = (node) => {
     if (node.response) {
@@ -684,5 +684,3 @@ const flatten = (dialogueTree) => {
 
   return flat;
 };
-
-export const dialoguesFlat = flatten(START);

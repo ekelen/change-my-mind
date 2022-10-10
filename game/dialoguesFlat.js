@@ -1,3 +1,6 @@
+// DO NOT MODIFY THIS FILE DIRECTLY
+
+// UPDATE dialogue.js and run _flatten() to generate this object
 export const dialogues = {
   "opt-149": {
     text: "Well then. Sounds like catching fish is just what you have to do.",

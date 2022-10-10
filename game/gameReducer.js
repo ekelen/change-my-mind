@@ -1,4 +1,3 @@
-import { START } from "./dialogue";
 import { getNode } from "./dialoguesApi";
 import { dialogues } from "./dialoguesFlat";
 import { CHOOSE_RESPONSE, RESTART } from "./gameActions";
@@ -21,10 +20,15 @@ const chooseResponse = (state, option, options) => {
   const _valence = option.valence ?? 0;
   const score = state.score + _valence;
 
+  const response = getNode(option.response);
+
   const common = {
     ...state,
     score,
-    dialogue: option,
+    dialogue: {
+      ...response,
+      options: response.options?.map(getNode) ?? undefined,
+    },
     previousOptions: options,
   };
 
@@ -32,8 +36,9 @@ const chooseResponse = (state, option, options) => {
     return {
       ...common,
       gameOver: true,
-      finalText: option.response?.text,
+      finalText: response.text,
       dialogue: {},
+      previousOptions: [],
     };
   }
   if (score > maxScore) {
@@ -41,7 +46,8 @@ const chooseResponse = (state, option, options) => {
       ...common,
       gameWon: true,
       dialogue: {},
-      finalText: option.response?.text,
+      finalText: response.text,
+      previousOptions: [],
     };
   }
   return common;
