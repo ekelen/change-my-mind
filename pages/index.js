@@ -315,6 +315,14 @@ const About = ({ onClose }) => {
         here) move towards a change they&rsquo;re ambivalent about making – if,
         and how, they want to.
       </p>
+      <p>
+        The goal is to elicit &quot;change talk&quot; from Bear—to encourage him
+        to explore and strengthen his motivation to stop eating humans.
+      </p>
+      <p>
+        Though some options may seem very similar, think about how the wording
+        could affect how likely bear is to talk about <em>not</em> eating you.
+      </p>
       <div style={{ display: "flex", justifyContent: "center" }}>
         <Image src="/noun-bear_sit.svg" height={130} width={130} alt="Bear" />
       </div>
@@ -324,6 +332,7 @@ const About = ({ onClose }) => {
         <strong>Partnership</strong>, <strong>Evocation</strong>,{" "}
         <strong>Acceptance</strong>, and <strong>Compassion</strong>.
       </p>
+
       <p>
         You can click the{" "}
         <button disabled={true} className={styles.optionHintButton}>
