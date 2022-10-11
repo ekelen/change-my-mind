@@ -210,6 +210,16 @@ const Dialogue = ({
       !gameWon
     ) {
       dialogueButton.current.focus();
+      if (
+        dialogueLines[0] &&
+        dialogueLines[0] === "Oh, human." &&
+        currentText === 0 &&
+        hintRef?.current
+      ) {
+        hintRef.current.style.visibility = "visible";
+      } else {
+        hintRef.current.style.visibility = "hidden";
+      }
     }
   }, [currentText, showOptions, dialogueLines, gameOver, gameWon]);
 
