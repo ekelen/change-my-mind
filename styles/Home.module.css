@@ -99,7 +99,7 @@
   margin-right: 10px;
 }
 
-.optionHint {
+.optionHint, .about {
   position: absolute;
   top: 10vh;
   bottom: 90vh;
@@ -120,7 +120,6 @@
   white-space: -o-pre-wrap;    /* Opera 7 */
   word-wrap: break-word;       /* Internet Explorer 5.5+ */
   overflow-y: auto;
-  
 }
 
 .optionHintText {
@@ -143,6 +142,67 @@
   font-size: 10px;
   font-weight: bolder;
 }
+
+.closeX {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 1rem;
+  height: 1rem;
+}
+
+.closeX span {
+  position: absolute;
+ top: 0;
+ left: 5px;
+ font-size: small;
+}
+
+/* about */
+
+.about {
+  font-family: 'Georgia', serif;
+}
+
+.about ul {
+  list-style: inside;
+  padding-left: 1rem;
+}
+.about li {
+  list-style: inside;
+  margin-bottom: 1rem;
+}
+
+.about em {
+  font-variant: small-caps;
+}
+
+.about li strong {
+  font-variant: small-caps;
+  text-decoration: underline;
+}
+
+.about a {
+  text-decoration: underline yellow ;
+}
+
+.about .optionHintButton {
+  position: relative;
+  border: 0;
+  background-color: yellow;
+  color: black;
+  border-radius: 50%;
+  left: unset;
+  top: unset;
+  width: 15px;
+  height: 15px;
+  padding: 0px;
+  font-size: 10px;
+  font-weight: bolder;
+  cursor: auto;
+}
+
+
 
 /* post-game */
 
