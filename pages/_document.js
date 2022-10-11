@@ -13,7 +13,7 @@ export default function Document() {
           crossOrigin="true"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Londrina+Sketch&display=swap&family=Inconsolata&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Londrina+Sketch&display=swap&family=Inconsolata&display=swap&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap"
           rel="stylesheet"
         />
       </Head>

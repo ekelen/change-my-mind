@@ -10,14 +10,14 @@ import { NOT_OARS_EXPLANATION, OARS, OARS_EXPLANATION } from "../data/dialogue";
 
 const Citation = () => {
   return (
-    <p>
+    <>
       Miller, W. R., & Rollnick, S. (2013).
       <span style={{ fontStyle: "italic" }}>
         {" "}
         Motivational interviewing: Helping people change
       </span>{" "}
       (3rd ed.). Guilford Press.
-    </p>
+    </>
   );
 };
 
@@ -64,7 +64,15 @@ const Options = ({ options, onChooseResponse, hideHint, availableHints }) => {
             {OARS_EXPLANATION[showingHint] ?? NOT_OARS_EXPLANATION[showingHint]}
           </div>
           <div>
-            <Citation />
+            <p
+              style={{
+                fontSize: "smaller",
+                paddingTop: "5rem",
+                textAlign: "right",
+              }}
+            >
+              All quotations are from <Citation />
+            </p>
           </div>
         </div>
       )}
@@ -375,7 +383,7 @@ const Header = ({ handleRestart, gameOver, gameWon, isDesktop }) => {
   }, [gameOver, gameWon]);
   return (
     <div style={{ width: "1000px", display: "flex", alignItems: "baseline" }}>
-      <h1 style={{ marginRight: "auto" }}>I Will Eat You</h1>
+      <h1 style={{ marginRight: "auto" }}>I Will Eat You - Change My Mind</h1>
       <button
         onClick={() => setShowAbout(true)}
         disabled={showAbout}
