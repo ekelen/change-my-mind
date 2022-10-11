@@ -6,7 +6,7 @@ import { maxScore } from "../game/gameReducer";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import useMobileDetect from "../hooks/useMobileDetect";
 import FocusLock from "react-focus-lock";
-import { OARS, OARS_EXPLANATION } from "../data/dialogue";
+import { NOT_OARS_EXPLANATION, OARS, OARS_EXPLANATION } from "../data/dialogue";
 
 const Citation = () => {
   return (
@@ -61,7 +61,7 @@ const Options = ({ options, onChooseResponse, hideHint, availableHints }) => {
             x
           </button>
           <div className={styles.optionHintText}>
-            {OARS_EXPLANATION[showingHint]}
+            {OARS_EXPLANATION[showingHint] ?? NOT_OARS_EXPLANATION[showingHint]}
           </div>
           <div>
             <Citation />

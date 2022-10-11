@@ -1,5 +1,5 @@
 import { cloneDeep } from "lodash";
-import { OARS } from "../data/dialogue";
+import { OARS, NOT_OARS } from "../data/dialogue";
 import { getNode } from "./dialoguesApi";
 import dialogues from "./dialoguesFlat.json";
 import { CHOOSE_RESPONSE, RESTART, HIDE_HINT } from "./gameActions";
@@ -15,9 +15,7 @@ export const initialState = {
   gameWon: false,
   finalText: "",
   score: 2,
-  availableHints: [
-    ...Object.values(OARS).filter((value) => value !== OARS.notOars),
-  ],
+  availableHints: [...Object.values(OARS), ...Object.values(NOT_OARS)],
 };
 
 const chooseResponse = (state, option, options) => {

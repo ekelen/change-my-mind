@@ -13,7 +13,33 @@ const OARS = {
   affirm: "affirm",
   reflect: "reflect",
   summarize: "summarize",
-  notOars: "notOars",
+};
+
+const NOT_OARS = {
+  iStatement: "iStatement",
+  closedQuestion: "closedQuestion",
+  flattery: "flattery",
+  planTooEarly: "planTooEarly",
+  judgment: "judgment",
+  advice: "advice",
+  expert: "expert",
+};
+
+const NOT_OARS_EXPLANATION = {
+  [NOT_OARS.iStatement]:
+    "It's not about you!\n\n\"I-statements\" don't honor the spirit of MI. They're about you, not the client.\n\nUnless you know the person, you cannot be sure how they will land.",
+  [NOT_OARS.closedQuestion]:
+    "Not an open-ended question!\n\nYes/no questions are not usually effective in the evocation stage of MI.\n\nThey do not invite reflection or further the conversation.",
+  [NOT_OARS.flattery]:
+    "Flattery will get you nowhere!\n\nFlattery is not a skill of MI.\n\nWe can AFFIRM a client's strengths based on what they have told us, but we should not give them compliments whose source is unclear.",
+  [NOT_OARS.planTooEarly]:
+    "We're not at the planning phase yet!\n\nThe planning phase is the last stage of MI. We should not be talking about it until we have evoked the client's motivation to change.",
+  [NOT_OARS.judgment]:
+    "Judgment is not MI!\n\nJudgment is not a skill of MI.\n\nWe should not be making value judgments about the client's behavior.",
+  [NOT_OARS.advice]:
+    "Advice is not MI!\n\nAdvice is not a skill of MI.\n\nWe should not be giving the client advice about what they should do, unless asked.",
+  [NOT_OARS.expert]:
+    "Take off your lab coat!\n\nIn MI, it's important to view the client as the expert.\n\nTherefore, we don't want to use language that makes us sound like we have intellectual superiority.",
 };
 
 const OARS_EXPLANATION = {
@@ -25,7 +51,6 @@ const OARS_EXPLANATION = {
     'This is a REFLECTION:\n\n"Reflective statements that make a guess about the client’s meaning have the important function of deepening understanding by clarifying whether one’s guess is accurate. \n\nReflective statements also allow people to hear again the thoughts and feelings they are expressing, perhaps in different words, and ponder them."',
   summarize:
     'This is a SUMMARY:\n\n"Summaries are essentially reflections that collect what a person has been saying, offering it back as in a basket.\n\n[...] They may suggest links between present material and what has been discussed before.\n\n[...] In evoking, there are particular guidelines for what to include in a summary in order to collect change talk and move along the process of change."',
-  notOars: "Not OARS",
 };
 
 const O_NEXTYEAR = {
@@ -41,15 +66,15 @@ const O_NEXTYEAR = {
     options: [
       {
         text: `And catching fish sucks – could you invent a more interesting way to do it?`,
-        oars: OARS.notOars,
+        oars: NOT_OARS.planTooEarly,
         valence: 0,
         response: {
           text: `No.`,
         },
       },
       {
-        oars: OARS.notOars,
         text: `I'm sorry that humans messed things up so badly.`,
+        oars: NOT_OARS.iStatement,
         valence: -1,
         response: {
           text: `I'm not. It makes me feel better about eating you.`,
@@ -86,7 +111,8 @@ const R_TOY = {
   options: [
     {
       text: `That's pretty messed up, bear.`,
-      oars: OARS.notOars,
+
+      oars: NOT_OARS.judgment,
       valence: -1,
       attemptChange: false,
       response: {
@@ -95,7 +121,8 @@ const R_TOY = {
     },
     {
       text: `What if you spent half your time catching fish, and the other half setting human-traps?`,
-      oars: OARS.notOars,
+
+      oars: NOT_OARS.advice,
       valence: -1,
       attemptChange: true,
       response: {
@@ -141,16 +168,16 @@ const R_TOY = {
                     options: [
                       O_NEXTYEAR,
                       {
-                        oars: OARS.notOars,
                         text: `How about we make a plan to get you through the winter?`,
+                        oars: NOT_OARS.planTooEarly,
                         valence: -1,
                         response: {
                           text: `I'm not sure I'm ready to make a plan yet.`,
                         },
                       },
                       {
-                        oars: OARS.notOars,
                         text: `I'd be pretty sad, too. I haven't known you for very long, but you are interesting, as far as bears go.`,
+                        oars: NOT_OARS.iStatement,
                         valence: -1,
                         response: {
                           text: `Don't patronize me, human. It makes me hungry.`,
@@ -160,22 +187,17 @@ const R_TOY = {
                   },
                 },
                 {
-                  oars: OARS.notOars,
-                  text: `You're not getting fat, so you're going to die.`,
+                  text: `You should just go get some normal food, bear. This isn't the way.`,
                   valence: -1,
+                  oars: NOT_OARS.judgment,
                   response: {
                     darncat: DARNCAT.activation,
-                    text: `You know what? You're right. 
-                      
-                      I'm gonna die, you're gonna die. 
-                      
-                      I might as well go out in style, you know? 
-                      
-                      Doing what I love. Eating humans.`,
+                    text: `Right, kid.
+                    
+                    I don't think a human knows the way better than I do.`,
                   },
                 },
                 {
-                  oars: OARS.notOars,
                   text: `Based on what you've said, it seems like not starving is maybe better, right?`,
                   valence: -1,
                   response: {
@@ -213,7 +235,8 @@ const R_PRIDE = {
         options: [
           {
             text: `I think you're a pretty cool bear, for what it's worth.`,
-            oars: OARS.notOars,
+
+            oars: NOT_OARS.flattery,
             valence: 0,
             response: {
               text: `Thanks, I guess...`,
@@ -321,7 +344,7 @@ const R_CLEVER = {
   options: [
     {
       text: `What's wrong with glass peanut butter jars?`,
-      oars: OARS.notOars,
+
       valence: 0,
       response: {
         text: `I mean, just think about it for like 5 more seconds.`,
@@ -339,7 +362,8 @@ const R_CLEVER = {
         options: [
           {
             text: `I could be wrong, but don't bears hibernate in, like, September?`,
-            oars: OARS.notOars,
+
+            oars: NOT_OARS.expert,
             valence: -1,
             attemptChange: true,
             response: {
@@ -398,7 +422,8 @@ const R_CLEVER = {
                             O_SUMM,
                             {
                               text: `Do you think you'll be an elder someday?`,
-                              oars: OARS.notOars,
+
+                              oars: NOT_OARS.closedQuestion,
                               valence: 0,
                               response: {
                                 text: "Doubt it.",
@@ -424,6 +449,7 @@ const R_CLEVER = {
                             {
                               text: `I mean, if I had stuck with my crowd, I'd be drinking a chocolate old fashioned at the lodge right now.`,
                               valence: -1,
+                              oars: NOT_OARS.iStatement,
                               response: {
                                 text: `That sounds disgusting. I only like chocolate melted in the pockets of my prey.`,
                               },
@@ -467,14 +493,14 @@ const R_CLEVER = {
                           There are legends told in these parts, of bears who caught MORE than enough humans to sustain them... but excess is a human feature.`,
                     options: [
                       {
-                        oars: OARS.notOars,
+                        oars: NOT_OARS.flattery,
                         text: `Bears are more reasonable than humans.`,
                         response: {
                           text: `You're just saying that to not get eaten.`,
                         },
                       },
                       {
-                        oars: OARS.notOars,
+                        oars: NOT_OARS.closedQuestion,
                         text: `Could you have caught enough humans?`,
                         response: {
                           text: `Probably not.`,
@@ -524,7 +550,7 @@ const R_CLEVER = {
                                       options: [
                                         {
                                           text: `You're right. You're not doing anything. You're just eating humans.`,
-                                          oars: OARS.notOars,
+
                                           valence: -1,
                                           attemptChange: false,
                                           response: {
@@ -533,7 +559,7 @@ const R_CLEVER = {
                                         },
                                         {
                                           text: `Is it too late?`,
-                                          oars: OARS.notOars,
+
                                           valence: -1,
                                           attemptChange: false,
                                           response: {
@@ -549,7 +575,7 @@ const R_CLEVER = {
                                     },
                                   },
                                   {
-                                    oars: OARS.notOars,
+                                    oars: NOT_OARS.flattery,
                                     text: `You're a really smart bear.`,
                                     response: {
                                       text: `You're just saying that to not get eaten.`,
@@ -559,14 +585,12 @@ const R_CLEVER = {
                               },
                             },
                             {
-                              oars: OARS.notOars,
                               text: `Actually, humans are a tropical species.`,
+                              oars: NOT_OARS.expert,
                               valence: -1,
                               response: {
                                 change: 0,
                                 text: `Well, you sure look goofy.
-                                  
-                                  Also, I don't really love eating polyester. 
                                   
                                   And I've had some issues with jewelry in, uh, transit.
                                   
@@ -619,7 +643,7 @@ const START = {
       {
         text: "Well then. Sounds like catching fish is just what you have to do.",
         valence: -1,
-        oars: OARS.notOars,
+        oars: NOT_OARS.judgment,
         response: {
           text: `I know. But the thing is, it's boring.
           
@@ -634,10 +658,8 @@ const START = {
       {
         text: `When I was a kid, I used to catch fish with a stick.
 
-        I never caught any.
-        
-        But it was fun.`,
-        oars: OARS.notOars,
+        I never caught any.`,
+        oars: NOT_OARS.iStatement,
         valence: -1,
         response: {
           text: `That's nice, human. I'm sure you were a very tasty kid.`,
@@ -658,4 +680,11 @@ const START = {
   },
 };
 
-module.exports = { START, DARNCAT, OARS, OARS_EXPLANATION };
+module.exports = {
+  START,
+  DARNCAT,
+  OARS,
+  OARS_EXPLANATION,
+  NOT_OARS,
+  NOT_OARS_EXPLANATION,
+};
