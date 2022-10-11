@@ -311,15 +311,18 @@ const About = ({ onClose }) => {
       <p>
         This short text adventure is designed to illustrate some of the
         principles of Motivational Interviewing, a style of communication
-        intended to help people (I&rsquo;ll call them <em>clients</em> here)
-        move towards a change they&rsquo;re ambivalent about making – if, and
-        how, they want to.
+        intended to help people (or bears—I&rsquo;ll call them <em>clients</em>{" "}
+        here) move towards a change they&rsquo;re ambivalent about making – if,
+        and how, they want to.
       </p>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <Image src="/noun-bear_sit.svg" height={130} width={130} alt="Bear" />
+      </div>
+      <p>You do not need to read further to start playing.</p>
       <p>
-        You do not need to read further to start playing. Just keep in mind the
-        &quot;Spirit of MI&quot;: <strong>Partnership</strong>,{" "}
-        <strong>Evocation</strong>, <strong>Acceptance</strong>, and{" "}
-        <strong>Compassion</strong>.
+        Just keep in mind the &quot;Spirit of MI&quot;:{" "}
+        <strong>Partnership</strong>, <strong>Evocation</strong>,{" "}
+        <strong>Acceptance</strong>, and <strong>Compassion</strong>.
       </p>
       <p>
         You can click the{" "}
@@ -367,7 +370,10 @@ const About = ({ onClose }) => {
         to learn more about MI.
       </p>
       <p>The only source used for this game is the OG textbook:</p>
-      <Citation />
+      <p>
+        {" "}
+        <Citation />
+      </p>
       <button onClick={onClose}>Close</button>
     </div>
   );
