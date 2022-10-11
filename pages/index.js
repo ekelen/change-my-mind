@@ -177,6 +177,7 @@ const Dialogue = ({
 }) => {
   const dialogueBottom = useRef(null);
   const dialogueButton = useRef(null);
+  const hintRef = useRef(null);
   const [currentText, setCurrentText] = useState(0);
   const dialogueLines = useMemo(
     () =>
@@ -200,6 +201,16 @@ const Dialogue = ({
       !gameWon
     ) {
       dialogueButton.current.focus();
+      if (
+        dialogueLines[0] &&
+        dialogueLines[0] === "Oh, human." &&
+        currentText === 0 &&
+        hintRef?.current
+      ) {
+        hintRef.current.style.visibility = "visible";
+      } else {
+        hintRef.current.style.visibility = "hidden";
+      }
     }
   }, [currentText, showOptions, dialogueLines, gameOver, gameWon]);
 
@@ -243,6 +254,9 @@ const Dialogue = ({
 
   return (
     <div className={styles.dialogue}>
+      <div style={{ fontSize: "smaller", color: "gray" }} ref={hintRef}>
+        Press Shift + Enter to show all text at once.
+      </div>
       <div className={styles.yellow}>
         <div>
           {dialogueLines.slice(0, currentText + 1).map((text, index) => (
