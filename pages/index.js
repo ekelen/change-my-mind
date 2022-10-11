@@ -190,15 +190,6 @@ const Dialogue = ({
 
   useEffect(() => {
     setCurrentText(0);
-    if (
-      dialogueLines[0] &&
-      dialogueLines[0] === "Oh, human." &&
-      hintRef?.current
-    ) {
-      hintRef.current.style.visibility = "visible";
-    } else {
-      hintRef.current.style.visibility = "hidden";
-    }
   }, [dialogueLines]);
 
   useEffect(() => {
