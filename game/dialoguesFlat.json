@@ -2,8 +2,7 @@
   "opt-1": {
     "text": "Well then. Sounds like catching fish is just what you have to do.",
     "valence": -1,
-    "oars": "notOars",
-    "notOars": "judgment",
+    "oars": "judgment",
     "response": "res-2",
     "id": "opt-1"
   },
@@ -15,8 +14,7 @@
   },
   "opt-3": {
     "text": "When I was a kid, I used to catch fish with a stick.\n\n        I never caught any.",
-    "oars": "notOars",
-    "notOars": "iStatement",
+    "oars": "iStatement",
     "valence": -1,
     "response": "res-4",
     "id": "opt-3"
@@ -30,7 +28,6 @@
   },
   "opt-7": {
     "text": "What's wrong with glass peanut butter jars?",
-    "oars": "notOars",
     "valence": 0,
     "response": "res-8",
     "id": "opt-7"
@@ -41,8 +38,7 @@
   },
   "opt-11": {
     "text": "I could be wrong, but don't bears hibernate in, like, September?",
-    "oars": "notOars",
-    "notOars": "expert",
+    "oars": "expert",
     "valence": -1,
     "attemptChange": true,
     "response": "res-12",
@@ -54,8 +50,7 @@
   },
   "opt-27": {
     "text": "I think you're a pretty cool bear, for what it's worth.",
-    "oars": "notOars",
-    "notOars": "flattery",
+    "oars": "flattery",
     "valence": 0,
     "response": "res-28",
     "id": "opt-27"
@@ -66,8 +61,7 @@
   },
   "opt-33": {
     "text": "And catching fish sucks – could you invent a more interesting way to do it?",
-    "oars": "notOars",
-    "notOars": "planTooEarly",
+    "oars": "planTooEarly",
     "valence": 0,
     "response": "res-34",
     "id": "opt-33"
@@ -77,9 +71,8 @@
     "id": "res-34"
   },
   "opt-35": {
-    "oars": "notOars",
     "text": "I'm sorry that humans messed things up so badly.",
-    "notOars": "iStatement",
+    "oars": "iStatement",
     "valence": -1,
     "response": "res-36",
     "id": "opt-35"
@@ -229,8 +222,7 @@
   },
   "opt-44": {
     "text": "Do you think you'll be an elder someday?",
-    "oars": "notOars",
-    "notOars": "closedQuestion",
+    "oars": "closedQuestion",
     "valence": 0,
     "response": "res-45",
     "id": "opt-44"
@@ -266,7 +258,7 @@
   "opt-50": {
     "text": "I mean, if I had stuck with my crowd, I'd be drinking a chocolate old fashioned at the lodge right now.",
     "valence": -1,
-    "notOars": "iStatement",
+    "oars": "iStatement",
     "response": "res-51",
     "id": "opt-50"
   },
@@ -326,8 +318,7 @@
     "id": "res-14"
   },
   "opt-56": {
-    "oars": "notOars",
-    "notOars": "flattery",
+    "oars": "flattery",
     "text": "Bears are more reasonable than humans.",
     "response": "res-57",
     "id": "opt-56"
@@ -337,8 +328,7 @@
     "id": "res-57"
   },
   "opt-58": {
-    "oars": "notOars",
-    "notOars": "closedQuestion",
+    "oars": "closedQuestion",
     "text": "Could you have caught enough humans?",
     "response": "res-59",
     "id": "opt-58"
@@ -349,7 +339,6 @@
   },
   "opt-66": {
     "text": "You're right. You're not doing anything. You're just eating humans.",
-    "oars": "notOars",
     "valence": -1,
     "attemptChange": false,
     "response": "res-67",
@@ -361,7 +350,6 @@
   },
   "opt-68": {
     "text": "Is it too late?",
-    "oars": "notOars",
     "valence": -1,
     "attemptChange": false,
     "response": "res-69",
@@ -391,8 +379,7 @@
     "id": "res-65"
   },
   "opt-70": {
-    "oars": "notOars",
-    "notOars": "flattery",
+    "oars": "flattery",
     "text": "You're a really smart bear.",
     "response": "res-71",
     "id": "opt-70"
@@ -419,9 +406,8 @@
     "id": "res-63"
   },
   "opt-72": {
-    "oars": "notOars",
     "text": "Actually, humans are a tropical species.",
-    "notOars": "expert",
+    "oars": "expert",
     "valence": -1,
     "response": "res-73",
     "id": "opt-72"
@@ -505,8 +491,7 @@
   },
   "opt-76": {
     "text": "That's pretty messed up, bear.",
-    "oars": "notOars",
-    "notOars": "judgment",
+    "oars": "judgment",
     "valence": -1,
     "attemptChange": false,
     "response": "res-77",
@@ -518,8 +503,7 @@
   },
   "opt-78": {
     "text": "What if you spent half your time catching fish, and the other half setting human-traps?",
-    "oars": "notOars",
-    "notOars": "advice",
+    "oars": "advice",
     "valence": -1,
     "attemptChange": true,
     "response": "res-79",
@@ -530,9 +514,8 @@
     "id": "res-79"
   },
   "opt-86": {
-    "oars": "notOars",
     "text": "How about we make a plan to get you through the winter?",
-    "notOars": "planTooEarly",
+    "oars": "planTooEarly",
     "valence": -1,
     "response": "res-87",
     "id": "opt-86"
@@ -542,9 +525,8 @@
     "id": "res-87"
   },
   "opt-88": {
-    "oars": "notOars",
     "text": "I'd be pretty sad, too. I haven't known you for very long, but you are interesting, as far as bears go.",
-    "notOars": "iStatement",
+    "oars": "iStatement",
     "valence": -1,
     "response": "res-89",
     "id": "opt-88"
@@ -573,10 +555,9 @@
     "id": "res-85"
   },
   "opt-90": {
-    "oars": "notOars",
     "text": "You should just go get some normal food, bear. This isn't the way.",
     "valence": -1,
-    "notOars": "judgment",
+    "oars": "judgment",
     "response": "res-91",
     "id": "opt-90"
   },
@@ -586,7 +567,6 @@
     "id": "res-91"
   },
   "opt-92": {
-    "oars": "notOars",
     "text": "Based on what you've said, it seems like not starving is maybe better, right?",
     "valence": -1,
     "response": "res-93",
