@@ -1,4 +1,4 @@
-// file system module to perform file operations
+// $ node ./data/generateDialogueFlat.js
 const fs = require("fs");
 const dialogue = require("./dialogue.js");
 const lodash = require("lodash");
