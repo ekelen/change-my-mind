@@ -10,14 +10,14 @@ import { NOT_OARS_EXPLANATION, OARS, OARS_EXPLANATION } from "../data/dialogue";
 
 const Citation = () => {
   return (
-    <p>
+    <>
       Miller, W. R., & Rollnick, S. (2013).
       <span style={{ fontStyle: "italic" }}>
         {" "}
         Motivational interviewing: Helping people change
       </span>{" "}
       (3rd ed.). Guilford Press.
-    </p>
+    </>
   );
 };
 
@@ -64,7 +64,15 @@ const Options = ({ options, onChooseResponse, hideHint, availableHints }) => {
             {OARS_EXPLANATION[showingHint] ?? NOT_OARS_EXPLANATION[showingHint]}
           </div>
           <div>
-            <Citation />
+            <p
+              style={{
+                fontSize: "smaller",
+                paddingTop: "5rem",
+                textAlign: "right",
+              }}
+            >
+              All quotations are from <Citation />
+            </p>
           </div>
         </div>
       )}
@@ -303,15 +311,18 @@ const About = ({ onClose }) => {
       <p>
         This short text adventure is designed to illustrate some of the
         principles of Motivational Interviewing, a style of communication
-        intended to help people (I&rsquo;ll call them <em>clients</em> here)
-        move towards a change they&rsquo;re ambivalent about making – if, and
-        how, they want to.
+        intended to help people (or bears—I&rsquo;ll call them <em>clients</em>{" "}
+        here) move towards a change they&rsquo;re ambivalent about making – if,
+        and how, they want to.
       </p>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <Image src="/noun-bear_sit.svg" height={130} width={130} alt="Bear" />
+      </div>
+      <p>You do not need to read further to start playing.</p>
       <p>
-        You do not need to read further to start playing. Just keep in mind the
-        &quot;Spirit of MI&quot;: <strong>Partnership</strong>,{" "}
-        <strong>Evocation</strong>, <strong>Acceptance</strong>, and{" "}
-        <strong>Compassion</strong>.
+        Just keep in mind the &quot;Spirit of MI&quot;:{" "}
+        <strong>Partnership</strong>, <strong>Evocation</strong>,{" "}
+        <strong>Acceptance</strong>, and <strong>Compassion</strong>.
       </p>
       <p>
         You can click the{" "}
@@ -359,7 +370,10 @@ const About = ({ onClose }) => {
         to learn more about MI.
       </p>
       <p>The only source used for this game is the OG textbook:</p>
-      <Citation />
+      <p>
+        {" "}
+        <Citation />
+      </p>
       <button onClick={onClose}>Close</button>
     </div>
   );
@@ -375,7 +389,7 @@ const Header = ({ handleRestart, gameOver, gameWon, isDesktop }) => {
   }, [gameOver, gameWon]);
   return (
     <div style={{ width: "1000px", display: "flex", alignItems: "baseline" }}>
-      <h1 style={{ marginRight: "auto" }}>I Will Eat You</h1>
+      <h1 style={{ marginRight: "auto" }}>I Will Eat You - Change My Mind</h1>
       <button
         onClick={() => setShowAbout(true)}
         disabled={showAbout}

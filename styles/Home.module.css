@@ -100,6 +100,8 @@
 }
 
 .optionHint, .about {
+  font-family: 'Cormorant Garamond', 'Garamond', 'Georgia', serif;
+  font-size: 1.2rem;
   position: absolute;
   top: 10vh;
   bottom: 90vh;
@@ -124,8 +126,8 @@
 
 .optionHintText {
   margin-top: 2rem;
-  margin-left: 1.5rem;
-  font-size: large;
+  /* margin-left: 1.5rem; */
+  /* font-size: large; */
 }
 
 .optionHintButton {
@@ -161,7 +163,9 @@
 /* about */
 
 .about {
-  font-family: 'Georgia', serif;
+  font-family: 'Cormorant Garamond', 'Garamond', 'Georgia', serif;
+  font-size: 1.2rem;
+  padding: 1rem 1.5rem 2rem;
 }
 
 .about ul {
@@ -178,7 +182,6 @@
 }
 
 .about li strong {
-  font-variant: small-caps;
   text-decoration: underline;
 }
 

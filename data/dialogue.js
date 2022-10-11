@@ -35,22 +35,22 @@ const NOT_OARS_EXPLANATION = {
   [NOT_OARS.planTooEarly]:
     "We're not at the planning phase yet!\n\nThe planning phase is the last stage of MI. We should not be talking about it until we have evoked the client's motivation to change.",
   [NOT_OARS.judgment]:
-    "Judgment is not MI!\n\nJudgment is not a skill of MI.\n\nWe should not be making value judgments about the client's behavior.",
+    "Judgment is not a skill of MI.\n\nBy judging a client's choices, we are showing them that we believe our perception of the situation is superior to theirs.",
   [NOT_OARS.advice]:
-    "Advice is not MI!\n\nAdvice is not a skill of MI.\n\nWe should not be giving the client advice about what they should do, unless asked.",
+    "Who asked you?\n\nAdvice is not a skill of MI. It violates the principles of Acceptance and Partnership.\n\nIn some cases it can be appropriate—e.g. if we're explicitly asked.",
   [NOT_OARS.expert]:
-    "Take off your lab coat!\n\nIn MI, it's important to view the client as the expert.\n\nTherefore, we don't want to use language that makes us sound like we have intellectual superiority.",
+    "Take off your lab coat!\n\nIn MI, it's important to view the client as the expert.\n\nTherefore, we don't want to use language that makes us sound like we think we have the intellectual upper hand.",
 };
 
 const OARS_EXPLANATION = {
   openEndedQuestion:
-    'This is an OPEN-ENDED QUESTION: \n\n"MI makes particular use of open questions, those that invite the person to reflect and elaborate. \n\nClosed questions, in contrast, ask for specific information that can usually be offered as a short answer.\n\nIn MI, gathering information is not the most important function of questions."',
+    'This is the OARS skill of asking OPEN-ENDED QUESTIONS: \n\n"MI makes particular use of open questions, those that invite the person to reflect and elaborate. \n\nClosed questions, in contrast, ask for specific information that can usually be offered as a short answer.\n\nIn MI, gathering information is not the most important function of questions."',
   affirm:
-    'This is an AFFIRMATION: \n\n"Affirmation is both general and specific in MI.\n\nThe counselor in general respects and honors the client as a person of worth, with the capability for growth and change as well as volitional choice about whether to do so.\n\nThe interviewer also recognizes and comments on the client’s particular strengths, abilities, good intentions, and efforts."',
+    'This is the OARS skill of AFFIRMATION: \n\n"Affirmation is both general and specific in MI.\n\nThe counselor in general respects and honors the client as a person of worth, with the capability for growth and change as well as volitional choice about whether to do so.\n\nThe interviewer also recognizes and comments on the client’s particular strengths, abilities, good intentions, and efforts."',
   reflect:
-    'This is a REFLECTION:\n\n"Reflective statements that make a guess about the client’s meaning have the important function of deepening understanding by clarifying whether one’s guess is accurate. \n\nReflective statements also allow people to hear again the thoughts and feelings they are expressing, perhaps in different words, and ponder them."',
+    'This is the OARS skill of REFLECTING:\n\n"Reflective statements that make a guess about the client’s meaning have the important function of deepening understanding by clarifying whether one’s guess is accurate. \n\nReflective statements also allow people to hear again the thoughts and feelings they are expressing, perhaps in different words, and ponder them."',
   summarize:
-    'This is a SUMMARY:\n\n"Summaries are essentially reflections that collect what a person has been saying, offering it back as in a basket.\n\n[...] They may suggest links between present material and what has been discussed before.\n\n[...] In evoking, there are particular guidelines for what to include in a summary in order to collect change talk and move along the process of change."',
+    'This is the OARS skill of SUMMARIZING:\n\n"Summaries are essentially reflections that collect what a person has been saying, offering it back as in a basket.\n\n[...] They may suggest links between present material and what has been discussed before.\n\n[...] In evoking, there are particular guidelines for what to include in a summary in order to collect change talk and move along the process of change."',
 };
 
 const O_NEXTYEAR = {
