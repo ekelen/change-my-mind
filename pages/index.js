@@ -180,11 +180,7 @@ const Dialogue = ({
   const hintRef = useRef(null);
   const [currentText, setCurrentText] = useState(0);
   const dialogueLines = useMemo(
-    () =>
-      dialogue.text
-        .split("\n")
-        .map((t) => t.trim())
-        .filter((t) => !!t) ?? [],
+    () => dialogue.text.split("\n").filter((t) => !!t) ?? [],
     [dialogue]
   );
 

@@ -33,10 +33,22 @@ const _flatten = (dialogueTree) => {
       }
     }
   };
+
   addIds(dialogueTree);
   mapIds(dialogueTree);
 
-  return flat;
+  const tidyText = (items) => {
+    Object.values(items).forEach((item) => {
+      if (item.text) {
+        item.text = item.text
+          .split("\n")
+          .map((t) => t.trim())
+          .join("\n");
+      }
+    });
+    return items;
+  };
+  return tidyText(flat);
 };
 
 const flat = _flatten(dialogue.START);
