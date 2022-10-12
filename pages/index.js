@@ -32,16 +32,6 @@ const Options = ({ options, onChooseResponse, hideHint, availableHints }) => {
     <div className={styles.options}>
       {options.map((option, index) => (
         <div key={`${index}`} className={styles.optionButtonWrapper}>
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onChooseResponse(index);
-            }}
-            className={styles.optionButton}
-            autoFocus={index === 0}
-          >
-            {option.text}
-          </button>
           {option.oars && availableHints.includes(option.oars) && (
             <button
               className={styles.optionHintButton}
@@ -53,6 +43,16 @@ const Options = ({ options, onChooseResponse, hideHint, availableHints }) => {
               ?
             </button>
           )}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onChooseResponse(index);
+            }}
+            className={styles.optionButton}
+            autoFocus={index === 0}
+          >
+            {option.text}
+          </button>
         </div>
       ))}
       {showingHint && (
