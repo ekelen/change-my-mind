@@ -177,7 +177,7 @@ const Dialogue = ({
 }) => {
   const dialogueBottom = useRef(null);
   const dialogueButton = useRef(null);
-  const hintRef = useRef(null);
+  const shortcutHintRef = useRef(null);
   const [currentText, setCurrentText] = useState(0);
   const dialogueLines = useMemo(
     () =>
@@ -205,11 +205,13 @@ const Dialogue = ({
         dialogueLines[0] &&
         dialogueLines[0] === "Oh, human." &&
         currentText === 0 &&
-        hintRef?.current
+        shortcutHintRef?.current &&
+        document?.activeElement &&
+        document?.activeElement === dialogueButton?.current
       ) {
-        hintRef.current.style.visibility = "visible";
+        shortcutHintRef.current.style.visibility = "visible";
       } else {
-        hintRef.current.style.visibility = "hidden";
+        shortcutHintRef.current.style.visibility = "hidden";
       }
     }
   }, [currentText, showOptions, dialogueLines, gameOver, gameWon]);
@@ -254,8 +256,9 @@ const Dialogue = ({
 
   return (
     <div className={styles.dialogue}>
-      <div style={{ fontSize: "smaller", color: "gray" }} ref={hintRef}>
-        Press Shift + Enter to show all text at once.
+      <div style={{ fontSize: "smaller", color: "gray" }} ref={shortcutHintRef}>
+        Press Shift + Enter to show all text at once. Press Enter to show the
+        next line.
       </div>
       <div className={styles.yellow}>
         <div>
