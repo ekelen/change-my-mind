@@ -7,13 +7,13 @@
     "id": "opt-1"
   },
   "res-2": {
-    "text": "I know. But the thing is, it's boring.\n          \n          Stripping the flesh from your torso, not so much.\n          \n          Nice talking to you, human.",
+    "text": "I know. But the thing is, it's boring.\n\nStripping the flesh from your torso, not so much.\n\nNice talking to you, human.",
     "change": false,
     "darncat": "desire",
     "id": "res-2"
   },
   "opt-3": {
-    "text": "When I was a kid, I used to catch fish with a stick.\n\n        I never caught any.",
+    "text": "When I was a kid, I used to catch fish with a stick.\n\nI never caught any.",
     "oars": "iStatement",
     "valence": -1,
     "response": "res-4",
@@ -113,7 +113,7 @@
     "id": "opt-31"
   },
   "res-32": {
-    "text": "Next year... I could eat a LOT more humans. \n                      \n                      I could show OTHER bears how to hunt humans, too.\n                      \n                      Us bears have been really pushed to the brink these last few decades, you know.",
+    "text": "Next year... I could eat a LOT more humans.\n\nI could show OTHER bears how to hunt humans, too.\n\nUs bears have been really pushed to the brink these last few decades, you know.",
     "options": [
       "opt-33",
       "opt-35",
@@ -128,7 +128,7 @@
     "id": "opt-29"
   },
   "res-30": {
-    "text": "*pause*\n                      \n                      But like, I guess if I'm dead because I didn't haul ass and go fishing, no one's gonna be too impressed.",
+    "text": "*pause*\n\nBut like, I guess if I'm dead because I didn't haul ass and go fishing, no one's gonna be too impressed.",
     "options": [
       "opt-31"
     ],
@@ -162,7 +162,7 @@
   "res-24": {
     "change": true,
     "darncat": "reason",
-    "text": "Yeah, I really think so.\n                          \n                          I'm just kind of proud, you know? Like, I kind of regret not just catching those swole sockeye when I had the chance.\n                          \n                          I'm gonna end up on TikTok as the world's hugest trash panda.",
+    "text": "Yeah, I really think so.\n\nI'm just kind of proud, you know? Like, I kind of regret not just catching those swole sockeye when I had the chance.\n\nI'm gonna end up on TikTok as the world's hugest trash panda.",
     "options": [
       "opt-25"
     ],
@@ -176,7 +176,7 @@
     "id": "opt-41"
   },
   "res-42": {
-    "text": "Correctamundo! Have you ever had a game to play that made the real world just not matter anymore?\n                \n                That's how awesome human-catching is.",
+    "text": "Correctamundo! Have you ever had a game to play that made the real world just not matter anymore?\n\nThat's how awesome human-catching is.",
     "id": "res-42"
   },
   "opt-43": {
@@ -195,7 +195,7 @@
     "id": "opt-21"
   },
   "res-22": {
-    "text": "Right.\n                        \n                        I'm also pretty smart, like, bear-wise.\n                        \n                        Like, there's this grocery store.\n                        \n                        They always throws away totally fine chickens into a totally NOT bear-proof dumpster.\n                        \n                        I usually consider myself above dumpster diving, but I've scoped it out. \n                        \n                        I wonder if I could loot it and catch up on fat stores real quick.",
+    "text": "Right.\n\nI'm also pretty smart, like, bear-wise.\n\nLike, there's this grocery store.\n\nThey always throws away totally fine chickens into a totally NOT bear-proof dumpster.\n\nI usually consider myself above dumpster diving, but I've scoped it out.\n\nI wonder if I could loot it and catch up on fat stores real quick.",
     "darncat": "takingSteps",
     "options": [
       "opt-23",
@@ -206,7 +206,7 @@
   },
   "opt-19": {
     "oars": "summarize",
-    "text": "Hunting humans brings purpose and accomplishment to your life. \n        \n        But you also have found meaning in listening to the wisdom of your fellow bears.\n        \n        And you want to survive the winter and live another summer to... well, to catch more humans.\n        \n        Have I got that right?",
+    "text": "Hunting humans brings purpose and accomplishment to your life.\n\nBut you also have found meaning in listening to the wisdom of your fellow bears.\n\nAnd you want to survive the winter and live another summer to... well, to catch more humans.\n\nHave I got that right?",
     "valence": 1,
     "attemptChange": true,
     "response": "res-20",
@@ -214,7 +214,7 @@
   },
   "res-20": {
     "change": true,
-    "text": "Yeah. Well, also maybe even long enough to pass on some of my knowledge to my own cubs.\n            \n            I don't know if I'm cut out to be a dad, but I don't think bear dads are, like, involved.\n            \n            But I'd teach them some bear stuff for sure.",
+    "text": "Yeah. Well, also maybe even long enough to pass on some of my knowledge to my own cubs.\n\nI don't know if I'm cut out to be a dad, but I don't think bear dads are, like, involved.\n\nBut I'd teach them some bear stuff for sure.",
     "options": [
       "opt-21"
     ],
@@ -275,7 +275,7 @@
   },
   "res-18": {
     "change": true,
-    "text": "It's actually a SLEUTH of bears, not a \"herd.\" Just FYI.\n                          \n                          But yeah, when it comes to hunting humans, I'm a bit of a loner.\n                          \n                          I usually kinda take pride in it, but there's a little part of me that's worried.\n                          \n                          And like, maybe I should have listened to my elders – their wisdom.\n                          \n                          Maybe I should have listened. I coulda gone fishing. Got fat. Hibernated on time.",
+    "text": "It's actually a SLEUTH of bears, not a \"herd.\" Just FYI.\n\nBut yeah, when it comes to hunting humans, I'm a bit of a loner.\n\nI usually kinda take pride in it, but there's a little part of me that's worried.\n\nAnd like, maybe I should have listened to my elders – their wisdom.\n\nMaybe I should have listened. I coulda gone fishing. Got fat. Hibernated on time.",
     "options": [
       "opt-19",
       "opt-44",
@@ -293,7 +293,7 @@
     "id": "opt-15"
   },
   "res-16": {
-    "text": "Nope. I mean, maybe they did the air-quotes \"SENSIBLE\" thing and caught fish, but I can be an ice-fishing bear.\n                          \n                          I'm pretty smart. I can figure it out.\n                          \n                          In the meantime, the leaves are about to change, and do you know what that means?\n                          \n                          Pumpkin spice lattes... coursing through human flesh. Mmmm...",
+    "text": "Nope. I mean, maybe they did the air-quotes \"SENSIBLE\" thing and caught fish, but I can be an ice-fishing bear.\n\nI'm pretty smart. I can figure it out.\n\nIn the meantime, the leaves are about to change, and do you know what that means?\n\nPumpkin spice lattes... coursing through human flesh. Mmmm...",
     "change": true,
     "options": [
       "opt-17"
@@ -309,7 +309,7 @@
     "id": "opt-13"
   },
   "res-14": {
-    "text": "That's right.\n                \n                *pause*\n                \n                I mean, I'm kind of marching to the beat of my own drum here. \n                \n                Most of my friends are actually hibernating already. \n                \n                But they're just softies who are scared of having to punch through a little ice.",
+    "text": "That's right.\n\n*pause*\n\nI mean, I'm kind of marching to the beat of my own drum here.\n\nMost of my friends are actually hibernating already.\n\nBut they're just softies who are scared of having to punch through a little ice.",
     "change": true,
     "darncat": "desire",
     "options": [
@@ -356,7 +356,7 @@
     "id": "opt-68"
   },
   "res-69": {
-    "text": "Yes. It's OCTOBER. Who am I kidding? There's no way. \n  \n                                            I'm gonna die.\n                                            \n                                            I'm gonna die and some park ranger is gonna give my carcass to the locals for a basement throw rug.",
+    "text": "Yes. It's OCTOBER. Who am I kidding? There's no way.\n\nI'm gonna die.\n\nI'm gonna die and some park ranger is gonna give my carcass to the locals for a basement throw rug.",
     "id": "res-69"
   },
   "opt-64": {
@@ -368,7 +368,7 @@
     "id": "opt-64"
   },
   "res-65": {
-    "text": "Well... They're pretty much all in hibernation now, and I'm still out here catching humans.\n                                              \n                                              I guess I'm scared my time has run out to catch up, caloric-surplus-wise.\n                                              \n                                              The fear just keeps me locked into this cycle of human-stalking instead.\n                                              \n                                              It's a great distraction.\n                                              \n                                              It makes me feel like I'm doing something, even though I'm not... you know?",
+    "text": "Well... They're pretty much all in hibernation now, and I'm still out here catching humans.\n\nI guess I'm scared my time has run out to catch up, caloric-surplus-wise.\n\nThe fear just keeps me locked into this cycle of human-stalking instead.\n\nIt's a great distraction.\n\nIt makes me feel like I'm doing something, even though I'm not... you know?",
     "change": true,
     "darncat": "desire",
     "options": [
@@ -390,7 +390,7 @@
   },
   "opt-62": {
     "oars": "affirm",
-    "text": "You're proud of your BEAR-itage.\n                              \n                              Sorry sorry!! ...Heritage.\n                              \n                              Your kind has discovered how to survive without taking what it doesn't need.",
+    "text": "You're proud of your BEAR-itage.\n\nSorry sorry!! ...Heritage.\n\nYour kind has discovered how to survive without taking what it doesn't need.",
     "valence": -1,
     "response": "res-63",
     "id": "opt-62"
@@ -398,7 +398,7 @@
   "res-63": {
     "change": true,
     "darncat": "need",
-    "text": "I mean, my friends have been saying that I'm way out of line with the way of things. Sometimes I wonder if they're right.\n                                  \n                                  On the other hand – this will make me sound kinda self-important – but they aren't super smart.",
+    "text": "I mean, my friends have been saying that I'm way out of line with the way of things. Sometimes I wonder if they're right.\n\nOn the other hand – this will make me sound kinda self-important – but they aren't super smart.",
     "options": [
       "opt-64",
       "opt-70"
@@ -414,7 +414,7 @@
   },
   "res-73": {
     "change": 0,
-    "text": "Well, you sure look goofy.\n                                  \n                                  And I've had some issues with jewelry in, uh, transit.\n                                  \n                                  But that's part of the fun - you all come with different accessories. \n                                  \n                                  I have quite the stash, to be honest with you.",
+    "text": "Well, you sure look goofy.\n\nAnd I've had some issues with jewelry in, uh, transit.\n\nBut that's part of the fun - you all come with different accessories.\n\nI have quite the stash, to be honest with you.",
     "id": "res-73"
   },
   "opt-60": {
@@ -445,7 +445,7 @@
   "res-55": {
     "change": false,
     "darncat": "ability",
-    "text": "I could have been more efficient by catching more humans.\n                          \n                          There are legends told in these parts, of bears who caught MORE than enough humans to sustain them... but excess is a human feature.",
+    "text": "I could have been more efficient by catching more humans.\n\nThere are legends told in these parts, of bears who caught MORE than enough humans to sustain them... but excess is a human feature.",
     "options": [
       "opt-56",
       "opt-58",
@@ -462,7 +462,7 @@
     "id": "opt-52"
   },
   "res-53": {
-    "text": "That's why I like hunting humans. They're so clever, and I'm so clever, and it's a challenge to outsmart them. I'm good at it. \n                \n                Thing is... \n                \n                If I were better at planning ahead, I would have caught more humans this summer. \n                \n                I am clever, but I could have been a little more efficient.",
+    "text": "That's why I like hunting humans. They're so clever, and I'm so clever, and it's a challenge to outsmart them. I'm good at it.\n\nThing is...\n\nIf I were better at planning ahead, I would have caught more humans this summer.\n\nI am clever, but I could have been a little more efficient.",
     "change": true,
     "darncat": "ability",
     "options": [
@@ -545,7 +545,7 @@
   },
   "res-85": {
     "darncat": "desire",
-    "text": "Yeah, I mean, I don't have INTERNET *eye roll*, but I'm pretty sure that's how it works.\n                      \n                      I'd be kinda sad not to make it through the winter...",
+    "text": "Yeah, I mean, I don't have INTERNET *eye roll*, but I'm pretty sure that's how it works.\n\nI'd be kinda sad not to make it through the winter...",
     "change": true,
     "options": [
       "opt-31",
@@ -563,7 +563,7 @@
   },
   "res-91": {
     "darncat": "activation",
-    "text": "Right, kid.\n                    \n                    I don't think a human knows the way better than I do.",
+    "text": "Right, kid.\n\nI don't think a human knows the way better than I do.",
     "id": "res-91"
   },
   "opt-92": {
@@ -573,7 +573,7 @@
     "id": "opt-92"
   },
   "res-93": {
-    "text": "Oh? What, just sit there and wait for them to swim by? I'm not your uncle Jimmy, starting on his second pack of Heineken on the dock before dinner on a Tuesday.\n                      \n                      I'm a PREDATOR.",
+    "text": "Oh? What, just sit there and wait for them to swim by? I'm not your uncle Jimmy, starting on his second pack of Heineken on the dock before dinner on a Tuesday.\n\nI'm a PREDATOR.",
     "id": "res-93"
   },
   "opt-82": {
@@ -604,7 +604,7 @@
   },
   "res-81": {
     "darncat": "ability",
-    "text": "That's what I WANT to think.\n        \n        And it's what I DO think, when I'm caught up in the hunt.\n        \n        Thing is...\n              \n              Can this really be my best life, if I'm spending so much time setting human traps that I'm not getting fat?",
+    "text": "That's what I WANT to think.\n\nAnd it's what I DO think, when I'm caught up in the hunt.\n\nThing is...\n\nCan this really be my best life, if I'm spending so much time setting human traps that I'm not getting fat?",
     "change": true,
     "options": [
       "opt-82"
@@ -620,7 +620,7 @@
     "id": "opt-74"
   },
   "res-75": {
-    "text": "You know what the best part of hunting humans is? Pretending to be some bumbling kid's toy. I'm like, \"Oh bother, I'm so cute. I'm so cuddly. Take a selfie with me.\" \n      \n      And then I eat them. \n      \n      It's great.",
+    "text": "You know what the best part of hunting humans is? Pretending to be some bumbling kid's toy. I'm like, \"Oh bother, I'm so cute. I'm so cuddly. Take a selfie with me.\"\n\nAnd then I eat them.\n\nIt's great.",
     "change": false,
     "options": [
       "opt-76",
@@ -639,7 +639,7 @@
   },
   "res-6": {
     "requiredLevel": 0,
-    "text": "So, it's like this.\n  \n  Humans are just CLEVER – yeah, yeah, don't let it go to your head. \n  \n  Have you ever seen a bear-proof garbage bin? Well, I have, and if there's one thing I hate MORE than glass peanut butter jars, it's a bear-proof garbage bin.\n\n  A mark of your species' ingenuity.\n\n  But there are no bear-proof humans.\n          \n      ...Hey, do you have any peanut butter on you?",
+    "text": "So, it's like this.\n\nHumans are just CLEVER – yeah, yeah, don't let it go to your head.\n\nHave you ever seen a bear-proof garbage bin? Well, I have, and if there's one thing I hate MORE than glass peanut butter jars, it's a bear-proof garbage bin.\n\nA mark of your species' ingenuity.\n\nBut there are no bear-proof humans.\n\n...Hey, do you have any peanut butter on you?",
     "darncat": "desire",
     "change": false,
     "options": [
@@ -656,7 +656,7 @@
   "res-start": {
     "id": "res-start",
     "required_level": 0,
-    "text": "Oh, human. \n    \n    This must be, like, your worst nightmare.\n  \n  I'm a bear, and I LIVE for HUMAN-HUNTING!\n  \n  Winter is coming, though, and everyone's all up in my muzzle, telling me I have to catch fish and fatten up.\n  \n  You see, fish are FAT and SLOW this time of year, and us bears gotta bulk.\n  \n  Thing is...\n  \n  Fish are too easy. I'd rather catch humans.",
+    "text": "Oh, human.\n\nThis must be, like, your worst nightmare.\n\nI'm a bear, and I LIVE for HUMAN-HUNTING!\n\nWinter is coming, though, and everyone's all up in my muzzle, telling me I have to catch fish and fatten up.\n\nYou see, fish are FAT and SLOW this time of year, and us bears gotta bulk.\n\nThing is...\n\nFish are too easy. I'd rather catch humans.",
     "options": [
       "opt-1",
       "opt-3",
