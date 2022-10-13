@@ -23,6 +23,7 @@ const NOT_OARS = {
   judgment: "judgment",
   advice: "advice",
   expert: "expert",
+  sustain: "sustain",
 };
 
 const NOT_OARS_EXPLANATION = {
@@ -40,6 +41,8 @@ const NOT_OARS_EXPLANATION = {
     "⚠️ Who asked you?\n\nAdvice is not a skill of MI. It violates the principles of Acceptance and Partnership.\n\nIn some cases it can be appropriate—e.g. if we're explicitly asked.",
   [NOT_OARS.expert]:
     "⚠️ Take off your lab coat!\n\nIn MI, it's important to view the client as the expert.\n\nTherefore, we don't want to use language that makes us sound like we think we have the intellectual upper hand.",
+  [NOT_OARS.sustain]:
+    '⚠️ Eliciting "Sustain talk"!\n\nEven though it shows you understand your client\'s position, questions and statements that reinforce SUSTAINING a behavior—rather than evoking motivation for making a CHANGE—can keep a client feeling stuck in old behavior.',
 };
 
 const OARS_EXPLANATION = {
@@ -243,12 +246,18 @@ const R_PRIDE = {
             },
           },
           {
-            text: "*say nothing*",
-            valence: 1,
+            text: `You'd still get to terrify humans if you root around in their dumpsters.`,
+            oars: NOT_OARS.advice,
             response: {
-              text: `*pause*
-                      
-                      But like, I guess if I'm dead because I didn't haul ass and go fishing, no one's gonna be too impressed.`,
+              text: `It's not the same. I don't get to outsmart them.`,
+            },
+          },
+          {
+            text: "Being a master of your craft matters to you. It's something other bears take note of.",
+            valence: 1,
+            oars: OARS.affirm,
+            response: {
+              text: `I guess if I'm dead because I didn't haul ass and go fishing, no one's gonna be too impressed.`,
               options: [O_NEXTYEAR],
             },
           },
@@ -264,7 +273,7 @@ const O_SUMM = {
         
         But you also have found meaning in listening to the wisdom of your fellow bears.
         
-        And you want to survive the winter and live another summer to... well, to catch more humans.
+        And you want to survive the winter.
         
         Have I got that right?`,
   valence: 1,
@@ -273,7 +282,7 @@ const O_SUMM = {
     change: true,
     text: `Yeah. Well, also maybe even long enough to pass on some of my knowledge to my own cubs.
             
-            I don't know if I'm cut out to be a dad, but I don't think bear dads are, like, involved.
+            I don't know if I'm cut out to be a dad, but I don't think bear dads are, like, *involved*.
             
             But I'd teach them some bear stuff for sure.`,
     options: [
@@ -284,11 +293,11 @@ const O_SUMM = {
         response: {
           text: `Right.
                         
-                        I'm also pretty smart, like, bear-wise.
+                        And like, I'm also pretty smart, bear-wise.
                         
                         Like, there's this grocery store.
                         
-                        They always throws away totally fine chickens into a totally NOT bear-proof dumpster.
+                        With a totally NOT bear-proof dumpster.
                         
                         I usually consider myself above dumpster diving, but I've scoped it out. 
                         
@@ -297,13 +306,13 @@ const O_SUMM = {
           options: [
             {
               oars: OARS.reflect,
-              text: `So there might be a way to make it through the winter.`,
+              text: `Dumpsters might be a way to make it through the winter.`,
               valence: 0,
               attemptChange: true,
               response: R_PRIDE,
             },
             {
-              text: `Dumpster-chickens could be a way to survive, but it wouldn't be as fun as hunting humans.`,
+              text: `Dumpster-chickens wouldn't be as fun as hunting humans, though.`,
               oars: OARS.reflect,
               valence: -1,
               response: {
@@ -328,15 +337,17 @@ const O_SUMM = {
 
 const R_CLEVER = {
   requiredLevel: 0,
-  text: `So, it's like this.
+  text: `Humans are just CLEVER – yeah, yeah, don't let it go to your head.
   
-  Humans are just CLEVER – yeah, yeah, don't let it go to your head. 
+  That's what makes it fun.
   
-  Have you ever seen a bear-proof garbage bin? Well, I have, and if there's one thing I hate MORE than glass peanut butter jars, it's a bear-proof garbage bin.
+  Have you ever seen a bear-proof garbage bin? 
+  
+  Well, I have, and if there's one thing I hate MORE than glass peanut butter jars... 
+  
+  It's a bear-proof garbage bin.
 
-  A mark of your species' ingenuity.
-
-  But there are no bear-proof humans.
+  A mark of your species' ingenuity... But there are no bear-proof humans.
           
       ...Hey, do you have any peanut butter on you?`,
   darncat: DARNCAT.desire,
@@ -460,8 +471,33 @@ const R_CLEVER = {
                     ],
                   },
                 },
+                {
+                  text: `I reeeeally think you should be focusing on easier prey right now.`,
+                  oars: NOT_OARS.advice,
+                  valence: -1,
+                  response: {
+                    text: `Like you? *licks chops*`,
+                  },
+                },
+                {
+                  text: `Is it possible most bears don't like ice-fishing for a reason?`,
+                  oars: NOT_OARS.judgment,
+                  valence: -1,
+                  response: {
+                    text: `Like being lazy? *licks chops*`,
+                  },
+                },
+                {
+                  text: `Tell me about what it would be like to be the first ice-fishing bear of your species.`,
+                  oars: NOT_OARS.sustain,
+                  valence: -1,
+                  response: {
+                    text: `Like being lazy? *licks chops*
+                    
+                    I'd be a GREAT ice-fisher. Hunkered down, watching the ice, waiting for the perfect moment to strike.`,
+                  },
+                },
               ],
-              // todo: "But"
             },
           },
           {
@@ -470,7 +506,7 @@ const R_CLEVER = {
             valence: 1,
             change: false,
             response: {
-              text: `That's why I like hunting humans. They're so clever, and I'm so clever, and it's a challenge to outsmart them. I'm good at it. 
+              text: `That's why I like hunting humans. It's a challenge to outsmart them. 
                 
                 Thing is... 
                 
@@ -517,18 +553,16 @@ const R_CLEVER = {
                           options: [
                             {
                               oars: OARS.affirm,
-                              text: `You're proud of your BEAR-itage.
-                              
-                              Sorry sorry!! ...Heritage.
-                              
-                              Your kind has discovered how to survive without taking what it doesn't need.`,
-                              valence: -1,
+                              text: `Your kind has discovered how to survive without taking what it doesn't need.`,
+                              valence: 1,
                               response: {
                                 change: true,
                                 darncat: DARNCAT.need,
-                                text: `I mean, my friends have been saying that I'm way out of line with the way of things. Sometimes I wonder if they're right.
-                                  
-                                  On the other hand – this will make me sound kinda self-important – but they aren't super smart.`,
+                                text: `I dunno. Most bears are pretty dumb. I'm not even sure if they have object permanence.
+                                
+                                But sometimes I think they might be right about some stuff.
+                                
+                                Like, you're really not the most calorically dense of foodstuffs.`,
                                 options: [
                                   {
                                     oars: OARS.openEndedQuestion,
@@ -581,6 +615,22 @@ const R_CLEVER = {
                                       text: `You're just saying that to not get eaten.`,
                                     },
                                   },
+                                  {
+                                    oars: NOT_OARS.expert,
+                                    valence: -1,
+                                    text: `Yanno, I've been on reddit. You might be interested in learning about macros.`,
+                                    response: {
+                                      text: `Um... sure...`,
+                                    },
+                                  },
+                                  {
+                                    oars: NOT_OARS.sustain,
+                                    valence: -1,
+                                    text: `But you've made it this long. Maybe you should just listen to your gut. Uh, after you let me go.`,
+                                    response: {
+                                      text: `My gut tells me to eat you.`,
+                                    },
+                                  },
                                 ],
                               },
                             },
@@ -590,13 +640,15 @@ const R_CLEVER = {
                               valence: -1,
                               response: {
                                 change: 0,
-                                text: `Well, you sure look goofy.
-                                  
-                                  And I've had some issues with jewelry in, uh, transit.
-                                  
-                                  But that's part of the fun - you all come with different accessories. 
-                                  
-                                  I have quite the stash, to be honest with you.`,
+                                text: `Well, you sure look goofy.`,
+                              },
+                            },
+                            {
+                              text: `I bet you have a pretty great clothes collection. From all the humans you've eaten.`,
+                              valence: -1,
+                              oars: NOT_OARS.sustain,
+                              response: {
+                                text: `Yes, and it THRILLS me to add to it!`,
                               },
                             },
                           ],
@@ -612,10 +664,10 @@ const R_CLEVER = {
       },
     },
     {
-      text: `So, your friends are putting heat on you to catch fish, but hunting humans is a rewarding challenge.`,
-      oars: OARS.summarize,
+      text: `Hunting humans is a rewarding challenge.`,
+      oars: OARS.reflect,
       change: false,
-      valence: -1,
+      valence: 0,
       response: R_TOY,
     },
   ],
@@ -632,18 +684,14 @@ const START = {
   
   I'm a bear, and I LIVE for HUMAN-HUNTING!
   
-  Winter is coming, though, and everyone's all up in my muzzle, telling me I have to catch fish and fatten up.
+  Winter is coming, though, and everyone's all up in my muzzle, telling me I have find some squirrel caches or catch fish and fatten up.
   
-  You see, fish are FAT and SLOW this time of year, and us bears gotta bulk.
-  
-  Thing is...
-  
-  Fish are too easy. I'd rather catch humans.`,
+  But nuts and fish? YAWN. I'd rather catch humans.`,
     options: [
       {
         text: "Well then. Sounds like catching fish is just what you have to do.",
         valence: -1,
-        oars: NOT_OARS.judgment,
+        oars: NOT_OARS.advice,
         response: {
           text: `I know. But the thing is, it's boring.
           
