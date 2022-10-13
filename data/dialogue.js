@@ -92,7 +92,7 @@ const O_NEXTYEAR = {
           options: [
             {
               text: `Given what you've told me, what do you think a next step might be?`,
-              valence: 100,
+              valence: 3,
               response: {
                 text: `Time to make a plan, I guess.`,
               },
@@ -149,10 +149,18 @@ const R_TOY = {
         change: true,
         options: [
           {
+            text: `You could just eat more fish.`,
+            oars: NOT_OARS.advice,
+            valence: -1,
+            response: {
+              text: `No. There's no *just* eating fish. It's super lame.`,
+            },
+          },
+          {
             oars: OARS.openEndedQuestion,
+            valence: 1,
             text: `How important is it that you get fat?`,
             attemptChange: true,
-            valence: 0,
             response: {
               darncat: DARNCAT.need,
               text: `Well, it's pretty obvious, right? We have to turbo-charge for the winter, otherwise we... like, die, I guess.`,
@@ -212,6 +220,14 @@ const R_TOY = {
               ],
             },
           },
+          {
+            text: `Are you thinking you should just get out there and fish?`,
+            oars: NOT_OARS.closedQuestion,
+            valence: -1,
+            response: {
+              text: `Not really.`,
+            },
+          },
         ],
       },
     },
@@ -229,7 +245,7 @@ const R_PRIDE = {
   options: [
     {
       oars: OARS.reflect,
-      valence: 0,
+      valence: 1,
       text: `Dumpster diving wouldn't be in line with your vision of yourself.`,
       attemptChange: false,
       response: {
@@ -258,10 +274,30 @@ const R_PRIDE = {
             oars: OARS.affirm,
             response: {
               text: `I guess if I'm dead because I didn't haul ass and go fishing, no one's gonna be too impressed.`,
-              options: [O_NEXTYEAR],
+              options: [
+                O_NEXTYEAR,
+                {
+                  text: `Well, you'd leave behind a legacy of fear and loathing among humans. That's something.`,
+                  oars: NOT_OARS.sustain,
+                  valence: 0,
+                  response: {
+                    text: `Heck yeah I would.
+                  
+                  Payback for glass peanut butter jars. Fair's fair.`,
+                  },
+                },
+              ],
             },
           },
         ],
+      },
+    },
+    {
+      text: `You have a high kill count. Maybe word has gotten around.`,
+      oars: NOT_OARS.sustain,
+      valence: -1,
+      response: {
+        text: `Yeah, you know, I bet it has. And it'll be even higher if they catch me gnawing on your bones.`,
       },
     },
   ],
@@ -286,6 +322,14 @@ const O_SUMM = {
             
             But I'd teach them some bear stuff for sure.`,
     options: [
+      {
+        text: `Pretty sure dad-bears eat bear cubs...`,
+        oars: NOT_OARS.expert,
+        valence: -1,
+        response: {
+          text: `Well, I don't want to eat bear cubs. I want to eat humans. Especially if there's no point in my even TRYING to be a dad.`,
+        },
+      },
       {
         oars: OARS.reflect,
         text: `You've been given wisdom, and you don't want it to be lost with you.`,
@@ -644,7 +688,7 @@ const R_CLEVER = {
                               },
                             },
                             {
-                              text: `I bet you have a pretty great clothes collection. From all the humans you've eaten.`,
+                              text: `I bet you have a pretty great clothes collection, from all the humans you've eaten.`,
                               valence: -1,
                               oars: NOT_OARS.sustain,
                               response: {
@@ -665,7 +709,7 @@ const R_CLEVER = {
     },
     {
       text: `Hunting humans is a rewarding challenge.`,
-      oars: OARS.reflect,
+      oars: NOT_OARS.sustain,
       change: false,
       valence: 0,
       response: R_TOY,

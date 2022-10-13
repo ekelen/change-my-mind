@@ -4,7 +4,7 @@ import { getNode } from "./dialoguesApi";
 import dialogues from "./dialoguesFlat.json";
 import { CHOOSE_RESPONSE, RESTART, HIDE_HINT } from "./gameActions";
 
-export const maxScore = 6;
+export const maxScore = 10;
 
 export const initialState = {
   dialogue: {
@@ -33,7 +33,7 @@ const chooseResponse = (state, option, options) => {
     },
   };
 
-  if (score < 0) {
+  if (score === 0) {
     return {
       ...common,
       gameOver: true,
@@ -41,7 +41,7 @@ const chooseResponse = (state, option, options) => {
       dialogue: {},
     };
   }
-  if (score > maxScore) {
+  if (score >= maxScore) {
     return {
       ...common,
       gameWon: true,

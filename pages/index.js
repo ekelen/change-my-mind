@@ -4,9 +4,8 @@ import styles from "../styles/Home.module.css";
 import useGame from "../game/useGame";
 import { maxScore } from "../game/gameReducer";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import useMobileDetect from "../hooks/useMobileDetect";
 import FocusLock from "react-focus-lock";
-import { NOT_OARS_EXPLANATION, OARS, OARS_EXPLANATION } from "../data/dialogue";
+import { NOT_OARS_EXPLANATION, OARS_EXPLANATION } from "../data/dialogue";
 
 const Citation = () => {
   return (
@@ -83,83 +82,59 @@ const Options = ({ options, onChooseResponse, hideHint, availableHints }) => {
 const Story = ({ score, maxScore }) => {
   return (
     // background
-    <div
-      style={{
-        position: "relative",
-        height: "100px",
-        flexShrink: 0,
-        width: "1000px",
-        background: "rgb(2,0,36)",
-        background:
-          "linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(21,116,90,1) 47%, rgba(3,100,111,1) 100%)",
-        borderBottom: "10px solid rgb(15,23,42)",
-      }}
-    >
+    <div className={styles.background}>
       {/* human */}
       <div
+        className={styles.human}
         style={{
-          position: "absolute",
-          bottom: "-20px",
-          left: `-10px`,
-          zIndex: 10,
-          opacity: score < 0 ? 0.3 : 1,
-          transition: "all 2s",
+          opacity: score === 0 ? 0.3 : 1,
         }}
-      >
-        <Image src="/noun-hiking.svg" alt="Hiker" width={50} height={50} />
-      </div>
+      />
       {/* fish bone */}
       <div
+        className={styles.fishBone}
         style={{
-          position: "absolute",
-          bottom: "-20px",
-          right: `-10px`,
-          zIndex: 10,
           opacity: score > maxScore ? 0.3 : 1,
-          transition: "all 2s",
-        }}
-      >
-        <Image src="/noun-fish-bone.svg" alt="Hiker" width={50} height={50} />
-      </div>
-      {/* path */}
-      <div
-        style={{
-          position: "absolute",
-          bottom: "2px",
-          left: "50px",
-          height: "0px",
-          width: "900px",
-          borderTop: "3px dotted rgba(255,255,0,0.5)",
         }}
       />
 
-      {/* bear */}
       <div
         style={{
-          position: "absolute",
-          bottom: "-20px",
-          left: `calc(-30px + (900px / 6) * ${Math.min(
-            Math.max(0, score),
-            maxScore
-          )})`,
-          zIndex: 10,
-          opacity: score < 0 || score > maxScore ? 0.3 : 1,
-          transition: "all 2s",
+          width: "100%",
+          marginRight: "5vw",
+          marginLeft: "5vw",
+          position: "relative",
         }}
       >
-        <Image src="/noun-bear.svg" alt="Bear" width={160} height={160} />
-      </div>
-
-      {/* path points */}
-      {Array.from(Array(maxScore + 1).keys()).map((index) => (
+        {/* bear */}
         <div
-          key={index}
-          className={styles.circle}
+          className={styles.bear}
           style={{
-            left: `calc(35px + (900px / 6) * ${index})`,
+            left: `calc(-0px + (100% / ${maxScore}) * ${Math.min(
+              Math.max(0, score),
+              maxScore
+            )})`,
+            opacity: score <= 0 || score >= maxScore ? 0.3 : 1,
           }}
         />
-      ))}
+
+        {/* path points */}
+        {Array.from(Array(maxScore + 1).keys()).map((index) => (
+          <div
+            key={index}
+            className={styles.circle}
+            style={{
+              left: `calc(0px + (100% / ${maxScore}) * ${index})`,
+              backgroundColor:
+                index === 0 ? "red" : index === maxScore ? "green" : "gray",
+            }}
+          />
+        ))}
+        <div className={styles.score}>
+          motivation to change diet:{" "}
+          <span style={{ color: "white" }}>{(score / maxScore) * 100}%</span>
+        </div>
+      </div>
     </div>
   );
 };
@@ -197,18 +172,18 @@ const Dialogue = ({
       !gameWon
     ) {
       dialogueButton.current.focus();
-      if (
-        dialogueLines[0] &&
-        dialogueLines[0] === "Oh, human." &&
-        currentText === 0 &&
-        shortcutHintRef?.current &&
-        document?.activeElement &&
-        document?.activeElement === dialogueButton?.current
-      ) {
-        shortcutHintRef.current.style.visibility = "visible";
-      } else {
-        shortcutHintRef.current.style.visibility = "hidden";
-      }
+      // if (
+      //   dialogueLines[0] &&
+      //   dialogueLines[0] === "Oh, human." &&
+      //   currentText === 0 &&
+      //   shortcutHintRef?.current &&
+      //   document?.activeElement &&
+      //   document?.activeElement === dialogueButton?.current
+      // ) {
+      //   shortcutHintRef.current.style.visibility = "visible";
+      // } else {
+      //   shortcutHintRef.current.style.visibility = "hidden";
+      // }
     }
   }, [currentText, showOptions, dialogueLines, gameOver, gameWon]);
 
@@ -252,7 +227,10 @@ const Dialogue = ({
 
   return (
     <div className={styles.dialogue}>
-      <div style={{ fontSize: "smaller", color: "gray" }} ref={shortcutHintRef}>
+      <div
+        style={{ fontSize: "smaller", color: "gray", visibility: "hidden" }}
+        ref={shortcutHintRef}
+      >
         Press Shift + Enter to show all text at once. Press Enter to show the
         next line.
       </div>
@@ -401,7 +379,7 @@ const About = ({ onClose }) => {
   );
 };
 
-const Header = ({ handleRestart, gameOver, gameWon, isDesktop }) => {
+const Header = ({ handleRestart, gameOver, gameWon }) => {
   const buttonRef = useRef(null);
   const [showAbout, setShowAbout] = useState(false);
   useEffect(() => {
@@ -410,7 +388,7 @@ const Header = ({ handleRestart, gameOver, gameWon, isDesktop }) => {
     }
   }, [gameOver, gameWon]);
   return (
-    <div style={{ width: "1000px", display: "flex", alignItems: "baseline" }}>
+    <div style={{ width: "100%", display: "flex", alignItems: "baseline" }}>
       <h1 style={{ marginRight: "auto" }}>I Will Eat You - Change My Mind</h1>
       <button
         onClick={() => setShowAbout(true)}
@@ -419,7 +397,7 @@ const Header = ({ handleRestart, gameOver, gameWon, isDesktop }) => {
       >
         About
       </button>
-      <button onClick={handleRestart} ref={buttonRef} disabled={!isDesktop}>
+      <button onClick={handleRestart} ref={buttonRef}>
         Restart
       </button>
       {showAbout && <About onClose={() => setShowAbout(false)} />}
@@ -429,7 +407,6 @@ const Header = ({ handleRestart, gameOver, gameWon, isDesktop }) => {
 
 export default function Home() {
   const [gameState, { chooseOption, restart, hideHint }] = useGame();
-  const isDesktop = useMobileDetect().isDesktop();
 
   const { dialogue, gameOver, gameWon, finalText, score, availableHints } =
     gameState;
@@ -445,23 +422,20 @@ export default function Home() {
   };
 
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>I Will Eat You | Change My Mind</title>
-      </Head>
+    <FocusLock>
+      <div className={styles.container}>
+        <Head>
+          <title>I Will Eat You | Change My Mind</title>
+        </Head>
 
-      <FocusLock>
         <main className={styles.main}>
           {/* <FocusLock> */}
           <Header
             handleRestart={handleRestart}
             gameOver={gameOver}
             gameWon={gameWon}
-            isDesktop={isDesktop}
           />
-          {!isDesktop ? (
-            <>Not available on mobile</>
-          ) : (
+          {
             <>
               <Story score={score} maxScore={maxScore} />
 
@@ -509,10 +483,10 @@ export default function Home() {
                 />
               )}
             </>
-          )}
+          }
           {/* </FocusLock> */}
         </main>
-      </FocusLock>
-    </div>
+      </div>
+    </FocusLock>
   );
 }
