@@ -351,7 +351,7 @@ const O_SUMM = {
             {
               oars: OARS.reflect,
               text: `Dumpsters might be a way to make it through the winter.`,
-              valence: 0,
+              valence: 1,
               attemptChange: true,
               response: R_PRIDE,
             },
@@ -367,7 +367,7 @@ const O_SUMM = {
             },
             {
               text: `It wouldn't be as fun as catching humans, but you have a possible strategy to get enough food to survive.`,
-              valence: 0,
+              valence: 1,
               attemptChange: true,
               response: R_PRIDE,
               oars: OARS.reflect,
@@ -409,7 +409,7 @@ const R_CLEVER = {
       text: `So, hunting humans is a rewarding challenge, but friends are putting heat on you to catch fish.`,
       oars: OARS.summarize,
       change: true,
-      valence: 0,
+      valence: 1,
       response: {
         text: `Yeah. They say that if I don't catch fish, I'll starve. But it's only October. I can catch fish later.`,
         darncat: DARNCAT.reason,
@@ -428,7 +428,7 @@ const R_CLEVER = {
           {
             text: `It's only October - you have a couple of months to get enough fish.`,
             oars: OARS.reflect,
-            valence: 0,
+            valence: 1,
             attemptChange: false,
             response: {
               text: `That's right.
@@ -446,7 +446,7 @@ const R_CLEVER = {
                 {
                   oars: OARS.reflect,
                   text: `Your friends aren't as tough as you are.`,
-                  valence: 0,
+                  valence: 1,
                   attemptChange: false,
                   response: {
                     text: `Nope. I mean, maybe they did the air-quotes "SENSIBLE" thing and caught fish, but I can be an ice-fishing bear.
@@ -487,6 +487,7 @@ const R_CLEVER = {
                             {
                               text: `Tell me about the elders.`,
                               oars: OARS.openEndedQuestion,
+                              valence: 1,
                               response: {
                                 text: `Bears aren't exactly... family-oriented. But they teach each other by action, by doing.`,
                                 options: [
@@ -590,7 +591,7 @@ const R_CLEVER = {
                         oars: OARS.reflect,
                         text: `Humans are hoarders. Your species has preserved an ancient dialogue with nature.`,
                         attemptChange: true,
-                        valence: 0,
+                        valence: 1,
                         response: {
                           change: false,
                           text: `Yeah. I mean, look at you — no offense, but "clothes" look like garbage bags.`,
@@ -764,6 +765,7 @@ const START = {
       {
         text: "Uh... Tell me about hunting humans.",
         oars: OARS.openEndedQuestion,
+        valence: 1,
         change: false,
         advance: true,
         response: R_CLEVER,

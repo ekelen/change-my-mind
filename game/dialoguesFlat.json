@@ -200,7 +200,7 @@
   "opt-25": {
     "oars": "reflect",
     "text": "Dumpsters might be a way to make it through the winter.",
-    "valence": 0,
+    "valence": 1,
     "attemptChange": true,
     "response": "res-26",
     "id": "opt-25"
@@ -228,7 +228,7 @@
   },
   "opt-51": {
     "text": "It wouldn't be as fun as catching humans, but you have a possible strategy to get enough food to survive.",
-    "valence": 0,
+    "valence": 1,
     "attemptChange": true,
     "response": "res-26",
     "oars": "reflect",
@@ -292,6 +292,7 @@
   "opt-54": {
     "text": "Tell me about the elders.",
     "oars": "openEndedQuestion",
+    "valence": 1,
     "response": "res-55",
     "id": "opt-54"
   },
@@ -335,7 +336,7 @@
   "opt-15": {
     "oars": "reflect",
     "text": "Your friends aren't as tough as you are.",
-    "valence": 0,
+    "valence": 1,
     "attemptChange": false,
     "response": "res-16",
     "id": "opt-15"
@@ -384,7 +385,7 @@
   "opt-13": {
     "text": "It's only October - you have a couple of months to get enough fish.",
     "oars": "reflect",
-    "valence": 0,
+    "valence": 1,
     "attemptChange": false,
     "response": "res-14",
     "id": "opt-13"
@@ -540,7 +541,7 @@
     "oars": "reflect",
     "text": "Humans are hoarders. Your species has preserved an ancient dialogue with nature.",
     "attemptChange": true,
-    "valence": 0,
+    "valence": 1,
     "response": "res-75",
     "id": "opt-74"
   },
@@ -594,7 +595,7 @@
     "text": "So, hunting humans is a rewarding challenge, but friends are putting heat on you to catch fish.",
     "oars": "summarize",
     "change": true,
-    "valence": 0,
+    "valence": 1,
     "response": "res-10",
     "id": "opt-9"
   },
@@ -776,6 +777,7 @@
   "opt-5": {
     "text": "Uh... Tell me about hunting humans.",
     "oars": "openEndedQuestion",
+    "valence": 1,
     "change": false,
     "advance": true,
     "response": "res-6",
