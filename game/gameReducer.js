@@ -16,17 +16,25 @@ export const initialState = {
   finalText: "",
   score: 2,
   availableHints: [...Object.values(OARS), ...Object.values(NOT_OARS)],
+  attack: true,
 };
 
 const chooseResponse = (state, option, options) => {
   const _valence = option.valence ?? 0;
   const score = state.score + _valence;
+  let attack = state.attack;
+  if (score > state.score) {
+    attack = false;
+  } else if (score < state.score) {
+    attack = true;
+  }
 
   const response = getNode(option.response);
 
   const common = {
     ...state,
     score,
+    attack,
     dialogue: {
       ...response,
       options: response.options?.map(getNode) ?? options,

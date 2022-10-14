@@ -79,7 +79,7 @@ const Options = ({ options, onChooseResponse, hideHint, availableHints }) => {
   );
 };
 
-const Story = ({ score, maxScore }) => {
+const Story = ({ score, maxScore, attack }) => {
   return (
     // background
     <div className={styles.background}>
@@ -108,7 +108,7 @@ const Story = ({ score, maxScore }) => {
       >
         {/* bear */}
         <div
-          className={`${styles.bear} ${styles.attack}`}
+          className={`${styles.bear} ${attack ? styles.attack : ""}`}
           style={{
             left: `calc((100% / ${maxScore}) * ${Math.min(
               Math.max(0, score),
@@ -388,8 +388,15 @@ const Header = ({ handleRestart, gameOver, gameWon }) => {
 export default function Home() {
   const [gameState, { chooseOption, restart, hideHint }] = useGame();
 
-  const { dialogue, gameOver, gameWon, finalText, score, availableHints } =
-    gameState;
+  const {
+    dialogue,
+    gameOver,
+    gameWon,
+    finalText,
+    score,
+    availableHints,
+    attack,
+  } = gameState;
 
   const options = dialogue.options ?? [];
 
@@ -417,7 +424,7 @@ export default function Home() {
           />
           {
             <>
-              <Story score={score} maxScore={maxScore} />
+              <Story score={score} maxScore={maxScore} attack={attack} />
 
               {gameWon ? (
                 <PostGame>
