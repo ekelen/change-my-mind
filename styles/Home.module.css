@@ -55,6 +55,10 @@
   transform: translateX(-50%) translateY(20%);
 }
 
+.bear.attack {
+  transform: translateX(-50%) translateY(20%) scaleX(-1);
+}
+
 .fishBone {
   position: absolute;
   bottom: 0;

@@ -108,7 +108,7 @@ const Story = ({ score, maxScore }) => {
       >
         {/* bear */}
         <div
-          className={styles.bear}
+          className={`${styles.bear} ${styles.attack}`}
           style={{
             left: `calc((100% / ${maxScore}) * ${Math.min(
               Math.max(0, score),
