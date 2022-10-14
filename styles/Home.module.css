@@ -1,7 +1,5 @@
-
-
 .container {
-  padding: 0 2rem;
+  padding: 0 2vw;
   margin: 0;
 }
 
@@ -14,17 +12,78 @@
   justify-content: flex-start;
   align-items: center;
   flex-shrink: 0;
+  /* border: 1px solid red; */
+  width: 100%;
 }
 
 /* story */
 
+.background {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.human {
+  position: absolute;
+  bottom: 0;
+  left: -10px;
+  height: 50px;
+  width: 50px;
+  background: url("/noun-hiking.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all 0.8 ease-in-out;
+  z-index: 10;
+}
+
+.bear {
+  position: absolute;
+  bottom: 0;
+  height: clamp(20px, 15vw, 150px);
+  width: clamp(20px, 15vw, 150px);
+  background: url("/noun-bear.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all 0.8s ease-out;
+  z-index: 12;
+  transform: translateX(-50%) translateY(20%);
+}
+
+.fishBone {
+  position: absolute;
+  bottom: 0;
+  right: -10px;
+  height: 50px;
+  width: 50px;
+  background: url("/noun-fish-bone.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all 0.8 ease-in-out;
+  z-index: 10;
+}
+
 .circle {
   width: 20px;
-  height: 10px;
+  height: 5px;
   border-radius: 50%;
-  background-color: rgb(41, 154, 156);
+  background-color: rgb(137, 137, 137);
   position: absolute;
   bottom: calc(0%);
+  transform: translateX(-50%);
+}
+
+.score {
+  width: 100%;
+  text-align: right;
+  font-size: smaller;
+  color: gray;
 }
 
 /* dialogue */
@@ -32,8 +91,8 @@
 .dialogueAndOptionsContainer {
   display: flex;
   flex-direction: column;
-  padding: 0;
-  width: 1000px;
+  padding: 0 1rem;
+  width: 100%;
   justify-content: flex-end;
   flex-grow: 1;
   flex-shrink: 1;
@@ -49,19 +108,19 @@
 }
 
 .dialogue {
-  scrollbar-color: rgba(21,116,90,1) rgba(0,0,0,0);
+  scrollbar-color: rgba(21, 116, 90, 1) rgba(0, 0, 0, 0);
 }
 
 .dialogue::-webkit-scrollbar {
   width: 0.8rem;
 }
- 
+
 .dialogue::-webkit-scrollbar-track {
-  box-shadow: inset 0.1rem 0 6px rgba(0,0,0,0.2);
+  box-shadow: inset 0.1rem 0 6px rgba(0, 0, 0, 0.2);
 }
- 
+
 .dialogue::-webkit-scrollbar-thumb {
-  background-color: rgba(21,116,90,1);
+  background-color: rgba(21, 116, 90, 1);
   outline: 1px solid rgb(13, 73, 57);
 }
 
@@ -88,7 +147,6 @@
 
 .optionButton {
   text-align: left;
-
 }
 
 .optionButton:hover {
@@ -99,8 +157,9 @@
   margin-right: 10px;
 }
 
-.optionHint, .about {
-  font-family: 'Cormorant Garamond', 'Garamond', 'Georgia', serif;
+.optionHint,
+.about {
+  font-family: "Cormorant Garamond", "Garamond", "Georgia", serif;
   font-size: 1.2rem;
   position: absolute;
   top: 10vh;
@@ -113,14 +172,14 @@
   padding: 1rem;
   /* background-color: rgb(15,23,42); */
   background-color: rgb(34, 52, 93);
-  color: rgb(250,250,255);
+  color: rgb(250, 250, 255);
   box-shadow: 0.1rem 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 1);
-  z-index: 11;
-  white-space: pre-wrap;       /* css-3 */
-  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-  white-space: -pre-wrap;      /* Opera 4-6 */
-  white-space: -o-pre-wrap;    /* Opera 7 */
-  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+  z-index: 20;
+  white-space: pre-wrap; /* css-3 */
+  white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  word-wrap: break-word; /* Internet Explorer 5.5+ */
   overflow-y: auto;
 }
 
@@ -155,15 +214,15 @@
 
 .closeX span {
   position: absolute;
- top: 0;
- left: 5px;
- font-size: small;
+  top: 0;
+  left: 5px;
+  font-size: small;
 }
 
 /* about */
 
 .about {
-  font-family: 'Cormorant Garamond', 'Garamond', 'Georgia', serif;
+  font-family: "Cormorant Garamond", "Garamond", "Georgia", serif;
   font-size: 1.2rem;
   padding: 1rem 1.5rem 2rem;
 }
@@ -186,7 +245,7 @@
 }
 
 .about a {
-  text-decoration: underline yellow ;
+  text-decoration: underline yellow;
 }
 
 .about .optionHintButton {
@@ -205,23 +264,21 @@
   cursor: auto;
 }
 
-
-
 /* post-game */
 
 .postGame {
   display: flex;
   flex-direction: column;
-  width: 1000px;
+  width: 100%;
   position: relative;
   justify-content: flex-start;
   align-items: center;
-  color: rgb(252,211,77);
+  color: rgb(252, 211, 77);
   padding: 1rem 2rem;
 }
 
 /* misc */
 
 .yellow {
-  color: rgb(252,211,77);
+  color: rgb(252, 211, 77);
 }
