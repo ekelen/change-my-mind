@@ -92,7 +92,7 @@ const O_NEXTYEAR = {
           options: [
             {
               text: `Given what you've told me, what do you think a next step might be?`,
-              valence: 3,
+              valence: 10,
               response: {
                 text: `Time to make a plan, I guess.`,
               },
@@ -245,7 +245,7 @@ const R_PRIDE = {
   options: [
     {
       oars: OARS.reflect,
-      valence: 1,
+      valence: 0,
       text: `Dumpster diving wouldn't be in line with your vision of yourself.`,
       attemptChange: false,
       response: {
@@ -254,9 +254,8 @@ const R_PRIDE = {
         options: [
           {
             text: `I think you're a pretty cool bear, for what it's worth.`,
-
             oars: NOT_OARS.flattery,
-            valence: 0,
+            valence: -1,
             response: {
               text: `Thanks, I guess...`,
             },
@@ -264,6 +263,7 @@ const R_PRIDE = {
           {
             text: `You'd still get to terrify humans if you root around in their dumpsters.`,
             oars: NOT_OARS.advice,
+            valence: -2,
             response: {
               text: `It's not the same. I don't get to outsmart them.`,
             },
@@ -312,7 +312,7 @@ const O_SUMM = {
         And you want to survive the winter.
         
         Have I got that right?`,
-  valence: 1,
+  valence: 2,
   attemptChange: true,
   response: {
     change: true,
@@ -358,7 +358,7 @@ const O_SUMM = {
             {
               text: `Dumpster-chickens wouldn't be as fun as hunting humans, though.`,
               oars: OARS.reflect,
-              valence: -1,
+              valence: -2,
               response: {
                 text: `Correctamundo! Have you ever had a game to play that made the real world just not matter anymore?
                 
@@ -460,7 +460,7 @@ const R_CLEVER = {
                     options: [
                       {
                         oars: OARS.reflect,
-                        valence: 1,
+                        valence: 2,
                         text: `You've got some unusual skills. And you refuse to follow the herd.`,
                         response: {
                           change: true,
@@ -576,6 +576,7 @@ const R_CLEVER = {
                       {
                         oars: NOT_OARS.flattery,
                         text: `Bears are more reasonable than humans.`,
+                        valence: -1,
                         response: {
                           text: `You're just saying that to not get eaten.`,
                         },
@@ -615,15 +616,15 @@ const R_CLEVER = {
                                     valence: 0,
                                     attemptChange: true,
                                     response: {
-                                      text: `Well... They're pretty much all in hibernation now, and I'm still out here catching humans.
+                                      text: `Hibernating earlier. Eating more. Not being so damn picky.
                                               
-                                              I guess I'm scared my time has run out to catch up, caloric-surplus-wise.
+                                              I'm scared my time has run out to catch up, caloric-surplus-wise.
                                               
                                               The fear just keeps me locked into this cycle of human-stalking instead.
                                               
                                               It's a great distraction.
                                               
-                                              It makes me feel like I'm doing something, even though I'm not... you know?`,
+                                              It makes me feel like I'm doing something, even though I'm not.`,
                                       change: true,
                                       darncat: DARNCAT.desire,
                                       options: [
@@ -650,11 +651,21 @@ const R_CLEVER = {
                                           },
                                         },
                                         O_SUMM,
+                                        {
+                                          text: `Yeah, I do. Procrastination is a human thing, too.`,
+                                          oars: NOT_OARS.iStatement,
+                                          response: {
+                                            text: `Humans are poor arbiters of their time.
+                                            
+                                            It is known.`,
+                                          },
+                                        },
                                       ],
                                     },
                                   },
                                   {
                                     oars: NOT_OARS.flattery,
+                                    valence: -1,
                                     text: `You're a really smart bear.`,
                                     response: {
                                       text: `You're just saying that to not get eaten.`,
