@@ -120,7 +120,7 @@
     "id": "opt-41"
   },
   "res-42": {
-    "text": "Yeah. I guess so.",
+    "text": "This has given me a lot to think about.",
     "options": [
       "opt-43"
     ],
@@ -161,7 +161,7 @@
     "id": "opt-33"
   },
   "res-34": {
-    "text": "I guess if I'm dead because I didn't haul ass and go fishing, no one's gonna be too impressed.",
+    "text": "And if I'm dead because I didn't haul ass and go fishing, no one's gonna be too impressed.",
     "options": [
       "opt-35",
       "opt-45"
@@ -488,7 +488,7 @@
     "id": "res-87"
   },
   "opt-88": {
-    "oars": "expert",
+    "oars": "advice",
     "valence": -1,
     "text": "Yanno, I've been on reddit. You might be interested in learning about macros.",
     "response": "res-89",

@@ -163,16 +163,10 @@ const Dialogue = ({
   }, [dialogueLines]);
 
   useEffect(() => {
-    if (
-      dialogueButton?.current &&
-      currentLine < dialogueLines.length &&
-      !showOptions &&
-      !gameOver &&
-      !gameWon
-    ) {
+    if (dialogueButton?.current && currentLine < dialogueLines.length) {
       dialogueButton.current.focus();
     }
-  }, [currentLine, showOptions, dialogueLines, gameOver, gameWon]);
+  }, [currentLine, dialogueLines]);
 
   useEffect(() => {
     if (currentLine === dialogueLines.length) {
@@ -201,11 +195,9 @@ const Dialogue = ({
     (e) => {
       if (e && (e.shiftKey || e.metaKey) && e.key === "Enter") {
         e.preventDefault();
-        e.stopPropagation();
         setCurrentLine(dialogueLines.length);
       } else if (e && e.key === "Enter") {
         e.preventDefault();
-        e.stopPropagation();
         setCurrentLine(Math.min(currentLine + 1, dialogueLines.length));
       }
     },
