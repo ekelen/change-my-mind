@@ -23,7 +23,6 @@
     "text": "That's nice, human. I'm sure you were a very tasty kid.",
     "change": false,
     "darncat": "desire",
-    "advance": true,
     "id": "res-4"
   },
   "opt-7": {
@@ -281,13 +280,14 @@
     "id": "res-53"
   },
   "opt-56": {
-    "text": "If you die this winter, what will you teach other bears?",
-    "valence": 0,
+    "text": "So, you're teaching other bears to starve by modelling mastery of human-stalking. Not very cool.",
+    "oars": "sustain",
+    "valence": -1,
     "response": "res-57",
     "id": "opt-56"
   },
   "res-57": {
-    "text": "That it's chill to die doing what you love.",
+    "text": "Well, maybe it's okay to die in pursuit of disruptive innovation.",
     "id": "res-57"
   },
   "opt-54": {
@@ -319,7 +319,7 @@
   "opt-17": {
     "oars": "reflect",
     "valence": 2,
-    "text": "You've got some unusual skills. And you refuse to follow the herd.",
+    "text": "Er, seasonal tastiness of my species aside, you've got some unusual skills. And you refuse to follow the herd.",
     "response": "res-18",
     "id": "opt-17"
   },
@@ -336,14 +336,14 @@
   },
   "opt-15": {
     "oars": "reflect",
-    "text": "Your friends aren't as tough as you are.",
+    "text": "From what you've seen, your friends aren't as tough as you are.",
     "valence": 1,
     "attemptChange": false,
     "response": "res-16",
     "id": "opt-15"
   },
   "res-16": {
-    "text": "Nope. I mean, maybe they did the air-quotes \"SENSIBLE\" thing and caught fish, but I can be an ice-fishing bear.\n\nI'm pretty smart. I can figure it out.\n\nIn the meantime, the leaves are about to change, and do you know what that means?\n\nPumpkin spice lattes... coursing through human flesh. Mmmm...",
+    "text": "Nope. I mean, maybe they did the air-quotes \"SENSIBLE\" thing and caught fish and raided squirrel stores, but I can be an ice-fishing bear.\n\nI'm pretty smart. I can figure it out.\n\nIn the meantime, the leaves are about to change, and do you know what that means?\n\nPumpkin spice lattes... coursing through human flesh. Mmmm...",
     "change": true,
     "options": [
       "opt-17"
@@ -392,7 +392,7 @@
     "id": "opt-13"
   },
   "res-14": {
-    "text": "That's right.\n\n*pause*\n\nI mean, I'm kind of marching to the beat of my own drum here.\n\nMost of my friends are actually hibernating already.\n\nBut they're just softies who are scared of having to punch through a little ice.",
+    "text": "That's right.\n\nWell, um, I mean, I'm kind of marching to the beat of my own drum here.\n\nMost of my friends are actually hibernating already.\n\nBut they're just softies who are scared of having to punch through a little ice.",
     "change": true,
     "darncat": "desire",
     "options": [
@@ -465,7 +465,7 @@
     "id": "opt-78"
   },
   "res-79": {
-    "text": "Hibernating earlier. Eating more. Not being so damn picky.\n\nI'm scared my time has run out to catch up, caloric-surplus-wise.\n\nThe fear just keeps me locked into this cycle of human-stalking instead.\n\nIt's a great distraction.\n\nIt makes me feel like I'm doing something, even though I'm not.",
+    "text": "Hibernating earlier. Eating more. Not being so damn picky.\n\nI think my insecurity keeps me locked into this cycle of human-stalking instead.\n\nIt's a great distraction.\n\nIt makes me feel like I'm doing something, even though I'm not, caloric-surplus-wise.",
     "change": true,
     "darncat": "desire",
     "options": [
@@ -495,13 +495,13 @@
     "id": "opt-88"
   },
   "res-89": {
-    "text": "Um... sure...",
+    "text": "Unsolicited nutrition advice?\n\nHas that worked on anyone?",
     "id": "res-89"
   },
   "opt-90": {
     "oars": "sustain",
     "valence": -1,
-    "text": "But you've made it this long. Maybe you should just listen to your gut. Uh, after you let me go.",
+    "text": "But you've made it this long. Maybe you should just listen to your gut and keep stalking humans!\n\nUh, after you let me go.",
     "response": "res-91",
     "id": "opt-90"
   },
@@ -793,7 +793,6 @@
     "oars": "openEndedQuestion",
     "valence": 1,
     "change": false,
-    "advance": true,
     "response": "res-6",
     "id": "opt-5"
   },

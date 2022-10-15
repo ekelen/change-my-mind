@@ -399,7 +399,6 @@ const R_CLEVER = {
   options: [
     {
       text: `What's wrong with glass peanut butter jars?`,
-
       valence: 0,
       response: {
         text: `I mean, just think about it for like 5 more seconds.`,
@@ -433,9 +432,7 @@ const R_CLEVER = {
             response: {
               text: `That's right.
                 
-                *pause*
-                
-                I mean, I'm kind of marching to the beat of my own drum here. 
+                Well, um, I mean, I'm kind of marching to the beat of my own drum here. 
                 
                 Most of my friends are actually hibernating already. 
                 
@@ -445,11 +442,11 @@ const R_CLEVER = {
               options: [
                 {
                   oars: OARS.reflect,
-                  text: `Your friends aren't as tough as you are.`,
+                  text: `From what you've seen, your friends aren't as tough as you are.`,
                   valence: 1,
                   attemptChange: false,
                   response: {
-                    text: `Nope. I mean, maybe they did the air-quotes "SENSIBLE" thing and caught fish, but I can be an ice-fishing bear.
+                    text: `Nope. I mean, maybe they did the air-quotes "SENSIBLE" thing and caught fish and raided squirrel stores, but I can be an ice-fishing bear.
                           
                           I'm pretty smart. I can figure it out.
                           
@@ -461,7 +458,7 @@ const R_CLEVER = {
                       {
                         oars: OARS.reflect,
                         valence: 2,
-                        text: `You've got some unusual skills. And you refuse to follow the herd.`,
+                        text: `Er, seasonal tastiness of my species aside, you've got some unusual skills. And you refuse to follow the herd.`,
                         response: {
                           change: true,
                           text: `It's actually a SLEUTH of bears, not a "herd." Just FYI.
@@ -493,10 +490,11 @@ const R_CLEVER = {
                                 options: [
                                   O_SUMM,
                                   {
-                                    text: `If you die this winter, what will you teach other bears?`,
-                                    valence: 0,
+                                    text: `So, you're teaching other bears to starve by modelling mastery of human-stalking. Not very cool.`,
+                                    oars: NOT_OARS.sustain,
+                                    valence: -1,
                                     response: {
-                                      text: `That it's chill to die doing what you love.`,
+                                      text: `Well, maybe it's okay to die in pursuit of disruptive innovation.`,
                                     },
                                   },
                                 ],
@@ -618,13 +616,11 @@ const R_CLEVER = {
                                     response: {
                                       text: `Hibernating earlier. Eating more. Not being so damn picky.
                                               
-                                              I'm scared my time has run out to catch up, caloric-surplus-wise.
-                                              
-                                              The fear just keeps me locked into this cycle of human-stalking instead.
+                                              I think my insecurity keeps me locked into this cycle of human-stalking instead.
                                               
                                               It's a great distraction.
                                               
-                                              It makes me feel like I'm doing something, even though I'm not.`,
+                                              It makes me feel like I'm doing something, even though I'm not, caloric-surplus-wise.`,
                                       change: true,
                                       darncat: DARNCAT.desire,
                                       options: [
@@ -676,13 +672,17 @@ const R_CLEVER = {
                                     valence: -1,
                                     text: `Yanno, I've been on reddit. You might be interested in learning about macros.`,
                                     response: {
-                                      text: `Um... sure...`,
+                                      text: `Unsolicited nutrition advice?
+                                      
+                                      Has that worked on anyone?`,
                                     },
                                   },
                                   {
                                     oars: NOT_OARS.sustain,
                                     valence: -1,
-                                    text: `But you've made it this long. Maybe you should just listen to your gut. Uh, after you let me go.`,
+                                    text: `But you've made it this long. Maybe you should just listen to your gut and keep stalking humans! 
+                                    
+                                    Uh, after you let me go.`,
                                     response: {
                                       text: `My gut tells me to eat you.`,
                                     },
@@ -770,7 +770,6 @@ const START = {
 
           change: false,
           darncat: DARNCAT.desire,
-          advance: true,
         },
       },
       {
@@ -778,7 +777,6 @@ const START = {
         oars: OARS.openEndedQuestion,
         valence: 1,
         change: false,
-        advance: true,
         response: R_CLEVER,
       },
     ],
