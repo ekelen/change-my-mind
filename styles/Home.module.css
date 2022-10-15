@@ -44,15 +44,19 @@
 .bear {
   position: absolute;
   bottom: 0;
-  height: clamp(20px, 15vw, 150px);
-  width: clamp(20px, 15vw, 150px);
+  height: clamp(20px, 13vw, 125px);
+  width: clamp(20px, 13vw, 125px);
   background: url("/noun-bear.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  transition: all 0.8s ease-out;
+  transition: left 0.8s ease-out;
   z-index: 12;
   transform: translateX(-50%) translateY(20%);
+}
+
+.bear.attack {
+  transform: translateX(-50%) translateY(20%) scaleX(-1);
 }
 
 .fishBone {

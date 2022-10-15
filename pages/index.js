@@ -79,7 +79,7 @@ const Options = ({ options, onChooseResponse, hideHint, availableHints }) => {
   );
 };
 
-const Story = ({ score, maxScore }) => {
+const Story = ({ score, maxScore, attack }) => {
   return (
     // background
     <div className={styles.background}>
@@ -108,9 +108,9 @@ const Story = ({ score, maxScore }) => {
       >
         {/* bear */}
         <div
-          className={styles.bear}
+          className={`${styles.bear} ${attack ? styles.attack : ""}`}
           style={{
-            left: `calc(-0px + (100% / ${maxScore}) * ${Math.min(
+            left: `calc((100% / ${maxScore}) * ${Math.min(
               Math.max(0, score),
               maxScore
             )})`,
@@ -124,7 +124,7 @@ const Story = ({ score, maxScore }) => {
             key={index}
             className={styles.circle}
             style={{
-              left: `calc(0px + (100% / ${maxScore}) * ${index})`,
+              left: `calc((100% / ${maxScore}) * ${index})`,
               backgroundColor:
                 index === 0 ? "red" : index === maxScore ? "green" : "gray",
             }}
@@ -152,46 +152,33 @@ const Dialogue = ({
 }) => {
   const dialogueBottom = useRef(null);
   const dialogueButton = useRef(null);
-  const shortcutHintRef = useRef(null);
-  const [currentText, setCurrentText] = useState(0);
+  const [currentLine, setCurrentLine] = useState(0);
   const dialogueLines = useMemo(
     () => dialogue.text.split("\n").filter((t) => !!t) ?? [],
     [dialogue]
   );
 
   useEffect(() => {
-    setCurrentText(0);
+    setCurrentLine(0);
   }, [dialogueLines]);
 
   useEffect(() => {
     if (
       dialogueButton?.current &&
-      currentText < dialogueLines.length &&
+      currentLine < dialogueLines.length &&
       !showOptions &&
       !gameOver &&
       !gameWon
     ) {
       dialogueButton.current.focus();
-      // if (
-      //   dialogueLines[0] &&
-      //   dialogueLines[0] === "Oh, human." &&
-      //   currentText === 0 &&
-      //   shortcutHintRef?.current &&
-      //   document?.activeElement &&
-      //   document?.activeElement === dialogueButton?.current
-      // ) {
-      //   shortcutHintRef.current.style.visibility = "visible";
-      // } else {
-      //   shortcutHintRef.current.style.visibility = "hidden";
-      // }
     }
-  }, [currentText, showOptions, dialogueLines, gameOver, gameWon]);
+  }, [currentLine, showOptions, dialogueLines, gameOver, gameWon]);
 
   useEffect(() => {
-    if (currentText === dialogueLines.length) {
+    if (currentLine === dialogueLines.length) {
       onRevealOptions();
     }
-  }, [currentText, dialogueLines]);
+  }, [currentLine, dialogueLines]);
 
   useEffect(() => {
     if (dialogueBottom.current) {
@@ -200,14 +187,14 @@ const Dialogue = ({
         block: "center",
       });
     }
-  }, [currentText, showOptions]);
+  }, [currentLine, showOptions]);
 
   const onNext = useCallback(
     (e) => {
       e.stopPropagation();
-      setCurrentText(Math.min(currentText + 1, dialogueLines.length));
+      setCurrentLine(Math.min(currentLine + 1, dialogueLines.length));
     },
-    [dialogueLines, currentText]
+    [dialogueLines, currentLine]
   );
 
   const handleKeyDown = useCallback(
@@ -215,28 +202,21 @@ const Dialogue = ({
       if (e && (e.shiftKey || e.metaKey) && e.key === "Enter") {
         e.preventDefault();
         e.stopPropagation();
-        setCurrentText(dialogueLines.length);
+        setCurrentLine(dialogueLines.length);
       } else if (e && e.key === "Enter") {
         e.preventDefault();
         e.stopPropagation();
-        setCurrentText(Math.min(currentText + 1, dialogueLines.length));
+        setCurrentLine(Math.min(currentLine + 1, dialogueLines.length));
       }
     },
-    [dialogueLines, currentText]
+    [dialogueLines, currentLine]
   );
 
   return (
     <div className={styles.dialogue}>
-      <div
-        style={{ fontSize: "smaller", color: "gray", visibility: "hidden" }}
-        ref={shortcutHintRef}
-      >
-        Press Shift + Enter to show all text at once. Press Enter to show the
-        next line.
-      </div>
       <div className={styles.yellow}>
         <div>
-          {dialogueLines.slice(0, currentText + 1).map((text, index) => (
+          {dialogueLines.slice(0, currentLine + 1).map((text, index) => (
             <p key={`${index}`}>{text}</p>
           ))}
         </div>
@@ -246,7 +226,7 @@ const Dialogue = ({
           onKeyDown={handleKeyDown}
           style={{
             visibility:
-              currentText === dialogueLines.length ? "hidden" : "visible",
+              currentLine === dialogueLines.length ? "hidden" : "visible",
           }}
         >
           [...]
@@ -408,8 +388,15 @@ const Header = ({ handleRestart, gameOver, gameWon }) => {
 export default function Home() {
   const [gameState, { chooseOption, restart, hideHint }] = useGame();
 
-  const { dialogue, gameOver, gameWon, finalText, score, availableHints } =
-    gameState;
+  const {
+    dialogue,
+    gameOver,
+    gameWon,
+    finalText,
+    score,
+    availableHints,
+    attack,
+  } = gameState;
 
   const options = dialogue.options ?? [];
 
@@ -437,7 +424,7 @@ export default function Home() {
           />
           {
             <>
-              <Story score={score} maxScore={maxScore} />
+              <Story score={score} maxScore={maxScore} attack={attack} />
 
               {gameWon ? (
                 <PostGame>
