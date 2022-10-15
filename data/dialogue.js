@@ -56,6 +56,14 @@ const OARS_EXPLANATION = {
     '☑️ This is the OARS skill of SUMMARIZING:\n\n"Summaries are essentially reflections that collect what a person has been saying, offering it back as in a basket.\n\n[...] They may suggest links between present material and what has been discussed before.\n\n[...] In evoking, there are particular guidelines for what to include in a summary in order to collect change talk and move along the process of change."',
 };
 
+const R_MAKEPLAN = {
+  text: `Given what you've told me, what do you think a next step might be?`,
+  valence: 10,
+  response: {
+    text: `Time to make a plan, I guess.`,
+  },
+};
+
 const O_NEXTYEAR = {
   oars: OARS.openEndedQuestion,
   text: `If you made it through the winter, what could you do next year that's more aligned with your values?`,
@@ -88,16 +96,8 @@ const O_NEXTYEAR = {
         valence: 1,
         oars: OARS.summarize,
         response: {
-          text: `Yeah. I guess so.`,
-          options: [
-            {
-              text: `Given what you've told me, what do you think a next step might be?`,
-              valence: 10,
-              response: {
-                text: `Time to make a plan, I guess.`,
-              },
-            },
-          ],
+          text: `This has given me a lot to think about.`,
+          options: [R_MAKEPLAN],
         },
       },
     ],
@@ -273,7 +273,7 @@ const R_PRIDE = {
             valence: 1,
             oars: OARS.affirm,
             response: {
-              text: `I guess if I'm dead because I didn't haul ass and go fishing, no one's gonna be too impressed.`,
+              text: `And if I'm dead because I didn't haul ass and go fishing, no one's gonna be too impressed.`,
               options: [
                 O_NEXTYEAR,
                 {
@@ -668,7 +668,7 @@ const R_CLEVER = {
                                     },
                                   },
                                   {
-                                    oars: NOT_OARS.expert,
+                                    oars: NOT_OARS.advice,
                                     valence: -1,
                                     text: `Yanno, I've been on reddit. You might be interested in learning about macros.`,
                                     response: {

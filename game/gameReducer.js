@@ -21,14 +21,10 @@ export const initialState = {
 
 const chooseResponse = (state, option, options) => {
   const _valence = option.valence ?? 0;
-  const score = state.score + _valence;
-  let attack = state.attack;
-  if (score > state.score) {
-    attack = false;
-  } else if (score < state.score) {
-    attack = true;
-  }
+  const score = Math.min(state.score + _valence, maxScore);
 
+  const attack =
+    score > state.score ? false : score < state.score ? true : state.attack;
   const response = getNode(option.response);
 
   const common = {

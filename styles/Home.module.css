@@ -112,7 +112,7 @@
 }
 
 .dialogue {
-  scrollbar-color: rgba(21, 116, 90, 1) rgba(0, 0, 0, 0);
+  scrollbar-color: rgb(30, 41, 67) rgba(0, 0, 0, 0);
 }
 
 .dialogue::-webkit-scrollbar {
@@ -124,8 +124,18 @@
 }
 
 .dialogue::-webkit-scrollbar-thumb {
-  background-color: rgba(21, 116, 90, 1);
+  background-color: rgb(30, 41, 67);
   outline: 1px solid rgb(13, 73, 57);
+}
+
+.dialogue button {
+  width: 100%;
+}
+
+@media screen and (min-width: 600px) {
+  .dialogue button {
+    width: auto;
+  }
 }
 
 /* options */
@@ -144,9 +154,10 @@
 }
 
 .optionButtonWrapper {
-  flex-basis: calc(50% - 10px);
+  flex-basis: calc(50% - 5px);
   margin-bottom: 1rem;
   position: relative;
+  padding-left: 30px;
 }
 
 .optionButton {
@@ -158,7 +169,7 @@
 }
 
 .optionButton:nth-child(odd) {
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 .optionHint,
@@ -196,16 +207,17 @@
 .optionHintButton {
   position: absolute;
   border: 0;
-  background-color: yellow;
+  background-color: rgb(116, 122, 138);
   color: black;
   border-radius: 50%;
-  left: -20px;
+  left: 0px;
   top: 5px;
-  width: 15px;
-  height: 15px;
+  width: 25px;
+  height: 25px;
   padding: 0px;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: bolder;
+  font-family: tahoma;
 }
 
 .closeX {
