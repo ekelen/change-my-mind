@@ -378,7 +378,8 @@ const Header = ({ handleRestart, gameOver, gameWon }) => {
 };
 
 export default function Home() {
-  const [gameState, { chooseOption, restart, hideHint }] = useGame();
+  const [gameState, { chooseOption, restart, hideHint, watchIntro }] =
+    useGame();
 
   const {
     dialogue,
@@ -388,6 +389,7 @@ export default function Home() {
     score,
     availableHints,
     attack,
+    watchedIntro,
   } = gameState;
 
   const options = dialogue.options ?? [];
@@ -400,6 +402,10 @@ export default function Home() {
     restart();
   };
 
+  const handleWatchIntro = () => {
+    watchIntro();
+  };
+
   return (
     <FocusLock>
       <div className={styles.container}>
@@ -408,7 +414,6 @@ export default function Home() {
         </Head>
 
         <main className={styles.main}>
-          {/* <FocusLock> */}
           <Header
             handleRestart={handleRestart}
             gameOver={gameOver}
@@ -463,7 +468,6 @@ export default function Home() {
               )}
             </>
           }
-          {/* </FocusLock> */}
         </main>
       </div>
     </FocusLock>

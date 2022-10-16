@@ -2,7 +2,7 @@ import { cloneDeep } from "lodash";
 import { OARS, NOT_OARS } from "../data/dialogue";
 import { getNode } from "./dialoguesApi";
 import dialogues from "./dialoguesFlat.json";
-import { CHOOSE_RESPONSE, RESTART, HIDE_HINT } from "./gameActions";
+import { CHOOSE_RESPONSE, RESTART, HIDE_HINT, LOAD_STATE } from "./gameActions";
 
 export const maxScore = 10;
 
@@ -17,6 +17,7 @@ export const initialState = {
   score: 2,
   availableHints: [...Object.values(OARS), ...Object.values(NOT_OARS)],
   attack: true,
+  watchedIntro: false,
 };
 
 const chooseResponse = (state, option, options) => {
@@ -75,6 +76,9 @@ const gameReducer = (state, action) => {
     }
     case RESTART: {
       return cloneDeep(initialState);
+    }
+    case LOAD_STATE: {
+      return action.payload.state;
     }
     default: {
       return state;
