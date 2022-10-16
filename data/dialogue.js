@@ -56,12 +56,19 @@ const OARS_EXPLANATION = {
     '☑️ This is the OARS skill of SUMMARIZING:\n\n"Summaries are essentially reflections that collect what a person has been saying, offering it back as in a basket.\n\n[...] They may suggest links between present material and what has been discussed before.\n\n[...] In evoking, there are particular guidelines for what to include in a summary in order to collect change talk and move along the process of change."',
 };
 
-const R_MAKEPLAN = {
+const O_MAKEPLAN = {
+  id: "opt-end",
   text: `Given what you've told me, what do you think a next step might be?`,
   valence: 10,
   response: {
+    id: "res-end",
     text: `Time to make a plan, I guess.`,
   },
+};
+
+const R_THINKABOUT = {
+  text: `This has given me a lot to think about.`,
+  options: [O_MAKEPLAN],
 };
 
 const O_NEXTYEAR = {
@@ -76,11 +83,11 @@ const O_NEXTYEAR = {
                       Us bears have been really pushed to the brink these last few decades, you know.`,
     options: [
       {
-        text: `And catching fish sucks – could you invent a more interesting way to do it?`,
+        text: `And catching fish sucks – what would be a more interesting way to do it?`,
         oars: NOT_OARS.planTooEarly,
         valence: 0,
         response: {
-          text: `No.`,
+          text: `I don't think I'm ready to make a plan yet.`,
         },
       },
       {
@@ -95,21 +102,18 @@ const O_NEXTYEAR = {
         text: `You could pass forward not just the wisdom you've inherited, but the cunning you've developed.`,
         valence: 1,
         oars: OARS.summarize,
-        response: {
-          text: `This has given me a lot to think about.`,
-          options: [R_MAKEPLAN],
-        },
+        response: R_THINKABOUT,
       },
     ],
   },
 };
 
 const R_TOY = {
-  text: `You know what the best part of hunting humans is? Pretending to be some bumbling kid's toy. I'm like, "Oh bother, I'm so cute. I'm so cuddly. Take a selfie with me." 
+  text: `You know what the best part of hunting humans is? Pretending to be some bumbling kid's toy. 
+  
+  I'm like, "Oh bother, I'm so cute. I'm so cuddly. Take a selfie with me." 
       
-      And then I eat them. 
-      
-      It's great.`,
+      And then I eat them.`,
   change: false,
   options: [
     {
@@ -134,7 +138,7 @@ const R_TOY = {
     },
     {
       oars: OARS.affirm,
-      text: `You've decided that you don't need to catch fish to live your best life.`,
+      text: `For now, you've decided that you don't need to catch fish to live your best life.`,
       change: false,
       valence: 1,
       response: {
@@ -166,15 +170,13 @@ const R_TOY = {
               text: `Well, it's pretty obvious, right? We have to turbo-charge for the winter, otherwise we... like, die, I guess.`,
               options: [
                 {
-                  text: `You have to have enough energy stored for your body to make it through the winter.`,
+                  text: `So, you have to have enough energy stored for your body to make it through the winter.`,
                   oars: OARS.reflect,
                   valence: 1,
                   attemptChange: false,
                   response: {
                     darncat: DARNCAT.desire,
-                    text: `Yeah, I mean, I don't have INTERNET *eye roll*, but I'm pretty sure that's how it works.
-                      
-                      I'd be kinda sad not to make it through the winter...`,
+                    text: `I'd be kinda sad not to make it through the winter...`,
                     change: true,
                     options: [
                       O_NEXTYEAR,
@@ -309,16 +311,14 @@ const O_SUMM = {
         
         But you also have found meaning in listening to the wisdom of your fellow bears.
         
-        And you want to survive the winter.
-        
-        Have I got that right?`,
+        Surviving the winter is a big part of those teachings.`,
   valence: 2,
   attemptChange: true,
   response: {
     change: true,
-    text: `Yeah. Well, also maybe even long enough to pass on some of my knowledge to my own cubs.
+    text: `And... I'd like to live long enough to pass on some of my knowledge to my own cubs.
             
-            I don't know if I'm cut out to be a dad, but I don't think bear dads are, like, *involved*.
+            I don't think bear dads are, like, *involved*.
             
             But I'd teach them some bear stuff for sure.`,
     options: [
@@ -335,9 +335,9 @@ const O_SUMM = {
         text: `You've been given wisdom, and you don't want it to be lost with you.`,
         valence: 1,
         response: {
-          text: `Right.
-                        
-                        And like, I'm also pretty smart, bear-wise.
+          text: `Right. Plus... this will sound cocky...
+          
+          I just feel to smart to die.
                         
                         Like, there's this grocery store.
                         
