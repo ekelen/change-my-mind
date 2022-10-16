@@ -1,6 +1,6 @@
 {
   "opt-1": {
-    "text": "Well then. Sounds like catching fish is just what you have to do.",
+    "text": "Well then. Sounds like foraging is just what you have to do.",
     "valence": -1,
     "oars": "advice",
     "response": "res-2",
@@ -13,7 +13,7 @@
     "id": "res-2"
   },
   "opt-3": {
-    "text": "When I was a kid, I used to catch fish with a stick.\n\nI never caught any.",
+    "text": "When I was a kid, I used to catch fish with a stick. It was fun, but I would have starved if it were my only food source.",
     "oars": "iStatement",
     "valence": -1,
     "response": "res-4",
@@ -81,7 +81,7 @@
     "id": "res-32"
   },
   "opt-37": {
-    "text": "And catching fish sucks – what would be a more interesting way to do it?",
+    "text": "And foraging sucks – what would be a more interesting way to do it?",
     "oars": "planTooEarly",
     "valence": 0,
     "response": "res-38",
@@ -161,7 +161,7 @@
     "id": "opt-33"
   },
   "res-34": {
-    "text": "And if I'm dead because I didn't haul ass and go fishing, no one's gonna be too impressed.",
+    "text": "And if I'm dead because I didn't haul ass and go forage, no one's gonna be too impressed.",
     "options": [
       "opt-35",
       "opt-43"
@@ -178,7 +178,7 @@
   },
   "res-28": {
     "change": true,
-    "text": "Nooooooooo. Naw. Nuh-uh.",
+    "text": "No. I'm scary. *roars*\n\nAnd... super hungry.",
     "options": [
       "opt-29",
       "opt-31",
@@ -325,7 +325,7 @@
   },
   "res-18": {
     "change": true,
-    "text": "It's actually a SLEUTH of bears, not a \"herd.\" Just FYI.\n\nBut yeah, when it comes to hunting humans, I'm a bit of a loner.\n\nI usually kinda take pride in it, but there's a little part of me that's worried.\n\nAnd like, maybe I should have listened to my elders – their wisdom.\n\nMaybe I should have listened. I coulda gone fishing. Got fat. Hibernated on time.",
+    "text": "It's actually a SLEUTH of bears, not a \"herd.\" Just FYI.\n\nBut yeah, when it comes to hunting humans, I'm a bit of a loner.\n\nI usually kinda take pride in it, but there's a little part of me that's worried.\n\nAnd like, maybe I should have listened to my elders – their wisdom.\n\nMaybe I should have listened. I coulda gone fishing. Berry-picking. Got fat. Hibernated on time.",
     "options": [
       "opt-19",
       "opt-50",
@@ -384,7 +384,7 @@
     "id": "res-63"
   },
   "opt-13": {
-    "text": "It's only October - you have a couple of months to get enough fish.",
+    "text": "It's only October - you have a couple of months to find enough to eat.",
     "oars": "reflect",
     "valence": 1,
     "attemptChange": false,
@@ -606,7 +606,7 @@
     "id": "res-65"
   },
   "opt-9": {
-    "text": "So, hunting humans is a rewarding challenge, but friends are putting heat on you to catch fish.",
+    "text": "So, hunting humans is a rewarding challenge, but friends are putting heat on you to forage.",
     "oars": "summarize",
     "change": true,
     "valence": 1,
@@ -614,7 +614,7 @@
     "id": "opt-9"
   },
   "res-10": {
-    "text": "Yeah. They say that if I don't catch fish, I'll starve. But it's only October. I can catch fish later.",
+    "text": "Yeah. They say that if I don't go all-in on vegetation, I'll starve. But it's only October. I can berry-pick later.",
     "darncat": "reason",
     "change": false,
     "options": [
@@ -637,7 +637,7 @@
     "id": "res-97"
   },
   "opt-98": {
-    "text": "What if you spent half your time catching fish, and the other half setting human-traps?",
+    "text": "What if you spent half your time foraging, and the other half setting human-traps?",
     "oars": "advice",
     "valence": -1,
     "attemptChange": true,
@@ -649,14 +649,14 @@
     "id": "res-99"
   },
   "opt-102": {
-    "text": "You could just eat more fish.",
+    "text": "You could just eat more vegetation.",
     "oars": "advice",
     "valence": -1,
     "response": "res-103",
     "id": "opt-102"
   },
   "res-103": {
-    "text": "No. There's no *just* eating fish. It's super lame.",
+    "text": "No. There's no *just* eating vegetation. It's super lame.",
     "id": "res-103"
   },
   "opt-108": {
@@ -719,7 +719,7 @@
     "id": "opt-114"
   },
   "res-115": {
-    "text": "Oh? What, just sit there and wait for them to swim by? I'm not your uncle Jimmy, starting on his second pack of Heineken on the dock before dinner on a Tuesday.\n\nI'm a PREDATOR.",
+    "text": "What, go poking around for nuts and berries like an ecotourist?\n\nI'm a PREDATOR.",
     "id": "res-115"
   },
   "opt-104": {
@@ -741,7 +741,7 @@
     "id": "res-105"
   },
   "opt-116": {
-    "text": "Are you thinking you should just get out there and fish?",
+    "text": "Are you thinking you should just get out there and forage?",
     "oars": "closedQuestion",
     "valence": -1,
     "response": "res-117",
@@ -753,7 +753,7 @@
   },
   "opt-100": {
     "oars": "affirm",
-    "text": "For now, you've decided that you don't need to catch fish to live your best life.",
+    "text": "For now, you've decided that you don't need to forage to live your best life.",
     "change": false,
     "valence": 1,
     "response": "res-101",
@@ -815,7 +815,7 @@
   "res-start": {
     "id": "res-start",
     "required_level": 0,
-    "text": "Oh, human.\n\nThis must be, like, your worst nightmare.\n\nI'm a bear, and I LIVE for HUMAN-HUNTING!\n\nWinter is coming, though, and everyone's all up in my muzzle, telling me I have find some squirrel caches or catch fish and fatten up.\n\nBut nuts and fish? YAWN. I'd rather catch humans.",
+    "text": "Hello, human.\n\nGuess what?\n\nI'm a bear, and I LIVE for HUMAN-HUNTING!\n\nWinter is coming, though, and everyone's all up in my muzzle, telling me I have find some nuts, berries, tubers and the like.\n\nBut... nuts? YAWN. I'd rather catch humans.",
     "options": [
       "opt-1",
       "opt-3",

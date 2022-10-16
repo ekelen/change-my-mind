@@ -2,7 +2,13 @@ import { cloneDeep } from "lodash";
 import { OARS, NOT_OARS } from "../data/dialogue";
 import { getNode } from "./dialoguesApi";
 import dialogues from "./dialoguesFlat.json";
-import { CHOOSE_RESPONSE, RESTART, HIDE_HINT, LOAD_STATE } from "./gameActions";
+import {
+  CHOOSE_RESPONSE,
+  RESTART,
+  HIDE_HINT,
+  LOAD_STATE,
+  WATCH_INTRO,
+} from "./gameActions";
 
 export const maxScore = 10;
 
@@ -75,10 +81,16 @@ const gameReducer = (state, action) => {
       };
     }
     case RESTART: {
-      return cloneDeep(initialState);
+      return { ...initialState, watchedIntro: true };
     }
     case LOAD_STATE: {
       return action.payload.state;
+    }
+    case WATCH_INTRO: {
+      return {
+        ...state,
+        watchedIntro: action.payload.watchedIntro,
+      };
     }
     default: {
       return state;

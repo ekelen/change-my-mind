@@ -1,5 +1,5 @@
 import { useEffect, useReducer } from "react";
-import gameReducer, { initializer, initialState } from "./gameReducer";
+import gameReducer, { initialState } from "./gameReducer";
 import * as gameActions from "./gameActions";
 
 const useGame = () => {
