@@ -1,67 +1,24 @@
-const DARNCAT = {
-  desire: "desire",
-  ability: "ability",
-  reason: "reason",
-  need: "need",
-  commitment: "commitment",
-  activation: "activation",
-  takingSteps: "takingSteps",
-};
+const {
+  NOT_OARS,
+  OARS,
+  DARNCAT,
+  OARS_EXPLANATION,
+  NOT_OARS_EXPLANATION,
+} = require("./constants");
 
-const OARS = {
-  openEndedQuestion: "openEndedQuestion",
-  affirm: "affirm",
-  reflect: "reflect",
-  summarize: "summarize",
-};
-
-const NOT_OARS = {
-  iStatement: "iStatement",
-  closedQuestion: "closedQuestion",
-  flattery: "flattery",
-  planTooEarly: "planTooEarly",
-  judgment: "judgment",
-  advice: "advice",
-  expert: "expert",
-  sustain: "sustain",
-};
-
-const NOT_OARS_EXPLANATION = {
-  [NOT_OARS.iStatement]:
-    "⚠️ It's not about you!\n\n\"I-statements\" don't honor the spirit of MI. They're about you, not the client.\n\nUnless you know the client, you can't know what effect your comment will have.",
-  [NOT_OARS.closedQuestion]:
-    "⚠️ Not an open-ended question!\n\nYes/no questions are not usually effective in the evocation stage of MI.\n\nThey do not invite reflection or further the conversation.",
-  [NOT_OARS.flattery]:
-    "⚠️ Flattery will get you nowhere!\n\nFlattery is not a skill of MI.\n\nWe can AFFIRM a client's strengths based on what they have told us, but we should not give them compliments whose source is unclear.",
-  [NOT_OARS.planTooEarly]:
-    "⚠️ We're not at the planning phase yet!\n\nThe planning phase is the last stage of MI. We should not be talking about it until we have evoked the client's motivation to change.",
-  [NOT_OARS.judgment]:
-    "⚠️ Judgment is not a skill of MI.\n\nBy judging a client's choices, we are showing them that we believe our perception of the situation is superior to theirs.",
-  [NOT_OARS.advice]:
-    "⚠️ Who asked you?\n\nAdvice is not a skill of MI. It violates the principles of Acceptance and Partnership.\n\nIn some cases it can be appropriate—e.g. if we're explicitly asked.",
-  [NOT_OARS.expert]:
-    "⚠️ Take off your lab coat!\n\nIn MI, it's important to view the client as the expert.\n\nTherefore, we don't want to use language that makes us sound like we think we have the intellectual upper hand.",
-  [NOT_OARS.sustain]:
-    '⚠️ Eliciting "Sustain talk"!\n\nEven though it shows you understand your client\'s position, questions and statements that reinforce SUSTAINING a behavior—rather than evoking motivation for making a CHANGE—can keep a client feeling stuck in old behavior.',
-};
-
-const OARS_EXPLANATION = {
-  openEndedQuestion:
-    '☑️ This is the OARS skill of asking OPEN-ENDED QUESTIONS: \n\n"MI makes particular use of open questions, those that invite the person to reflect and elaborate. \n\nClosed questions, in contrast, ask for specific information that can usually be offered as a short answer.\n\nIn MI, gathering information is not the most important function of questions. [...] Open questions [...] play a key role in evoking motivation and planning a course toward change."',
-  affirm:
-    '☑️ This is the OARS skill of AFFIRMATION: \n\n"Affirmation is both general and specific in MI.\n\nThe counselor in general respects and honors the client as a person of worth, with the capability for growth and change as well as volitional choice about whether to do so.\n\nThe interviewer also recognizes and comments on the client’s particular strengths, abilities, good intentions, and efforts."',
-  reflect:
-    '☑️ This is the OARS skill of REFLECTING:\n\n"Reflective statements that make a guess about the client’s meaning have the important function of deepening understanding by clarifying whether one’s guess is accurate. \n\nReflective statements also allow people to hear again the thoughts and feelings they are expressing, perhaps in different words, and ponder them."',
-  summarize:
-    '☑️ This is the OARS skill of SUMMARIZING:\n\n"Summaries are essentially reflections that collect what a person has been saying, offering it back as in a basket.\n\n[...] They may suggest links between present material and what has been discussed before.\n\n[...] In evoking, there are particular guidelines for what to include in a summary in order to collect change talk and move along the process of change."',
-};
-
-const R_MAKEPLAN = {
+const O_MAKEPLAN = {
+  id: "opt-end",
   text: `Given what you've told me, what do you think a next step might be?`,
   valence: 10,
   response: {
+    id: "res-end",
     text: `Time to make a plan, I guess.`,
   },
+};
+
+const R_THINKABOUT = {
+  text: `This has given me a lot to think about.`,
+  options: [O_MAKEPLAN],
 };
 
 const O_NEXTYEAR = {
@@ -76,11 +33,11 @@ const O_NEXTYEAR = {
                       Us bears have been really pushed to the brink these last few decades, you know.`,
     options: [
       {
-        text: `And catching fish sucks – could you invent a more interesting way to do it?`,
+        text: `And foraging sucks – what would be a more interesting way to do it?`,
         oars: NOT_OARS.planTooEarly,
         valence: 0,
         response: {
-          text: `No.`,
+          text: `I don't think I'm ready to make a plan yet.`,
         },
       },
       {
@@ -95,21 +52,18 @@ const O_NEXTYEAR = {
         text: `You could pass forward not just the wisdom you've inherited, but the cunning you've developed.`,
         valence: 1,
         oars: OARS.summarize,
-        response: {
-          text: `This has given me a lot to think about.`,
-          options: [R_MAKEPLAN],
-        },
+        response: R_THINKABOUT,
       },
     ],
   },
 };
 
 const R_TOY = {
-  text: `You know what the best part of hunting humans is? Pretending to be some bumbling kid's toy. I'm like, "Oh bother, I'm so cute. I'm so cuddly. Take a selfie with me." 
+  text: `You know what the best part of hunting humans is? Pretending to be some bumbling kid's toy. 
+  
+  I'm like, "Oh bother, I'm so cute. I'm so cuddly. Take a selfie with me." 
       
-      And then I eat them. 
-      
-      It's great.`,
+      And then I eat them.`,
   change: false,
   options: [
     {
@@ -123,7 +77,7 @@ const R_TOY = {
       },
     },
     {
-      text: `What if you spent half your time catching fish, and the other half setting human-traps?`,
+      text: `What if you spent half your time foraging, and the other half setting human-traps?`,
 
       oars: NOT_OARS.advice,
       valence: -1,
@@ -134,7 +88,7 @@ const R_TOY = {
     },
     {
       oars: OARS.affirm,
-      text: `You've decided that you don't need to catch fish to live your best life.`,
+      text: `For now, you've decided that you don't need to forage to live your best life.`,
       change: false,
       valence: 1,
       response: {
@@ -149,11 +103,11 @@ const R_TOY = {
         change: true,
         options: [
           {
-            text: `You could just eat more fish.`,
+            text: `You could just eat more vegetation.`,
             oars: NOT_OARS.advice,
             valence: -1,
             response: {
-              text: `No. There's no *just* eating fish. It's super lame.`,
+              text: `No. There's no *just* eating vegetation. It's super lame.`,
             },
           },
           {
@@ -166,15 +120,13 @@ const R_TOY = {
               text: `Well, it's pretty obvious, right? We have to turbo-charge for the winter, otherwise we... like, die, I guess.`,
               options: [
                 {
-                  text: `You have to have enough energy stored for your body to make it through the winter.`,
+                  text: `So, you have to have enough energy stored for your body to make it through the winter.`,
                   oars: OARS.reflect,
                   valence: 1,
                   attemptChange: false,
                   response: {
                     darncat: DARNCAT.desire,
-                    text: `Yeah, I mean, I don't have INTERNET *eye roll*, but I'm pretty sure that's how it works.
-                      
-                      I'd be kinda sad not to make it through the winter...`,
+                    text: `I'd be kinda sad not to make it through the winter...`,
                     change: true,
                     options: [
                       O_NEXTYEAR,
@@ -212,7 +164,7 @@ const R_TOY = {
                   text: `Based on what you've said, it seems like not starving is maybe better, right?`,
                   valence: -1,
                   response: {
-                    text: `Oh? What, just sit there and wait for them to swim by? I'm not your uncle Jimmy, starting on his second pack of Heineken on the dock before dinner on a Tuesday.
+                    text: `What, go poking around for nuts and berries like an ecotourist?
                       
                       I'm a PREDATOR.`,
                   },
@@ -221,7 +173,7 @@ const R_TOY = {
             },
           },
           {
-            text: `Are you thinking you should just get out there and fish?`,
+            text: `Are you thinking you should just get out there and forage?`,
             oars: NOT_OARS.closedQuestion,
             valence: -1,
             response: {
@@ -250,7 +202,9 @@ const R_PRIDE = {
       attemptChange: false,
       response: {
         change: true,
-        text: `Nooooooooo. Naw. Nuh-uh.`,
+        text: `No. I'm scary. *roars*
+        
+        And... super hungry.`,
         options: [
           {
             text: `I think you're a pretty cool bear, for what it's worth.`,
@@ -273,7 +227,7 @@ const R_PRIDE = {
             valence: 1,
             oars: OARS.affirm,
             response: {
-              text: `And if I'm dead because I didn't haul ass and go fishing, no one's gonna be too impressed.`,
+              text: `And if I'm dead because I didn't haul ass and go forage, no one's gonna be too impressed.`,
               options: [
                 O_NEXTYEAR,
                 {
@@ -309,16 +263,14 @@ const O_SUMM = {
         
         But you also have found meaning in listening to the wisdom of your fellow bears.
         
-        And you want to survive the winter.
-        
-        Have I got that right?`,
+        Surviving the winter is a big part of those teachings.`,
   valence: 2,
   attemptChange: true,
   response: {
     change: true,
-    text: `Yeah. Well, also maybe even long enough to pass on some of my knowledge to my own cubs.
+    text: `And... I'd like to live long enough to pass on some of my knowledge to my own cubs.
             
-            I don't know if I'm cut out to be a dad, but I don't think bear dads are, like, *involved*.
+            I don't think bear dads are, like, *involved*.
             
             But I'd teach them some bear stuff for sure.`,
     options: [
@@ -335,9 +287,9 @@ const O_SUMM = {
         text: `You've been given wisdom, and you don't want it to be lost with you.`,
         valence: 1,
         response: {
-          text: `Right.
-                        
-                        And like, I'm also pretty smart, bear-wise.
+          text: `Right. Plus... this will sound cocky...
+          
+          I just feel to smart to die.
                         
                         Like, there's this grocery store.
                         
@@ -405,12 +357,12 @@ const R_CLEVER = {
       },
     },
     {
-      text: `So, hunting humans is a rewarding challenge, but friends are putting heat on you to catch fish.`,
+      text: `So, hunting humans is a rewarding challenge, but friends are putting heat on you to forage.`,
       oars: OARS.summarize,
       change: true,
       valence: 1,
       response: {
-        text: `Yeah. They say that if I don't catch fish, I'll starve. But it's only October. I can catch fish later.`,
+        text: `Yeah. They say that if I don't go all-in on vegetation, I'll starve. But it's only October. I can berry-pick later.`,
         darncat: DARNCAT.reason,
         change: false,
         options: [
@@ -425,7 +377,7 @@ const R_CLEVER = {
             },
           },
           {
-            text: `It's only October - you have a couple of months to get enough fish.`,
+            text: `It's only October - you have a couple of months to find enough to eat.`,
             oars: OARS.reflect,
             valence: 1,
             attemptChange: false,
@@ -469,7 +421,7 @@ const R_CLEVER = {
                           
                           And like, maybe I should have listened to my elders – their wisdom.
                           
-                          Maybe I should have listened. I coulda gone fishing. Got fat. Hibernated on time.`,
+                          Maybe I should have listened. I coulda gone fishing. Berry-picking. Got fat. Hibernated on time.`,
                           options: [
                             O_SUMM,
                             {
@@ -734,18 +686,18 @@ const START = {
   response: {
     id: "res-start",
     required_level: 0,
-    text: `Oh, human. 
+    text: `Hello, human. 
     
-    This must be, like, your worst nightmare.
+    Guess what?
   
   I'm a bear, and I LIVE for HUMAN-HUNTING!
   
-  Winter is coming, though, and everyone's all up in my muzzle, telling me I have find some squirrel caches or catch fish and fatten up.
+  Winter is coming, though, and everyone's all up in my muzzle, telling me I have find some nuts, berries, tubers and the like.
   
-  But nuts and fish? YAWN. I'd rather catch humans.`,
+  But... nuts? YAWN. I'd rather catch humans.`,
     options: [
       {
-        text: "Well then. Sounds like catching fish is just what you have to do.",
+        text: "Well then. Sounds like foraging is just what you have to do.",
         valence: -1,
         oars: NOT_OARS.advice,
         response: {
@@ -760,9 +712,7 @@ const START = {
         },
       },
       {
-        text: `When I was a kid, I used to catch fish with a stick.
-
-        I never caught any.`,
+        text: `When I was a kid, I used to catch fish with a stick. It was fun, but I would have starved if it were my only food source.`,
         oars: NOT_OARS.iStatement,
         valence: -1,
         response: {

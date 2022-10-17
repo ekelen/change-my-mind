@@ -16,6 +16,86 @@
   width: 100%;
 }
 
+/* intro */
+
+.intro {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+
+  width: 100vw;
+  height: max(100vh, 400px);
+  min-height: 100vh;
+  z-index: 30;
+  margin: 0;
+  padding: 0.5rem;
+  background-color: rgb(8, 9, 12);
+  color: rgb(255, 251, 235);
+
+  /* border: 1px solid red; */
+}
+
+.stepFrame {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-end;
+  flex-shrink: 0;
+  width: min(95vw, 500px);
+  position: relative;
+  z-index: 31;
+  margin-bottom: 10px;
+  flex-basis: 100%;
+  /* border: 1px solid red; */
+}
+
+.stepText {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  flex-shrink: 0;
+  width: 100%;
+  height: 30px;
+  /* background-color: rgb(4, 7, 12); */
+
+  z-index: 31;
+  margin-bottom: 1rem;
+  /* border: 1px solid red; */
+}
+
+.stepImages {
+  /* border: 1px solid white; */
+  height: 200px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.stepButtonWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  flex-basis: 100%;
+
+  width: 100%;
+  gap: 10px;
+  color: white;
+  z-index: 31;
+  /* border: 1px solid red; */
+}
+
+.newsManText {
+  font-style: italic;
+}
+
 /* story */
 
 .background {
@@ -25,19 +105,32 @@
   height: 100px;
   flex-shrink: 0;
   width: 100%;
+  padding-bottom: 10px;
 }
 
 .human {
   position: absolute;
   bottom: 0;
   left: -10px;
-  height: 50px;
-  width: 50px;
+  height: clamp(50px, 10vw, 100px);
+  width: clamp(50px, 10vw, 100px);
   background: url("/noun-hiking.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  transition: all 0.8 ease-in-out;
+  z-index: 10;
+}
+
+.fishBone {
+  position: absolute;
+  bottom: 0;
+  right: -10px;
+  height: clamp(50px, 10vw, 100px);
+  width: clamp(50px, 10vw, 100px);
+  background: url("/noun-acorns-3351893.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   z-index: 10;
 }
 
@@ -57,20 +150,6 @@
 
 .bear.attack {
   transform: translateX(-50%) translateY(20%) scaleX(-1);
-}
-
-.fishBone {
-  position: absolute;
-  bottom: 0;
-  right: -10px;
-  height: 50px;
-  width: 50px;
-  background: url("/noun-fish-bone.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  transition: all 0.8 ease-in-out;
-  z-index: 10;
 }
 
 .circle {
@@ -149,7 +228,6 @@
   flex-basis: 0;
   justify-content: space-between;
   padding-top: 1rem;
-  /* padding: 0; */
   margin: 0;
 }
 
@@ -157,7 +235,8 @@
   flex-basis: calc(50% - 5px);
   margin-bottom: 1rem;
   position: relative;
-  padding-left: 30px;
+  display: flex;
+  align-items: flex-start;
 }
 
 .optionButton {
@@ -205,19 +284,23 @@
 }
 
 .optionHintButton {
-  position: absolute;
   border: 0;
-  background-color: rgb(116, 122, 138);
+  background-color: rgb(94, 121, 192);
   color: black;
   border-radius: 50%;
-  left: 0px;
-  top: 5px;
+
   width: 25px;
   height: 25px;
   padding: 0px;
   font-size: 12px;
   font-weight: bolder;
   font-family: tahoma;
+  margin-right: 5px;
+  flex-shrink: 0;
+}
+
+.optionHintButton:hover {
+  background-color: rgb(138, 158, 205);
 }
 
 .closeX {
