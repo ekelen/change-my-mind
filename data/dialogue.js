@@ -421,7 +421,7 @@ const R_CLEVER = {
                           
                           And like, maybe I should have listened to my elders – their wisdom.
                           
-                          Maybe I should have listened. I coulda gone fishing. Berry-picking. Got fat. Hibernated on time.`,
+                          I coulda gone fishing. Berry-picking. Got fat. Hibernated on time.`,
                           options: [
                             O_SUMM,
                             {

@@ -12,7 +12,7 @@ const About = ({ onClose }) => {
         This short text adventure is designed to illustrate some of the
         principles of Motivational Interviewing, a style of communication
         intended to help people (or bears—I&rsquo;ll call them <em>clients</em>{" "}
-        here) move towards a change they&rsquo;re ambivalent about making – if,
+        here) move towards a change they&rsquo;re ambivalent about making—if,
         and how, they want to.
       </p>
       <p>
@@ -21,10 +21,15 @@ const About = ({ onClose }) => {
       </p>
       <p>
         Though some options may seem very similar, think about how the wording
-        could affect how likely bear is to talk about <em>not</em> eating you.
+        could affect how likely Bear is to talk about <em>not</em> eating you.
       </p>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <Image src="/noun-bear_sit.svg" height={130} width={130} alt="Bear" />
+        <Image
+          src="/noun-bear_sit_nofill.svg"
+          height={130 * 0.8}
+          width={130}
+          alt="Bear"
+        />
       </div>
       <p>You do not need to read further to start playing.</p>
       <p>

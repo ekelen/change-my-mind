@@ -10,9 +10,9 @@ const Story = ({ score, maxScore, attack }) => {
           opacity: score === 0 ? 0.3 : 1,
         }}
       />
-      {/* fish bone */}
+      {/* acorns */}
       <div
-        className={styles.fishBone}
+        className={styles.acorns}
         style={{
           opacity: score > maxScore ? 0.3 : 1,
         }}

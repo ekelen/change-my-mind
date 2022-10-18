@@ -121,7 +121,7 @@
   z-index: 10;
 }
 
-.fishBone {
+.acorns {
   position: absolute;
   bottom: 0;
   right: -10px;
@@ -350,17 +350,16 @@
 .about .optionHintButton {
   position: relative;
   border: 0;
-  background-color: yellow;
+  /* background-color: yellow; */
   color: black;
   border-radius: 50%;
-  left: unset;
-  top: unset;
   width: 15px;
   height: 15px;
   padding: 0px;
   font-size: 10px;
   font-weight: bolder;
   cursor: auto;
+  margin-left: 5px;
 }
 
 /* post-game */
