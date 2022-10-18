@@ -297,6 +297,22 @@ export default function Home() {
                 />
               )}
             </>
+            <div className={styles.footer}>
+              <p style={{ marginRight: "5px" }}>by </p>
+              <a
+                href="https://github.com/ekelen"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Image
+                  src="/github.svg"
+                  height={13}
+                  width={13}
+                  alt="Github logo"
+                />
+                <p style={{ marginLeft: "2px" }}>ekelen</p>
+              </a>
+            </div>
           </main>
         </div>
       )}
