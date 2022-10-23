@@ -211,7 +211,9 @@ const Header = ({ handleRestart, gameOver, gameWon }) => {
   }, [gameOver, gameWon]);
   return (
     <div style={{ width: "100%", display: "flex", alignItems: "baseline" }}>
-      <h1 style={{ marginRight: "auto" }}>I Will Eat You - Change My Mind</h1>
+      <h1 style={{ marginRight: "auto", color: "rgb(255, 251, 235);" }}>
+        I Will Eat You - Change My Mind
+      </h1>
       <button
         onClick={() => setShowAbout(true)}
         disabled={showAbout}

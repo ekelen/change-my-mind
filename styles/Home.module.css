@@ -1,6 +1,7 @@
 .container {
   padding: 0 2vw;
   margin: 0;
+  color: rgb(255, 251, 235);
 }
 
 .main {
@@ -14,6 +15,11 @@
   flex-shrink: 0;
   /* border: 1px solid red; */
   width: 100%;
+  color: rgb(255, 251, 235);
+}
+
+.main h1 {
+  color: rgb(255, 251, 235);
 }
 
 .footer {
