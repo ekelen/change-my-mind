@@ -34,10 +34,7 @@ const About = ({ onClose }) => {
       </p>
 
       <p>
-        You can click the{" "}
-        <button disabled={true} className={styles.optionHintButton}>
-          ?
-        </button>{" "}
+        You can click the <button className={styles.optionHintButton}>?</button>{" "}
         buttons that appear next to some options for tips.
       </p>
       <button onClick={onClose}>Close</button>

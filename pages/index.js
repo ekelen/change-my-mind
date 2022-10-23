@@ -53,7 +53,7 @@ const Options = ({ options, onChooseResponse, hideHint, availableHints }) => {
 
 const PostGame = ({ finalText, gameWon, children }) => {
   return (
-    <div className={styles.postGame}>
+    <div className={`${styles.postGame} ${styles.yellow}`}>
       {finalText.split("\n").map((text, index) => (
         <p key={`${index}`}>{text.trim()}</p>
       ))}
@@ -84,14 +84,7 @@ const PostGame = ({ finalText, gameWon, children }) => {
   );
 };
 
-const Dialogue = ({
-  dialogue,
-  onRevealOptions,
-  showOptions,
-  gameOver,
-  gameWon,
-  showingIntro,
-}) => {
+const Dialogue = ({ dialogue, onRevealOptions, showOptions }) => {
   const dialogueBottom = useRef(null);
   const dialogueButton = useRef(null);
   const [currentLine, setCurrentLine] = useState(0);
@@ -297,6 +290,17 @@ export default function Home() {
                 />
               )}
             </>
+            <footer className={styles.footer}>
+              <p>by</p>
+              <a
+                href="https://github.com/ekelen/change-my-mind"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Image src="/github.svg" height={13} width={13} alt="github" />
+                ekelen
+              </a>
+            </footer>
           </main>
         </div>
       )}
