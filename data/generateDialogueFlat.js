@@ -1,17 +1,19 @@
 // $ node ./data/generateDialogueFlat.js
 const fs = require("fs");
 const dialogue = require("./dialogue.js");
-const lodash = require("lodash");
+const { default: ShortUniqueId } = require("short-unique-id");
+
+const uid = new ShortUniqueId();
 
 const _flatten = (dialogueTree) => {
   const flat = {};
   const addIds = (node) => {
     if (node.response) {
-      node.response.id = node.response.id ?? lodash.uniqueId("res-");
+      node.response.id = node.response.id ?? "res-" + uid();
     }
     if (node.response.options) {
       node.response.options.forEach((option, i) => {
-        option.id = option.id ?? lodash.uniqueId("opt-");
+        option.id = option.id ?? "opt-" + uid();
         addIds(option);
       });
     }

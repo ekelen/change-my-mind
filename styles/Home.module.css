@@ -4,8 +4,8 @@
 }
 
 .main {
-  height: calc(100vh - 1rem);
-  padding: 0.5rem 0;
+  height: calc(100vh - 0.5rem);
+  padding: 0.25rem 0;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -14,6 +14,34 @@
   flex-shrink: 0;
   /* border: 1px solid red; */
   width: 100%;
+}
+
+.footer {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .footer {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-shrink: 0;
+    width: 100%;
+    flex-basis: 0;
+    gap: 0.3rem;
+    font-size: small;
+  }
+
+  .footer a {
+    display: flex;
+    gap: 0.2rem;
+  }
+
+  .footer a:hover {
+    text-decoration: underline;
+  }
 }
 
 /* intro */
@@ -32,7 +60,7 @@
   margin: 0;
   padding: 0.5rem;
   background-color: rgb(8, 9, 12);
-  color: rgb(255, 251, 235);
+  color: rgb(241, 238, 228);
 
   /* border: 1px solid red; */
 }
@@ -344,23 +372,14 @@
 }
 
 .about a {
-  text-decoration: underline yellow;
+  text-decoration: underline rgb(251, 206, 126);
 }
 
 .about .optionHintButton {
-  position: relative;
-  border: 0;
-  background-color: yellow;
-  color: black;
-  border-radius: 50%;
-  left: unset;
-  top: unset;
-  width: 15px;
-  height: 15px;
-  padding: 0px;
-  font-size: 10px;
-  font-weight: bolder;
+  background-color: rgb(94, 121, 192);
+  box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.3);
   cursor: auto;
+  margin-left: 3px;
 }
 
 /* post-game */
@@ -372,12 +391,11 @@
   position: relative;
   justify-content: flex-start;
   align-items: center;
-  color: rgb(252, 211, 77);
   padding: 1rem 2rem;
 }
 
 /* misc */
 
 .yellow {
-  color: rgb(252, 211, 77);
+  color: rgb(251, 206, 126);
 }

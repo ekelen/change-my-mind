@@ -398,7 +398,7 @@ const R_CLEVER = {
                   valence: 1,
                   attemptChange: false,
                   response: {
-                    text: `Nope. I mean, maybe they did the air-quotes "SENSIBLE" thing and caught fish and raided squirrel stores, but I can be an ice-fishing bear.
+                    text: `Nope. I mean, maybe they did the air-quotes *sensible* thing, and caught dumb animals and raided squirrel stores, but I can be an ice-fishing bear.
                           
                           I'm pretty smart. I can figure it out.
                           
@@ -463,6 +463,14 @@ const R_CLEVER = {
                           ],
                         },
                       },
+                      {
+                        oars: NOT_OARS.judgment,
+                        text: `Maybe you could learn a little about the perils of hubris.`,
+                        valence: -1,
+                        response: {
+                          text: `And you could learn a little about the perils of moralizing to a hungry bear.`,
+                        },
+                      },
                     ],
                   },
                 },
@@ -511,6 +519,25 @@ const R_CLEVER = {
               change: true,
               darncat: DARNCAT.ability,
               options: [
+                {
+                  oars: NOT_OARS.flattery,
+                  text: `You've been pretty clever so far.`,
+                  response: {
+                    text: `How would you know? Would a clever bear be this gangly?`,
+                  },
+                },
+                {
+                  oars: NOT_OARS.sustain,
+                  text: `You've been pretty clever so far. Your rampage has been all over the news.`,
+                  valence: -1,
+                  response: {
+                    text: `I don't do this for fame. 
+                    
+                    Well, maybe a little... 
+                    
+                    Wanna come closer and take a selfie?`,
+                  },
+                },
                 {
                   oars: OARS.openEndedQuestion,
                   text: `How could you have been more efficient?`,
