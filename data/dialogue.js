@@ -479,7 +479,7 @@ const R_CLEVER = {
                   oars: NOT_OARS.judgment,
                   valence: -1,
                   response: {
-                    text: `Like being lazy? *licks chops*`,
+                    text: `They're lazy?`,
                   },
                 },
                 {
@@ -487,9 +487,9 @@ const R_CLEVER = {
                   oars: NOT_OARS.sustain,
                   valence: -1,
                   response: {
-                    text: `Like being lazy? *licks chops*
+                    text: `I'd be a GREAT ice-fisher. Hunkered down, watching the ice, waiting for the perfect moment to strike.
                     
-                    I'd be a GREAT ice-fisher. Hunkered down, watching the ice, waiting for the perfect moment to strike.`,
+                    In fact, now I have a plan. Ice-fishing on weekdays. Kick back with some human-hunting on weekends. This winter will be epic!`,
                   },
                 },
               ],
